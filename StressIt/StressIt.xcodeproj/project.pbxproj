@@ -27,6 +27,10 @@
 		C98E2A691624B6EC00AFC6AD /* NLMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98E2A671624B6EB00AFC6AD /* NLMainMenuViewController.m */; };
 		C98E2A6A1624B6EC00AFC6AD /* NLMainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C98E2A681624B6EB00AFC6AD /* NLMainMenuViewController.xib */; };
 		C98E2A701624B83A00AFC6AD /* MainMenuTempBg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C98E2A6F1624B83A00AFC6AD /* MainMenuTempBg.jpeg */; };
+		C98E2A741624BAF500AFC6AD /* NLLearningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98E2A721624BAF400AFC6AD /* NLLearningViewController.m */; };
+		C98E2A751624BAF500AFC6AD /* NLLearningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C98E2A731624BAF400AFC6AD /* NLLearningViewController.xib */; };
+		C98E2AA11624BC1600AFC6AD /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98E2AA01624BC1600AFC6AD /* CoreText.framework */; };
+		C98E2AA41624BD2600AFC6AD /* NLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C98E2AA31624BD2500AFC6AD /* NLLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,12 @@
 		C98E2A671624B6EB00AFC6AD /* NLMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLMainMenuViewController.m; sourceTree = "<group>"; };
 		C98E2A681624B6EB00AFC6AD /* NLMainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NLMainMenuViewController.xib; sourceTree = "<group>"; };
 		C98E2A6F1624B83A00AFC6AD /* MainMenuTempBg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = MainMenuTempBg.jpeg; path = Content/TempImages/MainMenuTempBg.jpeg; sourceTree = SOURCE_ROOT; };
+		C98E2A711624BAF300AFC6AD /* NLLearningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLLearningViewController.h; sourceTree = "<group>"; };
+		C98E2A721624BAF400AFC6AD /* NLLearningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLLearningViewController.m; sourceTree = "<group>"; };
+		C98E2A731624BAF400AFC6AD /* NLLearningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NLLearningViewController.xib; sourceTree = "<group>"; };
+		C98E2AA01624BC1600AFC6AD /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		C98E2AA21624BD2500AFC6AD /* NLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLLabel.h; sourceTree = "<group>"; };
+		C98E2AA31624BD2500AFC6AD /* NLLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C98E2AA11624BC1600AFC6AD /* CoreText.framework in Frameworks */,
 				C98E2A2C1624B6A500AFC6AD /* UIKit.framework in Frameworks */,
 				C98E2A2E1624B6A500AFC6AD /* Foundation.framework in Frameworks */,
 				C98E2A301624B6A500AFC6AD /* CoreGraphics.framework in Frameworks */,
@@ -115,6 +126,7 @@
 		C98E2A2A1624B6A500AFC6AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C98E2AA01624BC1600AFC6AD /* CoreText.framework */,
 				C98E2A2B1624B6A500AFC6AD /* UIKit.framework */,
 				C98E2A2D1624B6A500AFC6AD /* Foundation.framework */,
 				C98E2A2F1624B6A500AFC6AD /* CoreGraphics.framework */,
@@ -176,6 +188,11 @@
 				C98E2A661624B6EB00AFC6AD /* NLMainMenuViewController.h */,
 				C98E2A671624B6EB00AFC6AD /* NLMainMenuViewController.m */,
 				C98E2A681624B6EB00AFC6AD /* NLMainMenuViewController.xib */,
+				C98E2A711624BAF300AFC6AD /* NLLearningViewController.h */,
+				C98E2A721624BAF400AFC6AD /* NLLearningViewController.m */,
+				C98E2A731624BAF400AFC6AD /* NLLearningViewController.xib */,
+				C98E2AA21624BD2500AFC6AD /* NLLabel.h */,
+				C98E2AA31624BD2500AFC6AD /* NLLabel.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -282,6 +299,7 @@
 				C98E2A441624B6A600AFC6AD /* Default-568h@2x.png in Resources */,
 				C98E2A6A1624B6EC00AFC6AD /* NLMainMenuViewController.xib in Resources */,
 				C98E2A701624B83A00AFC6AD /* MainMenuTempBg.jpeg in Resources */,
+				C98E2A751624BAF500AFC6AD /* NLLearningViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +338,8 @@
 				C98E2A3E1624B6A600AFC6AD /* NLAppDelegate.m in Sources */,
 				C98E2A471624B6A600AFC6AD /* StressIt.xcdatamodeld in Sources */,
 				C98E2A691624B6EC00AFC6AD /* NLMainMenuViewController.m in Sources */,
+				C98E2A741624BAF500AFC6AD /* NLLearningViewController.m in Sources */,
+				C98E2AA41624BD2600AFC6AD /* NLLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

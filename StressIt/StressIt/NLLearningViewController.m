@@ -1,20 +1,20 @@
 //
-//  NLMainMenuViewController.m
+//  NLLearningViewController.m
 //  StressIt
 //
-//  Created by Alexey Goncharov on 09.10.12.
+//  Created by Alexey Goncharov on 10.10.12.
 //  Copyright (c) 2012 NIALSoft. All rights reserved.
 //
 
-#import "NLMainMenuViewController.h"
 #import "NLLearningViewController.h"
+#import "NLLabel.h"
 
 
-@interface NLMainMenuViewController ()
+@interface NLLearningViewController ()
 
 @end
 
-@implementation NLMainMenuViewController
+@implementation NLLearningViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,7 +28,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+  NLLabel *label = [[NLLabel alloc]initWithText:@"Совокупность" andStressed:5];
+  
+  
+  
+  [self.view addSubview:label];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,10 +41,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (IBAction)learningButtonPressed:(id)sender {
-  UIViewController *vc = [[NLLearningViewController alloc]init];
-  [self.navigationController pushViewController:vc animated:YES];
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+  return;
 }
 
 @end

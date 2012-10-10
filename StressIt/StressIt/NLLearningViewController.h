@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NLLearningViewController : UIViewController
+@interface NLLearningViewController : UIViewController {
+  NSManagedObjectContext *contextObject;
+}
 
 @end

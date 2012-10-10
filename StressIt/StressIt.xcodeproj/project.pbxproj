@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		67BF729516257905007D65F7 /* NLDictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BF729316257905007D65F7 /* NLDictionaryViewController.m */; };
 		67BF729616257905007D65F7 /* NLDictionaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67BF729416257905007D65F7 /* NLDictionaryViewController.xib */; };
+		C986581D1625A6F60035FB7D /* NLWord.m in Sources */ = {isa = PBXBuildFile; fileRef = C986581C1625A6F60035FB7D /* NLWord.m */; };
+		C98658231625A7740035FB7D /* NLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C98658221625A7740035FB7D /* NLDictionary.m */; };
+		C98658261625A7850035FB7D /* NLLearningDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C98658251625A7850035FB7D /* NLLearningDictionary.m */; };
+		C98658291625A7990035FB7D /* NLWordBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = C98658281625A7990035FB7D /* NLWordBlock.m */; };
 		C98E2A2C1624B6A500AFC6AD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98E2A2B1624B6A500AFC6AD /* UIKit.framework */; };
 		C98E2A2E1624B6A500AFC6AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98E2A2D1624B6A500AFC6AD /* Foundation.framework */; };
 		C98E2A301624B6A500AFC6AD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98E2A2F1624B6A500AFC6AD /* CoreGraphics.framework */; };
@@ -49,6 +53,14 @@
 		67BF729216257905007D65F7 /* NLDictionaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLDictionaryViewController.h; sourceTree = "<group>"; };
 		67BF729316257905007D65F7 /* NLDictionaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLDictionaryViewController.m; sourceTree = "<group>"; };
 		67BF729416257905007D65F7 /* NLDictionaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NLDictionaryViewController.xib; sourceTree = "<group>"; };
+		C986581B1625A6F60035FB7D /* NLWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLWord.h; sourceTree = "<group>"; };
+		C986581C1625A6F60035FB7D /* NLWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLWord.m; sourceTree = "<group>"; };
+		C98658211625A7740035FB7D /* NLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLDictionary.h; sourceTree = "<group>"; };
+		C98658221625A7740035FB7D /* NLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLDictionary.m; sourceTree = "<group>"; };
+		C98658241625A7850035FB7D /* NLLearningDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLLearningDictionary.h; sourceTree = "<group>"; };
+		C98658251625A7850035FB7D /* NLLearningDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLLearningDictionary.m; sourceTree = "<group>"; };
+		C98658271625A7990035FB7D /* NLWordBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLWordBlock.h; sourceTree = "<group>"; };
+		C98658281625A7990035FB7D /* NLWordBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLWordBlock.m; sourceTree = "<group>"; };
 		C98E2A271624B6A500AFC6AD /* StressIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StressIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98E2A2B1624B6A500AFC6AD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C98E2A2D1624B6A500AFC6AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -109,6 +121,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C986582A1625A7C90035FB7D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C98E2A451624B6A600AFC6AD /* StressIt.xcdatamodeld */,
+				C986581B1625A6F60035FB7D /* NLWord.h */,
+				C986581C1625A6F60035FB7D /* NLWord.m */,
+				C98658271625A7990035FB7D /* NLWordBlock.h */,
+				C98658281625A7990035FB7D /* NLWordBlock.m */,
+				C98658211625A7740035FB7D /* NLDictionary.h */,
+				C98658221625A7740035FB7D /* NLDictionary.m */,
+				C98658241625A7850035FB7D /* NLLearningDictionary.h */,
+				C98658251625A7850035FB7D /* NLLearningDictionary.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		C986582B1625A7DF0035FB7D /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				C98E2A661624B6EB00AFC6AD /* NLMainMenuViewController.h */,
+				C98E2A671624B6EB00AFC6AD /* NLMainMenuViewController.m */,
+				C98E2A681624B6EB00AFC6AD /* NLMainMenuViewController.xib */,
+				C98E2A711624BAF300AFC6AD /* NLLearningViewController.h */,
+				C98E2A721624BAF400AFC6AD /* NLLearningViewController.m */,
+				C98E2A731624BAF400AFC6AD /* NLLearningViewController.xib */,
+			);
+			name = Interface;
+			sourceTree = "<group>";
+		};
+		C986582C1625A84C0035FB7D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C98E2AA21624BD2500AFC6AD /* NLLabel.h */,
+				C98E2AA31624BD2500AFC6AD /* NLLabel.m */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
 		C98E2A1C1624B6A500AFC6AD = {
 			isa = PBXGroup;
 			children = (
@@ -147,8 +197,8 @@
 				C98E2A3C1624B6A600AFC6AD /* NLAppDelegate.h */,
 				C98E2A3D1624B6A600AFC6AD /* NLAppDelegate.m */,
 				C98E2A6B1624B6F600AFC6AD /* Classes */,
+				C986582A1625A7C90035FB7D /* CoreData */,
 				C98E2A6C1624B7F000AFC6AD /* Content */,
-				C98E2A451624B6A600AFC6AD /* StressIt.xcdatamodeld */,
 				C98E2A341624B6A600AFC6AD /* Supporting Files */,
 				67BF729216257905007D65F7 /* NLDictionaryViewController.h */,
 				67BF729316257905007D65F7 /* NLDictionaryViewController.m */,
@@ -193,14 +243,8 @@
 		C98E2A6B1624B6F600AFC6AD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C98E2A661624B6EB00AFC6AD /* NLMainMenuViewController.h */,
-				C98E2A671624B6EB00AFC6AD /* NLMainMenuViewController.m */,
-				C98E2A681624B6EB00AFC6AD /* NLMainMenuViewController.xib */,
-				C98E2A711624BAF300AFC6AD /* NLLearningViewController.h */,
-				C98E2A721624BAF400AFC6AD /* NLLearningViewController.m */,
-				C98E2A731624BAF400AFC6AD /* NLLearningViewController.xib */,
-				C98E2AA21624BD2500AFC6AD /* NLLabel.h */,
-				C98E2AA31624BD2500AFC6AD /* NLLabel.m */,
+				C986582B1625A7DF0035FB7D /* Interface */,
+				C986582C1625A84C0035FB7D /* Service */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -350,6 +394,10 @@
 				C98E2A741624BAF500AFC6AD /* NLLearningViewController.m in Sources */,
 				C98E2AA41624BD2600AFC6AD /* NLLabel.m in Sources */,
 				67BF729516257905007D65F7 /* NLDictionaryViewController.m in Sources */,
+				C986581D1625A6F60035FB7D /* NLWord.m in Sources */,
+				C98658231625A7740035FB7D /* NLDictionary.m in Sources */,
+				C98658261625A7850035FB7D /* NLLearningDictionary.m in Sources */,
+				C98658291625A7990035FB7D /* NLWordBlock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

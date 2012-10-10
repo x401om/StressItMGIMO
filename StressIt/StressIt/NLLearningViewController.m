@@ -8,7 +8,10 @@
 
 #import "NLLearningViewController.h"
 #import "NLLabel.h"
-
+#import "NLDictionary.h"
+#import "NLAppDelegate.h"
+#import "NLWord.h"
+#import "NLWordBlock.h"
 
 @interface NLLearningViewController ()
 
@@ -25,13 +28,31 @@
     return self;
 }
 
+- (void)addDatabase {
+  
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
   [[UIApplication sharedApplication]setStatusBarHidden:YES];
-  NLLabel *label = [[NLLabel alloc]initWithText:@"совокупностьсовокупность" andStressed:5];
+  NLLabel *label = [[NLLabel alloc]initWithText:@"бёрд" andStressed:1];
 
+  contextObject = ((NLAppDelegate *)[[UIApplication sharedApplication]delegate]).managedObjectContext;
+  
+  NSArray *words = @[@"совокупность",@"совокупности",@"совокупностью",@"совокупностить"];
+  NSMutableArray *arr= [NSMutableArray array];
+  for(NSString *text in words) {
+    NLWord *newWord = [NLWord wordWithText:text andStressed:5 inManagedObjectContext:contextObject];
+    [arr addObject:newWord];
+  }
+  NLWordBlock *block = [NLWordBlock blockWithWords:arr inManagedObjectContext:contextObject];
+
+  NSLog(block.description);
+  
+  
+  
   
   
   [self.view addSubview:label];
@@ -45,6 +66,12 @@
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+  NSFetchRequest *request = [[NSFetchRequest alloc] init];
+  request.entity = [NSEntityDescription entityForName:@"WordBlock" inManagedObjectContext:contextObject];
+ // request.predicate = [NSPredicate predicateWithFormat:@"listID > 0"];
+  NSError *error = nil;
+  NSArray *arr = [contextObject executeFetchRequest:request error:&error];
+  
   return;
 }
 

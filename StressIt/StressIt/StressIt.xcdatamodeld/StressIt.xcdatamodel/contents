@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12A269" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="First" syncable="YES"/>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Dictionary" representedClassName="NLDictionary" syncable="YES">
+        <relationship name="blocks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WordBlock" syncable="YES"/>
+    </entity>
+    <entity name="LearningDictionary" representedClassName="NLLearningDictionary" syncable="YES">
+        <relationship name="blocks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WordBlock" syncable="YES"/>
+    </entity>
+    <entity name="Word" representedClassName="NLWord" syncable="YES">
+        <attribute name="condition" attributeType="Integer 16" minValueString="0" maxValueString="3" defaultValueString="0" syncable="YES"/>
+        <attribute name="stressed" attributeType="Integer 16" minValueString="0" maxValueString="30" defaultValueString="-1" syncable="YES"/>
+        <attribute name="text" attributeType="String" minValueString="1" maxValueString="30" defaultValueString="text" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <relationship name="block" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="WordBlock" inverseName="words" inverseEntity="WordBlock" syncable="YES"/>
+    </entity>
+    <entity name="WordBlock" representedClassName="NLWordBlock" syncable="YES">
+        <attribute name="title" attributeType="String" defaultValueString="title" syncable="YES"/>
+        <relationship name="words" toMany="YES" minCount="1" deletionRule="No Action" destinationEntity="Word" inverseName="block" inverseEntity="Word" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="First" positionX="160" positionY="192" width="128" height="45"/>
+        <element name="Word" positionX="45" positionY="203" width="216" height="103"/>
+        <element name="WordBlock" positionX="0" positionY="72" width="216" height="73"/>
+        <element name="Dictionary" positionX="162" positionY="-103" width="128" height="58"/>
+        <element name="LearningDictionary" positionX="-234" positionY="-103" width="128" height="58"/>
     </elements>
 </model>

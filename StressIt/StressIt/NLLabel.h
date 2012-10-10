@@ -15,6 +15,4 @@
 
 - (id)initWithText:(NSString *)text andStressed:(NSInteger)stressed;
 
-- (void)setText:(NSString *)text andStressed:(NSInteger)stressed;
-
 @end

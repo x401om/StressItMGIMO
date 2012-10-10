@@ -28,8 +28,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-  NLLabel *label = [[NLLabel alloc]initWithText:@"Совокупность" andStressed:5];
-  
+
+  [[UIApplication sharedApplication]setStatusBarHidden:YES];
+  NLLabel *label = [[NLLabel alloc]initWithText:@"совокупностьсовокупность" andStressed:5];
+
   
   
   [self.view addSubview:label];

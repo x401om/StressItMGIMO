@@ -12,6 +12,7 @@
 #import "NLAppDelegate.h"
 #import "NLWord.h"
 #import "NLWordBlock.h"
+#import "NLParser.h"
 
 @interface NLLearningViewController ()
 
@@ -71,7 +72,7 @@
  // request.predicate = [NSPredicate predicateWithFormat:@"listID > 0"];
   NSError *error = nil;
   NSArray *arr = [contextObject executeFetchRequest:request error:&error];
-  
+  [NLParser parse];
   return;
 }
 

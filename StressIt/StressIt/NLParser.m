@@ -27,6 +27,9 @@
   [file enumerateLinesUsingBlock:^(NSString *line, BOOL *stop){
     if ([line length]>0) {
       [tempArray addObject:line];
+      if (tempArray.count%1000==0) {
+        NSLog(@"%i", tempArray.count);
+      }
     }
   }];
   NSLog(@"%f",[tempDate timeIntervalSinceNow]);

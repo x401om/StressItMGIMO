@@ -17,6 +17,11 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+-(void)applicationDidReceiveMemoryWarning:(UIApplication *)application
+{
+  return;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -28,7 +33,7 @@
     [self.window makeKeyAndVisible];
   
   
-  [NLParser parse];
+  
     return YES;
 }
 

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		67BF729516257905007D65F7 /* NLDictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BF729316257905007D65F7 /* NLDictionaryViewController.m */; };
 		67BF729616257905007D65F7 /* NLDictionaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67BF729416257905007D65F7 /* NLDictionaryViewController.xib */; };
+		67C0DB8F1625DFDE00214C52 /* NLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C0DB8E1625DFDE00214C52 /* NLParser.m */; };
+		67C0DBA21625E42E00214C52 /* All_Forms.txt in Resources */ = {isa = PBXBuildFile; fileRef = 67C0DBA11625E42E00214C52 /* All_Forms.txt */; };
 		C986581D1625A6F60035FB7D /* NLWord.m in Sources */ = {isa = PBXBuildFile; fileRef = C986581C1625A6F60035FB7D /* NLWord.m */; };
 		C98658231625A7740035FB7D /* NLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C98658221625A7740035FB7D /* NLDictionary.m */; };
 		C98658261625A7850035FB7D /* NLLearningDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C98658251625A7850035FB7D /* NLLearningDictionary.m */; };
@@ -53,6 +55,9 @@
 		67BF729216257905007D65F7 /* NLDictionaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLDictionaryViewController.h; sourceTree = "<group>"; };
 		67BF729316257905007D65F7 /* NLDictionaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLDictionaryViewController.m; sourceTree = "<group>"; };
 		67BF729416257905007D65F7 /* NLDictionaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NLDictionaryViewController.xib; sourceTree = "<group>"; };
+		67C0DB8D1625DFDE00214C52 /* NLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLParser.h; sourceTree = "<group>"; };
+		67C0DB8E1625DFDE00214C52 /* NLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLParser.m; sourceTree = "<group>"; };
+		67C0DBA11625E42E00214C52 /* All_Forms.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = All_Forms.txt; path = ../../All_Forms.txt; sourceTree = "<group>"; };
 		C986581B1625A6F60035FB7D /* NLWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLWord.h; sourceTree = "<group>"; };
 		C986581C1625A6F60035FB7D /* NLWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLWord.m; sourceTree = "<group>"; };
 		C98658211625A7740035FB7D /* NLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLDictionary.h; sourceTree = "<group>"; };
@@ -203,6 +208,8 @@
 				67BF729216257905007D65F7 /* NLDictionaryViewController.h */,
 				67BF729316257905007D65F7 /* NLDictionaryViewController.m */,
 				67BF729416257905007D65F7 /* NLDictionaryViewController.xib */,
+				67C0DB8D1625DFDE00214C52 /* NLParser.h */,
+				67C0DB8E1625DFDE00214C52 /* NLParser.m */,
 			);
 			path = StressIt;
 			sourceTree = "<group>";
@@ -210,6 +217,7 @@
 		C98E2A341624B6A600AFC6AD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				67C0DBA11625E42E00214C52 /* All_Forms.txt */,
 				C98E2A351624B6A600AFC6AD /* StressIt-Info.plist */,
 				C98E2A361624B6A600AFC6AD /* InfoPlist.strings */,
 				C98E2A391624B6A600AFC6AD /* main.m */,
@@ -353,6 +361,7 @@
 				C98E2A701624B83A00AFC6AD /* MainMenuTempBg.jpeg in Resources */,
 				C98E2A751624BAF500AFC6AD /* NLLearningViewController.xib in Resources */,
 				67BF729616257905007D65F7 /* NLDictionaryViewController.xib in Resources */,
+				67C0DBA21625E42E00214C52 /* All_Forms.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +407,7 @@
 				C98658231625A7740035FB7D /* NLDictionary.m in Sources */,
 				C98658261625A7850035FB7D /* NLLearningDictionary.m in Sources */,
 				C98658291625A7990035FB7D /* NLWordBlock.m in Sources */,
+				67C0DB8F1625DFDE00214C52 /* NLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

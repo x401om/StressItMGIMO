@@ -8,6 +8,7 @@
 
 #import "NLAppDelegate.h"
 #import "NLMainMenuViewController.h"
+#import "NLParser.h"
 
 
 @implementation NLAppDelegate
@@ -25,6 +26,9 @@
   [navController setNavigationBarHidden:YES];
   self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
+  
+  
+  [NLParser parse];
     return YES;
 }
 

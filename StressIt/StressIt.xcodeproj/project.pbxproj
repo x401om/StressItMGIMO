@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67BF729516257905007D65F7 /* NLDictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BF729316257905007D65F7 /* NLDictionaryViewController.m */; };
+		67BF729616257905007D65F7 /* NLDictionaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67BF729416257905007D65F7 /* NLDictionaryViewController.xib */; };
 		C98E2A2C1624B6A500AFC6AD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98E2A2B1624B6A500AFC6AD /* UIKit.framework */; };
 		C98E2A2E1624B6A500AFC6AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98E2A2D1624B6A500AFC6AD /* Foundation.framework */; };
 		C98E2A301624B6A500AFC6AD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98E2A2F1624B6A500AFC6AD /* CoreGraphics.framework */; };
@@ -44,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		67BF729216257905007D65F7 /* NLDictionaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLDictionaryViewController.h; sourceTree = "<group>"; };
+		67BF729316257905007D65F7 /* NLDictionaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLDictionaryViewController.m; sourceTree = "<group>"; };
+		67BF729416257905007D65F7 /* NLDictionaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NLDictionaryViewController.xib; sourceTree = "<group>"; };
 		C98E2A271624B6A500AFC6AD /* StressIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StressIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98E2A2B1624B6A500AFC6AD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C98E2A2D1624B6A500AFC6AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -145,6 +150,9 @@
 				C98E2A6C1624B7F000AFC6AD /* Content */,
 				C98E2A451624B6A600AFC6AD /* StressIt.xcdatamodeld */,
 				C98E2A341624B6A600AFC6AD /* Supporting Files */,
+				67BF729216257905007D65F7 /* NLDictionaryViewController.h */,
+				67BF729316257905007D65F7 /* NLDictionaryViewController.m */,
+				67BF729416257905007D65F7 /* NLDictionaryViewController.xib */,
 			);
 			path = StressIt;
 			sourceTree = "<group>";
@@ -300,6 +308,7 @@
 				C98E2A6A1624B6EC00AFC6AD /* NLMainMenuViewController.xib in Resources */,
 				C98E2A701624B83A00AFC6AD /* MainMenuTempBg.jpeg in Resources */,
 				C98E2A751624BAF500AFC6AD /* NLLearningViewController.xib in Resources */,
+				67BF729616257905007D65F7 /* NLDictionaryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +349,7 @@
 				C98E2A691624B6EC00AFC6AD /* NLMainMenuViewController.m in Sources */,
 				C98E2A741624BAF500AFC6AD /* NLLearningViewController.m in Sources */,
 				C98E2AA41624BD2600AFC6AD /* NLLabel.m in Sources */,
+				67BF729516257905007D65F7 /* NLDictionaryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +516,7 @@
 				C98E2A621624B6A600AFC6AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C98E2A631624B6A600AFC6AD /* Build configuration list for PBXNativeTarget "StressItTests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +525,7 @@
 				C98E2A651624B6A600AFC6AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

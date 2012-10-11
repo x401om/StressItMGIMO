@@ -8,30 +8,27 @@
 
 #import "NLWordBlock.h"
 #import "NLWord.h"
-
+#import "NLAppDelegate.h"
 
 @implementation NLWordBlock
 
 @dynamic title;
 @dynamic words;
+@dynamic dictionary;
 
-- (id)initWithWords:(NSArray *)words {
-  self.words = [NSSet setWithArray:words];
-  NLWord *titleWord = [words objectAtIndex:0];
-  self.title = titleWord.text;
-  return self;
-}
-
-+ (NLWordBlock *)blockWithWords:(NSArray *)words inManagedObjectContext:(NSManagedObjectContext *)context {
++ (NLWordBlock *)blockWithWords:(NSArray *)words {
   NLWordBlock *newBlock = nil;
+  NSManagedObjectContext *context = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
   newBlock = [NSEntityDescription insertNewObjectForEntityForName:@"WordBlock" inManagedObjectContext:context];
   newBlock.words = [NSSet setWithArray:words];
   NLWord *titleWord = [words objectAtIndex:0];
   newBlock.title = titleWord.text;
+  [newBlock saveContext];
   return newBlock;
 }
 
-+ (NSArray *)allBlocksInManagedObjectContext:(NSManagedObjectContext *)context {
++ (NSArray *)allBlocks {
+   NSManagedObjectContext *context = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
   NSFetchRequest *request = [[NSFetchRequest alloc] init];
   request.entity = [NSEntityDescription entityForName:@"WordBlock" inManagedObjectContext:context];
   request.predicate = [NSPredicate predicateWithFormat:@"words.count > 0"];
@@ -52,6 +49,7 @@
   [allObjects addObject:value];
   self.words = [NSSet setWithArray:allObjects];
   NSLog(@"Added %@", value);
+  [self saveContext];
 }
 
 - (void)removeWordsObject:(NLWord *)value {
@@ -60,6 +58,7 @@
   [tempSet removeObject:value];
   self.words = [NSSet setWithArray:[tempSet array]] ;
   NSLog(@"Removed %@", value);
+  [self saveContext];
 }
 
 - (NSString *)description {
@@ -70,6 +69,21 @@
     output = [output stringByAppendingString:@"\n"];
   }
   return output;
+}
+
+- (void)saveContext {
+  NSError *error = nil;
+  NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+  if (managedObjectContext != nil) {
+    if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+      NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+      abort();
+    }
+  }
+}
+
+- (void)deleteWordWithText:(NSString *)text {
+  [self removeWordsObject:[NLWord findWordWithText:text]];
 }
 
 @end

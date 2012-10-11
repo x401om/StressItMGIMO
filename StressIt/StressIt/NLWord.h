@@ -18,7 +18,8 @@
 @property (nonatomic, retain) NSManagedObject *block;
 
 + (NLWord *)wordWithText:(NSString *)text andStressed:(int)stressedVowel inManagedObjectContext:(NSManagedObjectContext *)context;
-
++ (NLWord *)findWordWithText:(NSString *)text;
+- (void)deleteFromDatabase;
 
 
 @end

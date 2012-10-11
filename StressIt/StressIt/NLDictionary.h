@@ -9,13 +9,21 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+typedef enum {
+  DictionaryTypeDefault = 0,
+  DictionaryTypeLearning = 1
+} DictionaryType;
+
 @class NLWordBlock;
 
 @interface NLDictionary : NSManagedObject
 
 @property (nonatomic, retain) NSSet *blocks;
+@property (nonatomic, retain) NSString *name;
 
-+ (NLDictionary *)dictionaryWithBlocks:(NSArray *)blockSet inManagedObjectContext:(NSManagedObjectContext *)context;
+
++ (NLDictionary *)dictionaryWithBlocks:(NSArray *)blockSet andType:(DictionaryType)type;
++ (NLDictionary *)findDictionaryWithType:(DictionaryType)type;
 
 @end
 

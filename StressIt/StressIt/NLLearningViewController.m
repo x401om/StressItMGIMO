@@ -50,7 +50,7 @@
   }
   NLWordBlock *block = [NLWordBlock blockWithWords:arr inManagedObjectContext:contextObject];
 
-  NSLog(block.description);
+  //NSLog(block.description);
   
   
   
@@ -72,7 +72,13 @@
  // request.predicate = [NSPredicate predicateWithFormat:@"listID > 0"];
   NSError *error = nil;
   NSArray *arr = [contextObject executeFetchRequest:request error:&error];
-  [NLParser parse];
+  //[NLParser parse];
+
+  NLWordBlock *newBlock = arr[0];
+  NLWord *word = [newBlock getRandomWord];
+  [word deleteFromDatabase];
+ // [newBlock deleteWordWithText:@"совокупность"];
+  
   return;
 }
 

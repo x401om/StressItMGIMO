@@ -7,7 +7,7 @@
 //
 
 #import "NLWord.h"
-
+#import "NLAppDelegate.h"
 
 @implementation NLWord
 
@@ -22,13 +22,32 @@
   newWord.text = text;
   newWord.stressed = [NSNumber numberWithInt:stressedVowel];
   newWord.condition = [NSNumber numberWithInt:0];
+  [newWord saveContext];
   return newWord;
 }
-
 - (NSString *)description {
   int stressedPosition = [self.stressed intValue] + 1;
-  NSString *output = [NSString stringWithFormat:@"%@'%@", [self.text substringToIndex:stressedPosition], [self.text substringFromIndex:stressedPosition]];
+  NSString *output = [NSString stringWithFormat:@"%@\u0301%@", [self.text substringToIndex:stressedPosition], [self.text substringFromIndex:stressedPosition]];
   return output;
 }
+- (void)saveContext {
+  NSError *error = nil;
+  NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+  if (managedObjectContext != nil) {
+    if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+      NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+      abort();
+    }
+  }
+}
++ (NLWord *)findWordWithText:(NSString *)text {
+  NSManagedObjectContext *myContext = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+  NSFetchRequest *request = [[NSFetchRequest alloc] init];
+  request.entity = [NSEntityDescription entityForName:@"Word" inManagedObjectContext:myContext];
+  request.predicate = [NSPredicate predicateWithFormat:@"text = %@",text];
+  NSError *error = nil;
+  return [[myContext executeFetchRequest:request error:&error]lastObject];
+}
+
 
 @end

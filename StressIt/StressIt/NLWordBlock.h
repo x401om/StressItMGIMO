@@ -15,11 +15,14 @@
 
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSSet *words;
+@property (nonatomic, retain) NSManagedObject *dictionary;
 
-+ (NLWordBlock *)blockWithWords:(NSArray *)words inManagedObjectContext:(NSManagedObjectContext *)context;
-+ (NSArray *)allBlocksInManagedObjectContext:(NSManagedObjectContext *)context;
+
++ (NLWordBlock *)blockWithWords:(NSArray *)words;
++ (NSArray *)allBlocks;
 - (NSArray *)wordsArray;
 - (NLWord *)getRandomWord;
+- (void)deleteWordWithText:(NSString *)text;
 
 @end
 

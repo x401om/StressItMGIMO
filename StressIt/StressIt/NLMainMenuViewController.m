@@ -8,6 +8,7 @@
 
 #import "NLMainMenuViewController.h"
 #import "NLLearningViewController.h"
+#import "NLDictionaryViewController.h"
 
 
 @interface NLMainMenuViewController ()
@@ -43,5 +44,11 @@
   UIViewController *vc = [[NLLearningViewController alloc]init];
   [self.navigationController pushViewController:vc animated:YES];
 }
+
+-(IBAction)dictionaryButtonPressed:(id)sender {
+  NLDictionaryViewController* dict = [[NLDictionaryViewController alloc] initWithStyle:UITableViewStylePlain];
+  [self.navigationController pushViewController:dict animated:YES];
+}
+
 
 @end

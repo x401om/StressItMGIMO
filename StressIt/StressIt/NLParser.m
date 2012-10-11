@@ -8,6 +8,7 @@
 
 #import "NLParser.h"
 #import "NLWord.h"
+#import "NLWordBlock.h"
 
 @implementation NLParser
 
@@ -22,18 +23,28 @@
   }
   NSError* error;
   NSDate* tempDate = [NSDate date];
-  NSMutableArray* tempArray = [NSMutableArray array]; //= [[NSMutableArray alloc] initWithContentsOfFile:path];
   NSString* file = [NSString stringWithContentsOfFile:path encoding:NSWindowsCP1251StringEncoding error:&error];
   [file enumerateLinesUsingBlock:^(NSString *line, BOOL *stop){
     if ([line length]>0) {
-      [tempArray addObject:line];
-      if (tempArray.count%1000==0) {
-        NSLog(@"%i", tempArray.count);
+      NSMutableArray* tempArray = (NSMutableArray*)[line componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#,"]];
+      if ([tempArray[0] length]==1) {
+        
+      }
+      else {
+        NSMutableArray* arrayForBlock = [NSMutableArray array];
+        for (int i=1;i<tempArray.count;++i) {
+          NSLog(tempArray[i]);
+          int stressed = [tempArray[i] rangeOfString:@"'"].location - 1;
+            tempArray[i] = [tempArray[i] stringByReplacingOccurrencesOfString:@"'" withString:@""];
+            NLWord* word = [NLWord wordWithText:tempArray[i] andStressed:stressed];
+            [arrayForBlock addObject:word];
+        }
+        NLWordBlock* block = [NLWordBlock blockWithWords:arrayForBlock];
       }
     }
   }];
   NSLog(@"%f",[tempDate timeIntervalSinceNow]);
-  tempDate;
+  
 }
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "NLDictionaryViewController.h"
+#import "NLParser.h"
+#import "NLAppDelegate.h"
 
 @interface NLDictionaryViewController ()
 
@@ -23,16 +25,41 @@
     return self;
 }
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+  [NLParser parse];
+  //[self.navigationController setNavigationBarHidden:NO];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  NSManagedObjectContext *moc = [(NLAppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
+  NSEntityDescription *entityDescription = [NSEntityDescription
+                                            entityForName:@"Word" inManagedObjectContext:moc];
+  NSFetchRequest *request = [[NSFetchRequest alloc] init];
+  [request setEntity:entityDescription];
+  
+  // Set example predicate and sort orderings...
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                            @"text[0]=='a'"];
+  [request setPredicate:predicate];
+  
+  NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                      initWithKey:@"firstName" ascending:YES];
+  //[request setSortDescriptors:@[sortDescriptor]];
+  
+  NSError *error;
+  NSArray *array = [moc executeFetchRequest:request error:&error];
+  if (array == nil)
+  {
+    // Deal with error...
+  }
 }
+
 
 - (void)didReceiveMemoryWarning
 {

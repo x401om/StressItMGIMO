@@ -10,6 +10,7 @@
 #import "NLWord.h"
 #import "NLWordBlock.h"
 #import "NLDictionary.h"
+#import "NLAppDelegate.h"
 
 @implementation NLParser
 
@@ -63,6 +64,7 @@
     }
   }];
   NLDictionary* dictionary = [NLDictionary dictionaryWithBlocks:tempDictionary andType:DictionaryTypeDefault];
+  [(NLAppDelegate*)[[UIApplication sharedApplication] delegate] saveContext];
   NSLog(@"%f",[tempDate timeIntervalSinceNow]);
   
 }

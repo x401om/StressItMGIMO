@@ -25,7 +25,7 @@
   newWord.secondStressed = [NSNumber numberWithInt:-1];
   newWord.stressed = [NSNumber numberWithInt:stressedVowel];
   newWord.condition = [NSNumber numberWithInt:0];
-  [newWord saveContext];
+  //[newWord saveContext];
   return newWord;
 }
 

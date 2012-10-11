@@ -23,5 +23,7 @@
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, retain) UIBarButtonItem *addButton;
 
+@property (nonatomic, retain) NSMutableArray* arrayOfWords;
+
 
 @end

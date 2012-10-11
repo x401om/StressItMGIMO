@@ -9,12 +9,14 @@
 #import "NLDictionaryViewController.h"
 #import "NLParser.h"
 #import "NLAppDelegate.h"
+#import "NLWordBlock.h"
 
 @interface NLDictionaryViewController ()
 
 @end
 
 @implementation NLDictionaryViewController
+@synthesize arrayOfWords;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,7 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-  [NLParser parse];
+  //[NLParser parse];
   //[self.navigationController setNavigationBarHidden:NO];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -39,13 +41,13 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
   NSManagedObjectContext *moc = [(NLAppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
   NSEntityDescription *entityDescription = [NSEntityDescription
-                                            entityForName:@"Word" inManagedObjectContext:moc];
+                                            entityForName:@"WordBlock" inManagedObjectContext:moc];
   NSFetchRequest *request = [[NSFetchRequest alloc] init];
   [request setEntity:entityDescription];
   
   // Set example predicate and sort orderings...
   NSPredicate *predicate = [NSPredicate predicateWithFormat:
-                            @"text[0]=='a'"];
+                            @"title BEGINSWITH %@",@"а"];
   [request setPredicate:predicate];
   
   NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
@@ -53,8 +55,8 @@
   //[request setSortDescriptors:@[sortDescriptor]];
   
   NSError *error;
-  NSArray *array = [moc executeFetchRequest:request error:&error];
-  if (array == nil)
+  arrayOfWords = [moc executeFetchRequest:request error:&error];
+  if (arrayOfWords == nil)
   {
     // Deal with error...
   }
@@ -73,14 +75,14 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [arrayOfWords count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -90,8 +92,10 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+
     // Configure the cell...
+  
+  cell.textLabel.text = [[arrayOfWords objectAtIndex:indexPath.row] title];
     
     return cell;
 }

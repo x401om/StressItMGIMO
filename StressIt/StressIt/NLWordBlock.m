@@ -23,7 +23,7 @@
   newBlock.words = [NSSet setWithArray:words];
   NLWord *titleWord = [words objectAtIndex:0];
   newBlock.title = titleWord.text;
-  [newBlock saveContext];
+  //[newBlock saveContext];
   return newBlock;
 }
 

@@ -32,6 +32,16 @@
   self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
   
+  NSString *path;
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	path = paths[0];
+  path = [path stringByAppendingPathComponent:@"StressIt.sqlite"];
+  if ([[NSFileManager defaultManager] fileExistsAtPath:path] == NO) {
+    NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"StressIt" ofType:@"sqlite"];
+		[[NSFileManager defaultManager] copyItemAtPath:resourcePath toPath:path error:nil];
+  }
+  
+  
   
     return YES;
 }

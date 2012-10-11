@@ -9,6 +9,7 @@
 #import "NLParser.h"
 #import "NLWord.h"
 #import "NLWordBlock.h"
+#import "NLDictionary.h"
 
 @implementation NLParser
 
@@ -24,6 +25,7 @@
   NSError* error;
   NSDate* tempDate = [NSDate date];
   NSString* file = [NSString stringWithContentsOfFile:path encoding:NSWindowsCP1251StringEncoding error:&error];
+  NSMutableArray* tempDictionary = [NSMutableArray array];
   [file enumerateLinesUsingBlock:^(NSString *line, BOOL *stop){
     if ([line length]>0) {
       NSMutableArray* tempArray = (NSMutableArray*)[line componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#,"]];
@@ -33,16 +35,34 @@
       else {
         NSMutableArray* arrayForBlock = [NSMutableArray array];
         for (int i=1;i<tempArray.count;++i) {
-          NSLog(tempArray[i]);
-          int stressed = [tempArray[i] rangeOfString:@"'"].location - 1;
-            tempArray[i] = [tempArray[i] stringByReplacingOccurrencesOfString:@"'" withString:@""];
-            NLWord* word = [NLWord wordWithText:tempArray[i] andStressed:stressed];
+            NSMutableArray* stressedArray = [NSMutableArray arrayWithCapacity:2];
+            if([tempArray[i] rangeOfString:@"`"].location!=NSNotFound) {
+              [stressedArray addObject:[NSNumber numberWithInt:[tempArray[i] rangeOfString:@"`"].location - 1]];
+              tempArray[i] = [tempArray[i] stringByReplacingOccurrencesOfString:@"`" withString:@""];
+            }
+            if ([tempArray[i] rangeOfString:@"'"].location!=NSNotFound) {
+              [stressedArray addObject:[NSNumber numberWithInt:[tempArray[i] rangeOfString:@"'"].location - 1]];
+              tempArray[i] = [tempArray[i] stringByReplacingOccurrencesOfString:@"'" withString:@""];
+            }
+          if ([stressedArray count]==0) {
+            NSLog(@"%@ хуйня",tempArray[i]);
+          }
+          else {
+            NLWord* word = [NLWord wordWithText:tempArray[i] andStressed:[stressedArray[0] intValue]];
+            if([stressedArray count]==2) word.secondStressed = stressedArray[1];
             [arrayForBlock addObject:word];
+          }
         }
-        NLWordBlock* block = [NLWordBlock blockWithWords:arrayForBlock];
+        NLWordBlock* block;
+        if([arrayForBlock count]!=0)
+        {
+          block = [NLWordBlock blockWithWords:arrayForBlock];
+          [tempDictionary addObject:block];
+        }
       }
     }
   }];
+  NLDictionary* dictionary = [NLDictionary dictionaryWithBlocks:tempDictionary andType:DictionaryTypeDefault];
   NSLog(@"%f",[tempDate timeIntervalSinceNow]);
   
 }

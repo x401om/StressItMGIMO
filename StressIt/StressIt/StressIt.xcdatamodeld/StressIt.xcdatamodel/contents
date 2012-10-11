@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12A269" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Dictionary" representedClassName="NLDictionary" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" minValueString="0" syncable="YES"/>
         <relationship name="blocks" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="WordBlock" inverseName="dictionary" inverseEntity="WordBlock" syncable="YES"/>
     </entity>
     <entity name="Word" representedClassName="NLWord" syncable="YES">
         <attribute name="condition" attributeType="Integer 16" minValueString="0" maxValueString="3" defaultValueString="0" syncable="YES"/>
+        <attribute name="secondStressed" optional="YES" attributeType="Integer 16" defaultValueString="-1" syncable="YES"/>
         <attribute name="stressed" attributeType="Integer 16" minValueString="0" maxValueString="30" defaultValueString="-1" syncable="YES"/>
         <attribute name="text" attributeType="String" minValueString="1" maxValueString="30" defaultValueString="text" spotlightIndexingEnabled="YES" syncable="YES"/>
         <relationship name="block" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="WordBlock" inverseName="words" inverseEntity="WordBlock" syncable="YES"/>
@@ -17,7 +18,7 @@
     </entity>
     <elements>
         <element name="Dictionary" positionX="214" positionY="-163" width="128" height="73"/>
-        <element name="Word" positionX="45" positionY="203" width="216" height="103"/>
+        <element name="Word" positionX="45" positionY="203" width="216" height="118"/>
         <element name="WordBlock" positionX="153" positionY="47" width="128" height="88"/>
     </elements>
 </model>

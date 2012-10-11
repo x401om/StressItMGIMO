@@ -13,6 +13,7 @@
 @interface NLWord : NSManagedObject
 
 @property (nonatomic, retain) NSString * text;
+@property (nonatomic, retain) NSNumber * secondStressed;
 @property (nonatomic, retain) NSNumber * stressed;
 @property (nonatomic, retain) NSNumber * condition;
 @property (nonatomic, retain) NSManagedObject *block;

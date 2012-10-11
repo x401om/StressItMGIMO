@@ -12,6 +12,7 @@
 @implementation NLWord
 
 @dynamic text;
+@dynamic secondStressed;
 @dynamic stressed;
 @dynamic condition;
 @dynamic block;
@@ -21,16 +22,19 @@
   NLWord *newWord = nil;
   newWord = [NSEntityDescription insertNewObjectForEntityForName:@"Word" inManagedObjectContext:context];
   newWord.text = text;
+  newWord.secondStressed = [NSNumber numberWithInt:-1];
   newWord.stressed = [NSNumber numberWithInt:stressedVowel];
   newWord.condition = [NSNumber numberWithInt:0];
   [newWord saveContext];
   return newWord;
 }
+
 - (NSString *)description {
   int stressedPosition = [self.stressed intValue] + 1;
   NSString *output = [NSString stringWithFormat:@"%@\u0301%@", [self.text substringToIndex:stressedPosition], [self.text substringFromIndex:stressedPosition]];
   return output;
 }
+
 - (void)saveContext {
   NSError *error = nil;
   NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
@@ -41,6 +45,7 @@
     }
   }
 }
+
 + (NLWord *)findWordWithText:(NSString *)text {
   NSManagedObjectContext *myContext = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
   NSFetchRequest *request = [[NSFetchRequest alloc] init];

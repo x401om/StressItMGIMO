@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6729A55216275333002DCD9A /* StressIt.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6729A55116275333002DCD9A /* StressIt.sqlite */; };
 		67BF729516257905007D65F7 /* NLDictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BF729316257905007D65F7 /* NLDictionaryViewController.m */; };
 		67BF729616257905007D65F7 /* NLDictionaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67BF729416257905007D65F7 /* NLDictionaryViewController.xib */; };
+		67C045A31627578600AE9C86 /* StressIt.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6729A55116275333002DCD9A /* StressIt.sqlite */; };
 		67C0DB8F1625DFDE00214C52 /* NLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C0DB8E1625DFDE00214C52 /* NLParser.m */; };
 		67C0DBA21625E42E00214C52 /* All_Forms.txt in Resources */ = {isa = PBXBuildFile; fileRef = 67C0DBA11625E42E00214C52 /* All_Forms.txt */; };
 		C932F8811626203600D9A34B /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C932F8801626203600D9A34B /* TTTAttributedLabel.m */; };
@@ -52,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6729A55116275333002DCD9A /* StressIt.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = StressIt.sqlite; sourceTree = "<group>"; };
 		67BF729216257905007D65F7 /* NLDictionaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLDictionaryViewController.h; sourceTree = "<group>"; };
 		67BF729316257905007D65F7 /* NLDictionaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLDictionaryViewController.m; sourceTree = "<group>"; };
 		67BF729416257905007D65F7 /* NLDictionaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NLDictionaryViewController.xib; sourceTree = "<group>"; };
@@ -217,6 +220,7 @@
 		C98E2A341624B6A600AFC6AD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6729A55116275333002DCD9A /* StressIt.sqlite */,
 				67C0DBA11625E42E00214C52 /* All_Forms.txt */,
 				C98E2A351624B6A600AFC6AD /* StressIt-Info.plist */,
 				C98E2A361624B6A600AFC6AD /* InfoPlist.strings */,
@@ -362,6 +366,7 @@
 				C98E2A751624BAF500AFC6AD /* NLLearningViewController.xib in Resources */,
 				67BF729616257905007D65F7 /* NLDictionaryViewController.xib in Resources */,
 				67C0DBA21625E42E00214C52 /* All_Forms.txt in Resources */,
+				67C045A31627578600AE9C86 /* StressIt.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C98E2A5A1624B6A600AFC6AD /* InfoPlist.strings in Resources */,
+				6729A55216275333002DCD9A /* StressIt.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,12 +508,10 @@
 		C98E2A611624B6A600AFC6AD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StressIt/StressIt-Prefix.pch";
 				INFOPLIST_FILE = "StressIt/StressIt-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

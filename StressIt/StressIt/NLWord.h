@@ -17,9 +17,8 @@
 @property (nonatomic, retain) NSNumber * condition;
 @property (nonatomic, retain) NSManagedObject *block;
 
-+ (NLWord *)wordWithText:(NSString *)text andStressed:(int)stressedVowel inManagedObjectContext:(NSManagedObjectContext *)context;
++ (NLWord *)wordWithText:(NSString *)text andStressed:(int)stressedVowel;
 + (NLWord *)findWordWithText:(NSString *)text;
-- (void)deleteFromDatabase;
 
 
 @end

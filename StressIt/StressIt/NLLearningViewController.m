@@ -45,10 +45,10 @@
   NSArray *words = @[@"совокупность",@"совокупности",@"совокупностью",@"совокупностить"];
   NSMutableArray *arr= [NSMutableArray array];
   for(NSString *text in words) {
-    NLWord *newWord = [NLWord wordWithText:text andStressed:5 inManagedObjectContext:contextObject];
+    NLWord *newWord = [NLWord wordWithText:text andStressed:5];
     [arr addObject:newWord];
   }
-  NLWordBlock *block = [NLWordBlock blockWithWords:arr inManagedObjectContext:contextObject];
+  //NLWordBlock *block = [NLWordBlock blockWithWords:arr];
 
   //NSLog(block.description);
   
@@ -67,17 +67,17 @@
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-  NSFetchRequest *request = [[NSFetchRequest alloc] init];
-  request.entity = [NSEntityDescription entityForName:@"WordBlock" inManagedObjectContext:contextObject];
- // request.predicate = [NSPredicate predicateWithFormat:@"listID > 0"];
-  NSError *error = nil;
-  NSArray *arr = [contextObject executeFetchRequest:request error:&error];
-  //[NLParser parse];
-
-  NLWordBlock *newBlock = arr[0];
-  NLWord *word = [newBlock getRandomWord];
-  [word deleteFromDatabase];
- // [newBlock deleteWordWithText:@"совокупность"];
+//  NSFetchRequest *request = [[NSFetchRequest alloc] init];
+//  request.entity = [NSEntityDescription entityForName:@"WordBlock" inManagedObjectContext:contextObject];
+// // request.predicate = [NSPredicate predicateWithFormat:@"listID > 0"];
+//  NSError *error = nil;
+//  NSArray *arr = [contextObject executeFetchRequest:request error:&error];
+//  //[NLParser parse];
+//
+//  NLWordBlock *newBlock = arr[0];
+//  NLWord *word = [newBlock getRandomWord];
+//  [newBlock deleteWordWithText:word.text];
+// // [newBlock deleteWordWithText:@"совокупность"];
   
   return;
 }

@@ -50,8 +50,8 @@
                             @"title BEGINSWITH %@",@"а"];
   [request setPredicate:predicate];
   
-  NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                      initWithKey:@"firstName" ascending:YES];
+  //NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+    //                                  initWithKey:@"firstName" ascending:YES];
   //[request setSortDescriptors:@[sortDescriptor]];
   
   NSError *error;

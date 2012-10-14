@@ -41,7 +41,10 @@
 		[[NSFileManager defaultManager] copyItemAtPath:resourcePath toPath:path error:nil];
   }
   
+  //разкоменнтить здесь для парсера
   
+  /*NLParser* parser = [NLParser alloc];
+  [parser performSelectorInBackground:@selector(parse) withObject:nil];*/
   
     return YES;
 }

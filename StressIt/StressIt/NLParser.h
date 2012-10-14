@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NLParser : NSObject
+@interface NLParser : NSObject<NSStreamDelegate>
 
 + (void) parse;
-
+- (void) parse;
+- (void) allNewParse;
 @end

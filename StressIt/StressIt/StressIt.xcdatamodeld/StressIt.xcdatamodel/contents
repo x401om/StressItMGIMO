@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12A269" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Dictionary" representedClassName="NLDictionary" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" minValueString="0" syncable="YES"/>
         <relationship name="blocks" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="WordBlock" inverseName="dictionary" inverseEntity="WordBlock" syncable="YES"/>

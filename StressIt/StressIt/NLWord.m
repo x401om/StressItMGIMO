@@ -17,7 +17,7 @@
 @dynamic condition;
 @dynamic block;
 
-+ (id)wordWithText:(NSString *)text andStressed:(int)stressedVowel {
++ (id)wordWithText:(NSString *)text andStressed:(int)stressedVowel { 
   NSManagedObjectContext *context = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
   NLWord *newWord = nil;
   newWord = [NSEntityDescription insertNewObjectForEntityForName:@"Word" inManagedObjectContext:context];

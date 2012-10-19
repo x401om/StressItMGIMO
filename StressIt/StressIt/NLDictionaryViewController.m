@@ -27,8 +27,6 @@
     return self;
 }
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -60,6 +58,13 @@
   {
     // Deal with error...
   }
+  
+  [UIView animateWithDuration:2 animations:^{
+//    CGRect temp = self.view.frame;
+//    temp.origin.x+=100;
+//    [self.view setFrame:temp];
+  }];
+  
 }
 
 

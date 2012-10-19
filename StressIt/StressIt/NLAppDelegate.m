@@ -37,14 +37,10 @@
 	path = paths[0];
   path = [path stringByAppendingPathComponent:@"StressIt.sqlite"];
   if ([[NSFileManager defaultManager] fileExistsAtPath:path] == NO) {
-    NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"StressIt" ofType:@"sqlite"];
-		[[NSFileManager defaultManager] copyItemAtPath:resourcePath toPath:path error:nil];
-  }
+    NLParser* parser = [NLParser alloc];
+    [parser performSelectorInBackground:@selector(parse) withObject:nil];
+  } 
   
-  //разкоменнтить здесь для парсера
-  
-  /*NLParser* parser = [NLParser alloc];
-  [parser performSelectorInBackground:@selector(parse) withObject:nil];*/
   
     return YES;
 }

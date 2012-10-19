@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6729A55216275333002DCD9A /* StressIt.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6729A55116275333002DCD9A /* StressIt.sqlite */; };
+		677575721631D57E00D2DD0A /* NLDictionaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 677575701631D57E00D2DD0A /* NLDictionaryView.m */; };
+		677575731631D57E00D2DD0A /* NLDictionaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 677575711631D57E00D2DD0A /* NLDictionaryView.xib */; };
+		677575751631E89700D2DD0A /* nRpScgFoMIE.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 677575741631E89700D2DD0A /* nRpScgFoMIE.jpg */; };
 		67BF729516257905007D65F7 /* NLDictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BF729316257905007D65F7 /* NLDictionaryViewController.m */; };
 		67BF729616257905007D65F7 /* NLDictionaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67BF729416257905007D65F7 /* NLDictionaryViewController.xib */; };
 		67C045A31627578600AE9C86 /* StressIt.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6729A55116275333002DCD9A /* StressIt.sqlite */; };
@@ -55,6 +58,10 @@
 
 /* Begin PBXFileReference section */
 		6729A55116275333002DCD9A /* StressIt.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = StressIt.sqlite; sourceTree = "<group>"; };
+		6775756F1631D57E00D2DD0A /* NLDictionaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLDictionaryView.h; sourceTree = "<group>"; };
+		677575701631D57E00D2DD0A /* NLDictionaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLDictionaryView.m; sourceTree = "<group>"; };
+		677575711631D57E00D2DD0A /* NLDictionaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NLDictionaryView.xib; sourceTree = "<group>"; };
+		677575741631E89700D2DD0A /* nRpScgFoMIE.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nRpScgFoMIE.jpg; sourceTree = "<group>"; };
 		67BF729216257905007D65F7 /* NLDictionaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLDictionaryViewController.h; sourceTree = "<group>"; };
 		67BF729316257905007D65F7 /* NLDictionaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLDictionaryViewController.m; sourceTree = "<group>"; };
 		67BF729416257905007D65F7 /* NLDictionaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NLDictionaryViewController.xib; sourceTree = "<group>"; };
@@ -136,6 +143,7 @@
 				C986581B1625A6F60035FB7D /* NLWord.h */,
 				C986581C1625A6F60035FB7D /* NLWord.m */,
 				C98658271625A7990035FB7D /* NLWordBlock.h */,
+				677575741631E89700D2DD0A /* nRpScgFoMIE.jpg */,
 				C98658281625A7990035FB7D /* NLWordBlock.m */,
 				C98658211625A7740035FB7D /* NLDictionary.h */,
 				C98658221625A7740035FB7D /* NLDictionary.m */,
@@ -213,6 +221,9 @@
 				67BF729416257905007D65F7 /* NLDictionaryViewController.xib */,
 				67C0DB8D1625DFDE00214C52 /* NLParser.h */,
 				67C0DB8E1625DFDE00214C52 /* NLParser.m */,
+				6775756F1631D57E00D2DD0A /* NLDictionaryView.h */,
+				677575701631D57E00D2DD0A /* NLDictionaryView.m */,
+				677575711631D57E00D2DD0A /* NLDictionaryView.xib */,
 			);
 			path = StressIt;
 			sourceTree = "<group>";
@@ -367,6 +378,8 @@
 				67BF729616257905007D65F7 /* NLDictionaryViewController.xib in Resources */,
 				67C0DBA21625E42E00214C52 /* All_Forms.txt in Resources */,
 				67C045A31627578600AE9C86 /* StressIt.sqlite in Resources */,
+				677575731631D57E00D2DD0A /* NLDictionaryView.xib in Resources */,
+				677575751631E89700D2DD0A /* nRpScgFoMIE.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +427,7 @@
 				C98658291625A7990035FB7D /* NLWordBlock.m in Sources */,
 				67C0DB8F1625DFDE00214C52 /* NLParser.m in Sources */,
 				C932F8811626203600D9A34B /* TTTAttributedLabel.m in Sources */,
+				677575721631D57E00D2DD0A /* NLDictionaryView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

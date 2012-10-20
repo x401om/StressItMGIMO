@@ -8,6 +8,7 @@
 
 #import "NLDictionaryView.h"
 #import "NLAppDelegate.h"
+#define letterCount 30
 
 @interface NLDictionaryView ()
 
@@ -29,7 +30,7 @@
 -(void)initArrays
 {
   arrayOfWords = [NSMutableArray array];
-  for (int i=0; i<33; ++i) {
+  for (int i=0; i<letterCount; ++i) {
     NSManagedObjectContext *moc = [(NLAppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
     NSEntityDescription *entityDescription = [NSEntityDescription
                                             entityForName:@"WordBlock" inManagedObjectContext:moc];
@@ -51,11 +52,11 @@
     {
       // Deal with error...
     }
-    [self.tableViewLeft performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];//reloadData];
-    [self.tableViewRight performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];//reloadData];
+    //reloadData];
 
   }
-  
+  [self.tableViewLeft performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];//reloadData];
+  [self.tableViewRight performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
 -(NSString*)getKeyFromNumber:(NSInteger)number
@@ -142,7 +143,7 @@
     case 26:
       return @"щ";
       break;
-    case 27:
+    /*case 27:
       return @"ъ";
       break;
     case 28:
@@ -150,14 +151,14 @@
       break;
     case 29:
       return @"ь";
-      break;
-    case 30:
+      break;*/
+    case 27:
       return @"э";
       break;
-    case 31:
+    case 28:
       return @"ю";
       break;
-    case 32:
+    case 29:
       return @"я";
       break;
       

@@ -9,6 +9,7 @@
 #import "NLMainMenuViewController.h"
 #import "NLLearningViewController.h"
 #import "NLDictionaryView.h"
+#import "NLTimer.h"
 
 
 @interface NLMainMenuViewController ()
@@ -30,7 +31,7 @@
 {
     [super viewDidLoad];
   [[UIApplication sharedApplication]setStatusBarHidden:YES];
-
+  [self.view addSubview:[[NLTimer alloc] initWithFrame:CGRectMake(0, 0, 246, 246)]];
     // Do any additional setup after loading the view from its nib.
 }
 

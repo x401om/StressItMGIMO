@@ -10,4 +10,6 @@
 
 @interface NLMainMenuViewController : UIViewController
 
+@property IBOutlet UILabel* label;
+
 @end

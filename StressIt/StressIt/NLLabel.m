@@ -152,7 +152,12 @@
   
   [self allLettersDefault];
   UIColor *newColor;
-  if (number == self.stresssed)  newColor = [UIColor greenColor];
+  if (number == self.stresssed)
+  {
+    newColor = [UIColor greenColor];
+    //[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"trueAnswer" object:nil]];
+    [[NSNotificationCenter defaultCenter] performSelector:@selector(postNotification:) withObject:[NSNotification notificationWithName:@"trueAnswer" object:nil] afterDelay:1];
+  }
   else  newColor = [UIColor redColor];
   [self setColor:newColor atIndex:number];
 
@@ -191,6 +196,12 @@
   int letter = [self touchedLetter:location];
   [self answeredWithLetter:letter];
     
+}
+
+- (id)initWithWord:(NLWord *)word
+{
+  self = [self initWithText:[word text] andStressed:[[word stressed] integerValue]];
+  return self;
 }
 
 @end

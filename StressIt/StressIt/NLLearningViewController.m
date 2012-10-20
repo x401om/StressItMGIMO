@@ -14,11 +14,15 @@
 #import "NLWordBlock.h"
 #import "NLParser.h"
 
+#define wordCount 2555779
+
 @interface NLLearningViewController ()
 
 @end
 
 @implementation NLLearningViewController
+@synthesize label;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,14 +37,50 @@
   
 }
 
+-(NLLabel*)getRandomWord
+{
+  NSEntityDescription *entityDescription = [NSEntityDescription
+                                            entityForName:@"Word" inManagedObjectContext:contextObject];
+  NSFetchRequest *request = [[NSFetchRequest alloc] init];
+  [request setEntity:entityDescription];
+  
+  // Set example predicate and sort orderings...
+  [request setFetchOffset:arc4random()%wordCount];
+  [request setFetchLimit:1];
+  
+  //[[[contextObject registeredObjects] allObjects] objectAtIndex:arc4random()%wordCount];
+  
+  NSError *error;
+  NSArray* array = [contextObject executeFetchRequest:request error:&error];
+  if (array == nil)
+  {
+    // Deal with error...
+  }
+  //return [[NLLabel alloc]initWithText:@"бёрд" andStressed:1];
+  return  [[NLLabel alloc] initWithWord:array[0]];
+}
+
+-(void)newWord
+{
+  [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [label setAlpha:0];
+  } completion:^(BOOL fin){
+    [label removeFromSuperview];
+    label = [self getRandomWord];
+    [label setAlpha:0];
+    [self.view addSubview:label];
+    [UIView animateWithDuration:0.5 animations:^{
+      [label setAlpha:1];
+    }];
+  }];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-  [[UIApplication sharedApplication]setStatusBarHidden:YES];
-  NLLabel *label = [[NLLabel alloc]initWithText:@"бёрд" andStressed:1];
-
   contextObject = ((NLAppDelegate *)[[UIApplication sharedApplication]delegate]).managedObjectContext;
+  [[UIApplication sharedApplication]setStatusBarHidden:YES];
+  
   
   NSArray *words = @[@"совокупность",@"совокупности",@"совокупностью",@"совокупностить"];
   NSMutableArray *arr= [NSMutableArray array];
@@ -54,9 +94,9 @@
   
   
   
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newWord) name:@"trueAnswer" object:nil];
   
-  
-  [self.view addSubview:label];
+  [self newWord];
 
 }
 
@@ -80,6 +120,11 @@
 // // [newBlock deleteWordWithText:@"совокупность"];
   
   return;
+}
+
+-(IBAction)goToMainMenu:(id)sender
+{
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NLLabel.h"
 
 @interface NLLearningViewController : UIViewController {
   NSManagedObjectContext *contextObject;
 }
+
+@property (nonatomic, strong) NLLabel* label;
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TTTAttributedLabel.h"
+#import "NLWord.h"
 
 @interface NLLabel : UILabel
 
@@ -15,5 +16,6 @@
 @property NSArray *vowelLetters;
 
 - (id)initWithText:(NSString *)text andStressed:(NSInteger)stressed;
+- (id)initWithWord:(NLWord*)word;
 
 @end

@@ -8,7 +8,6 @@
 
 #import "NLMainMenuViewController.h"
 #import "NLLearningViewController.h"
-#import "NLDictionaryViewController.h"
 #import "NLDictionaryView.h"
 
 
@@ -44,11 +43,22 @@
 - (IBAction)learningButtonPressed:(id)sender {
   UIViewController *vc = [[NLLearningViewController alloc]init];
   [self.navigationController pushViewController:vc animated:YES];
+  [self.label setHighlighted:NO];
 }
 
 -(IBAction)dictionaryButtonPressed:(id)sender {
   NLDictionaryView* dict = [[NLDictionaryView alloc] init];
   [self.navigationController pushViewController:dict animated:YES];
+}
+
+-(IBAction)learningButtonTouched:(id)sender {
+  [self.label setHighlightedTextColor:[UIColor whiteColor]];
+  [self.label setHighlighted:YES];
+}
+
+-(IBAction)learningButtonTouchEnded:(id)sender
+{
+  [self.label setHighlighted:NO];
 }
 
 

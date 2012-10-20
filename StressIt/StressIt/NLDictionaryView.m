@@ -51,8 +51,8 @@
     {
       // Deal with error...
     }
-    [self.tableViewLeft reloadData];
-    [self.tableViewRight reloadData];
+    [self.tableViewLeft performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];//reloadData];
+    [self.tableViewRight performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];//reloadData];
 
   }
   
@@ -255,6 +255,10 @@
   
 }
 
+-(IBAction)goToMainMenu:(id)sender
+{
+  [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 @end

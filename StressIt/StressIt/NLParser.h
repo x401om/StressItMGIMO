@@ -12,4 +12,7 @@
 
 + (void) parse;
 - (void) parse;
+
++ (void)fillFavourites;
+
 @end

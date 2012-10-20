@@ -86,4 +86,14 @@
   [self removeWordsObject:[NLWord findWordWithText:text]];
 }
 
++ (NLWordBlock *)findBlockWithTitle:(NSString *)title {
+  NSManagedObjectContext *myContext = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+  NSFetchRequest *request = [[NSFetchRequest alloc] init];
+  request.entity = [NSEntityDescription entityForName:@"WordBlock" inManagedObjectContext:myContext];
+  request.predicate = [NSPredicate predicateWithFormat:@"title = %@", title];
+  NSError *error = nil;
+  return [[myContext executeFetchRequest:request error:&error]lastObject];
+}
+
+
 @end

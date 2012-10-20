@@ -25,6 +25,8 @@ typedef enum {
 + (NLDictionary *)dictionaryWithBlocks:(NSArray *)blockSet andType:(DictionaryType)type;
 + (NLDictionary *)findDictionaryWithType:(DictionaryType)type;
 
++ (void)saveContext;
+
 @end
 
 @interface NLDictionary (CoreDataGeneratedAccessors)

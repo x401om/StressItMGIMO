@@ -13,6 +13,7 @@
 #import "NLWord.h"
 #import "NLWordBlock.h"
 #import "NLParser.h"
+#import "Generator.h"
 
 #define wordCount 2555779
 
@@ -37,27 +38,12 @@
   
 }
 
--(NLLabel*)getRandomWord
-{
-  NSEntityDescription *entityDescription = [NSEntityDescription
-                                            entityForName:@"Word" inManagedObjectContext:contextObject];
-  NSFetchRequest *request = [[NSFetchRequest alloc] init];
-  [request setEntity:entityDescription];
-  
-  // Set example predicate and sort orderings...
-  [request setFetchOffset:arc4random()%wordCount];
-  [request setFetchLimit:1];
-  
-  //[[[contextObject registeredObjects] allObjects] objectAtIndex:arc4random()%wordCount];
-  
-  NSError *error;
-  NSArray* array = [contextObject executeFetchRequest:request error:&error];
-  if (array == nil)
-  {
-    // Deal with error...
-  }
-  //return [[NLLabel alloc]initWithText:@"бёрд" andStressed:1];
-  return  [[NLLabel alloc] initWithWord:array[0]];
+- (NLLabel *)getRandomWord {
+  NLDictionary *learning = [NLDictionary findDictionaryWithType:DictionaryTypeLearning];
+  NSArray *wordsArray = [learning.blocks allObjects];
+  NLWordBlock *newBlock = [wordsArray objectAtIndex:[Generator generateNewNumberWithStart:0 Finish:wordsArray.count]];
+  NSArray *words = [newBlock wordsArray];
+  return  [[NLLabel alloc] initWithWord:[words objectAtIndex:[Generator generateNewNumberWithStart:0 Finish:words.count]]];
 }
 
 -(void)newWord

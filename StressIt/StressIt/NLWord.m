@@ -16,6 +16,8 @@
 @dynamic stressed;
 @dynamic condition;
 @dynamic block;
+@dynamic example;
+@dynamic info;
 
 + (id)wordWithText:(NSString *)text andStressed:(int)stressedVowel { 
   NSManagedObjectContext *context = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;

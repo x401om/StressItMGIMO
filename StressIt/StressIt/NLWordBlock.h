@@ -24,6 +24,8 @@
 - (NLWord *)getRandomWord;
 - (void)deleteWordWithText:(NSString *)text;
 
++ (NLWordBlock *)findBlockWithTitle:(NSString *)title;
+
 @end
 
 

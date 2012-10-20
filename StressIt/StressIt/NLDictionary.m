@@ -24,6 +24,7 @@
   newDictionary = [NSEntityDescription insertNewObjectForEntityForName:@"Dictionary" inManagedObjectContext:context];
   newDictionary.name = type == 0 ? kDefaultName : kLearningName; 
   newDictionary.blocks = [NSSet setWithArray:blockSet];
+  [NLDictionary saveContext];
   return newDictionary;
 }
 
@@ -35,6 +36,17 @@
   request.predicate = [NSPredicate predicateWithFormat:@"name = %@",name];
   NSError *error = nil;
   return [[myContext executeFetchRequest:request error:&error]lastObject];
+}
+
++ (void)saveContext {
+  NSError *error = nil;
+  NSManagedObjectContext *managedObjectContext = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+  if (managedObjectContext != nil) {
+    if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+      NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+      abort();
+    }
+  }
 }
 
 @end

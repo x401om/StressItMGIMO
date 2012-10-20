@@ -72,6 +72,7 @@
 
     [(NLAppDelegate*)[[UIApplication sharedApplication] delegate] saveContext];
     [[(NLAppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext] reset];
+    [NLParser fillFavourites];
     NSLog(@"%f",-[tempDate timeIntervalSinceNow]);
     NSLog(@"%d",bad);
   }
@@ -81,5 +82,21 @@
 - (void) parse {
   [NLParser parse];
 }
+
++ (void)fillFavourites {
+  NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"dataArr" ofType:@"plist"];
+  NSArray *data = [NSArray arrayWithContentsOfFile:resourcePath];
+  NSMutableArray *blocksArray = [NSMutableArray array];
+  for (NSString *currentWord in data) {
+    NLWordBlock *newBlock = [NLWordBlock findBlockWithTitle:currentWord];
+    if (newBlock.title) {
+      //NSLog(@"found %@", newBlock.title);
+      [blocksArray addObject:newBlock];
+    }
+  }
+  NLDictionary *newDictionary = [NLDictionary dictionaryWithBlocks:blocksArray andType:DictionaryTypeLearning];
+  return;
+}
+
 
 @end

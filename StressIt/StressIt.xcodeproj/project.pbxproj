@@ -26,6 +26,7 @@
 		C92E473B1633127C00B53E34 /* dataArr.plist in Resources */ = {isa = PBXBuildFile; fileRef = C92E473A1633127C00B53E34 /* dataArr.plist */; };
 		C92E4742163317EE00B53E34 /* Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E4741163317EE00B53E34 /* Generator.m */; };
 		C93228DE163C6F0D001536A1 /* NLSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = C93228DD163C6F0D001536A1 /* NLSpinner.m */; };
+		C93228E2163C78FD001536A1 /* NLLearningManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C93228E1163C78FD001536A1 /* NLLearningManager.m */; };
 		C932F8811626203600D9A34B /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C932F8801626203600D9A34B /* TTTAttributedLabel.m */; };
 		C986581D1625A6F60035FB7D /* NLWord.m in Sources */ = {isa = PBXBuildFile; fileRef = C986581C1625A6F60035FB7D /* NLWord.m */; };
 		C98658231625A7740035FB7D /* NLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C98658221625A7740035FB7D /* NLDictionary.m */; };
@@ -89,6 +90,8 @@
 		C92E4741163317EE00B53E34 /* Generator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Generator.m; sourceTree = "<group>"; };
 		C93228DC163C6F0D001536A1 /* NLSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLSpinner.h; sourceTree = "<group>"; };
 		C93228DD163C6F0D001536A1 /* NLSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLSpinner.m; sourceTree = "<group>"; };
+		C93228E0163C78FD001536A1 /* NLLearningManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLLearningManager.h; sourceTree = "<group>"; };
+		C93228E1163C78FD001536A1 /* NLLearningManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLLearningManager.m; sourceTree = "<group>"; };
 		C932F87F1626203600D9A34B /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		C932F8801626203600D9A34B /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		C986581B1625A6F60035FB7D /* NLWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLWord.h; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				C932F8801626203600D9A34B /* TTTAttributedLabel.m */,
 				C98E2AA21624BD2500AFC6AD /* NLLabel.h */,
 				C98E2AA31624BD2500AFC6AD /* NLLabel.m */,
+				C93228E0163C78FD001536A1 /* NLLearningManager.h */,
+				C93228E1163C78FD001536A1 /* NLLearningManager.m */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -469,6 +474,7 @@
 				677575721631D57E00D2DD0A /* NLDictionaryView.m in Sources */,
 				C92E4742163317EE00B53E34 /* Generator.m in Sources */,
 				C93228DE163C6F0D001536A1 /* NLSpinner.m in Sources */,
+				C93228E2163C78FD001536A1 /* NLLearningManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

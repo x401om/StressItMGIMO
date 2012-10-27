@@ -24,7 +24,7 @@ typedef enum {
 - (void)startSpin;
 - (void)stopSpin;
 
-+ (id)getStaticSpinnerWithProgress:(float)progress valueAtCenter:(int)value;
-+ (id)getStaticSpinnerWithProgress:(float)progress valueAtCenter:(int)value colors:(NSArray *)colors;
++ (id)staticSpinnerWithProgress:(float)progress valueAtCenter:(int)value;
++ (id)staticSpinnerWithProgress:(float)progress valueAtCenter:(int)value colors:(NSArray *)colors;
 
 @end

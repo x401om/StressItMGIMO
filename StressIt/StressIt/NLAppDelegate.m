@@ -40,7 +40,7 @@
     NLParser* parser = [NLParser alloc];
     [parser performSelectorInBackground:@selector(parse) withObject:nil];
   } 
-  //[NLParser fillFavourites];
+  [NLParser fillFavourites];
   
     return YES;
 }

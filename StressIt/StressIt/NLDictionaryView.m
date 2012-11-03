@@ -16,12 +16,23 @@
 
 @implementation NLDictionaryView
 @synthesize arrayOfWords,tableViewLeft,tableViewRight;
+@synthesize spin;
 
 -(id)init
 {
   self = [super init];
   if (self) {
     //[self initArrays];
+    spin = [[NLSpinner alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 50,self.view.frame.size.height/2 -20, 100, 100) type:NLSpinnerTypeDefault startValue:0];
+    UIView* back = [[UIView alloc] initWithFrame:CGRectMake(42, 66, 507, 249)];
+    back.backgroundColor = [UIColor blackColor];
+    back.alpha = 0.5;
+    back.tag = 1212;
+    [self.view addSubview:back];
+    [self.view addSubview:spin];
+    [spin startSpin];
+    tableViewLeft.userInteractionEnabled = NO;
+    tableViewRight.userInteractionEnabled = NO;
     [self performSelectorInBackground:@selector(initArrays) withObject:nil];
   }
   return self;
@@ -53,10 +64,19 @@
       // Deal with error...
     }
     //reloadData];
-
+    [self.tableViewLeft performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];//reloadData];
+    [self.tableViewRight performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
   }
-  [self.tableViewLeft performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];//reloadData];
-  [self.tableViewRight performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+  tableViewRight.userInteractionEnabled = YES;
+  tableViewLeft.userInteractionEnabled = YES;
+  [UIView animateWithDuration:0.3 animations:^{
+    [spin setAlpha:0];
+    [[self.view viewWithTag:1212] setAlpha:0];
+  } completion:^(BOOL finished) {
+    [spin stopSpin];
+    [spin removeFromSuperview];
+    [[self.view viewWithTag:1212] removeFromSuperview];
+  }];
 }
 
 -(NSString*)getKeyFromNumber:(NSInteger)number

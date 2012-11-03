@@ -27,10 +27,10 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame type:(NLSpinnerType)newType startValue:(int)value
+- (id)initWithFrame:(CGRect)newFrame type:(NLSpinnerType)newType startValue:(int)value
 {
   NSArray* newColors = @[@(202.0/255), @(46.0/255), @(120.0/255), @1.0, @(73.0/255), @(177.0/255), @(216.0/255), @1.0];
-  self = [self initWithFrame:frame type:newType colors:newColors startValue:value];
+  self = [self initWithFrame:newFrame type:newType colors:newColors startValue:value];
   return self;
 }
 
@@ -43,11 +43,11 @@
     [self setBackgroundColor:[UIColor clearColor]];
     UIImageView* image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"timerTop"]];
     [image setFrame:CGRectMake(0, 0, frame.size.width*0.5, frame.size.height*0.5)];
-    [image setCenter:CGPointMake(frame.size.width/2, frame.size.width/2)];
+    [image setCenter:CGPointMake(frame.size.width/2, frame.size.height/2)];
     [self addSubview:image];
     image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"timerUnder"]];
-    [image setCenter:CGPointMake(frame.size.width/2, frame.size.width/2)];
-    [image setFrame:frame];
+    [image setCenter:CGPointMake(frame.size.width/2, frame.size.height/2)];
+    [image setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
     [self addSubview:image];
     
     colors = malloc(sizeof(CGFloat)*8);

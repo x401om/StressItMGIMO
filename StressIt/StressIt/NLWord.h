@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NSString * info;
 @property (nonatomic, retain) NSNumber * secondStressed;
 @property (nonatomic, retain) NSNumber * stressed;
-@property (nonatomic, retain) NSNumber * condition;
+@property (nonatomic, retain) NSNumber * state;
 @property (nonatomic, retain) NSManagedObject *block;
 
 + (NLWord *)wordWithText:(NSString *)text andStressed:(int)stressedVowel;

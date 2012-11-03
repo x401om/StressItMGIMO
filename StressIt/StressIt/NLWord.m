@@ -14,7 +14,7 @@
 @dynamic text;
 @dynamic secondStressed;
 @dynamic stressed;
-@dynamic condition;
+@dynamic state;
 @dynamic block;
 @dynamic example;
 @dynamic info;
@@ -26,7 +26,7 @@
   newWord.text = text;
   newWord.secondStressed = [NSNumber numberWithInt:-1];
   newWord.stressed = [NSNumber numberWithInt:stressedVowel];
-  newWord.condition = [NSNumber numberWithInt:0];
+  newWord.state = [NSNumber numberWithInt:0];
   //[newWord saveContext];
   return newWord;
 }
@@ -53,6 +53,15 @@
   NSFetchRequest *request = [[NSFetchRequest alloc] init];
   request.entity = [NSEntityDescription entityForName:@"Word" inManagedObjectContext:myContext];
   request.predicate = [NSPredicate predicateWithFormat:@"text = %@",text];
+  NSError *error = nil;
+  return [[myContext executeFetchRequest:request error:&error]lastObject];
+}
+
++ (NLWord *)findWordWithState:(NSNumber *)state {
+  NSManagedObjectContext *myContext = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+  NSFetchRequest *request = [[NSFetchRequest alloc] init];
+  request.entity = [NSEntityDescription entityForName:@"Word" inManagedObjectContext:myContext];
+  request.predicate = [NSPredicate predicateWithFormat:@"state = %@",state];
   NSError *error = nil;
   return [[myContext executeFetchRequest:request error:&error]lastObject];
 }

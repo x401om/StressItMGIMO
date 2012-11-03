@@ -76,10 +76,13 @@
     NSLog(@"%f",-[tempDate timeIntervalSinceNow]);
     NSLog(@"%d",bad);
   }
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"ParceDone" object:nil];
+
 }
 
 
 - (void) parse {
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"ParceStart" object:nil];
   [NLParser parse];
 }
 

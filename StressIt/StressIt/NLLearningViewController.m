@@ -48,6 +48,7 @@
 
 -(void)newWord
 {
+  label.delegate = self;
   [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
     [label setAlpha:0];
   } completion:^(BOOL fin){
@@ -111,6 +112,10 @@
 -(IBAction)goToMainMenu:(id)sender
 {
   [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)userTouchedOnLetter:(NSNumber *)letter {
+  NSLog(@"123");
 }
 
 @end

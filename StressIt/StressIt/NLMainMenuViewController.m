@@ -31,8 +31,11 @@
 {
     [super viewDidLoad];
   [[UIApplication sharedApplication]setStatusBarHidden:YES];
-  [self.view addSubview:[[NLTimer alloc] initWithFrame:CGRectMake(0, 0, 246, 246)]];
-    // Do any additional setup after loading the view from its nib.
+ // [self.view addSubview:[[NLTimer alloc] initWithFrame:CGRectMake(0, 0, 246, 246)]];
+
+  [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showActivityIndicator) name:@"ParceStart" object:nil];
+  [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideActivityIndicator) name:@"ParceDone" object:nil];
+ 
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,6 +63,28 @@
 -(IBAction)learningButtonTouchEnded:(id)sender
 {
   [self.label setHighlighted:NO];
+}
+
+- (void)showActivityIndicator {
+	darkView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 320)];
+	[darkView setBackgroundColor:[UIColor blackColor]];
+	[darkView setAlpha:0];
+	UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(darkView.frame.size.width/2 - 30, darkView.frame.size.height/2-30, 60, 60)];
+	[darkView addSubview:spinner];
+	[spinner startAnimating];
+	[self.view addSubview:darkView];
+	[UIView animateWithDuration:0.3 animations:^{
+		[darkView setAlpha:0.5];
+	}];
+  self.view.userInteractionEnabled = NO;
+}
+
+- (void)hideActivityIndicator {
+	[UIView animateWithDuration:0.3 animations:^{
+		[darkView setAlpha:0];
+	}];
+	[darkView removeFromSuperview];
+  self.view.userInteractionEnabled = YES;
 }
 
 

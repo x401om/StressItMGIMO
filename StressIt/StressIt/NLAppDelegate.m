@@ -39,9 +39,7 @@
   if ([[NSFileManager defaultManager] fileExistsAtPath:path] == NO) {
     NLParser* parser = [NLParser alloc];
     [parser performSelectorInBackground:@selector(parse) withObject:nil];
-  } 
-  [NLParser fillFavourites];
-  
+  }
     return YES;
 }
 

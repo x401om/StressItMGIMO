@@ -19,7 +19,7 @@
 
 @synthesize stresssed = _stresssed;
 @synthesize vowelLetters = _vowelLetters;
-
+@synthesize delegate = _delegate;
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -161,6 +161,9 @@
   else  newColor = [UIColor redColor];
   [self setColor:newColor atIndex:number];
 
+  if ([self.delegate conformsToProtocol:@protocol(NLLabelDelegate)]) {
+    [self.delegate performSelector:@selector(userTouchedOnLetter:) withObject:[NSNumber numberWithInt:number]];
+  }
   
 }
 

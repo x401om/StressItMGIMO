@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NLMainMenuViewController : UIViewController
+@interface NLMainMenuViewController : UIViewController {
+  UIView *darkView;
+}
 
 @property IBOutlet UILabel* label;
 

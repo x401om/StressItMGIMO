@@ -11,7 +11,6 @@
 		670F8C8716332FCD00389004 /* timerTop.png in Resources */ = {isa = PBXBuildFile; fileRef = 670F8C8516332FCD00389004 /* timerTop.png */; };
 		670F8C8816332FCD00389004 /* timerUnder.png in Resources */ = {isa = PBXBuildFile; fileRef = 670F8C8616332FCD00389004 /* timerUnder.png */; };
 		670F8C8A1633303800389004 /* NLTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 670F8C8216332FBF00389004 /* NLTimer.m */; };
-		6729A55216275333002DCD9A /* StressIt.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6729A55116275333002DCD9A /* StressIt.sqlite */; };
 		677575721631D57E00D2DD0A /* NLDictionaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 677575701631D57E00D2DD0A /* NLDictionaryView.m */; };
 		677575731631D57E00D2DD0A /* NLDictionaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 677575711631D57E00D2DD0A /* NLDictionaryView.xib */; };
 		677575751631E89700D2DD0A /* DictionaryBG.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 677575741631E89700D2DD0A /* DictionaryBG.jpg */; };
@@ -20,7 +19,6 @@
 		677575821632E78C00D2DD0A /* MainMenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 677575801632E78C00D2DD0A /* MainMenuButton.png */; };
 		677575831632E78C00D2DD0A /* MainMenuButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 677575811632E78C00D2DD0A /* MainMenuButtonHighlighted.png */; };
 		677575851632F1F800D2DD0A /* MainMenuTempBg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 677575841632F1F800D2DD0A /* MainMenuTempBg.jpg */; };
-		67C045A31627578600AE9C86 /* StressIt.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6729A55116275333002DCD9A /* StressIt.sqlite */; };
 		67C0DB8F1625DFDE00214C52 /* NLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C0DB8E1625DFDE00214C52 /* NLParser.m */; };
 		67C0DBA21625E42E00214C52 /* All_Forms.txt in Resources */ = {isa = PBXBuildFile; fileRef = 67C0DBA11625E42E00214C52 /* All_Forms.txt */; };
 		C92E473B1633127C00B53E34 /* dataArr.plist in Resources */ = {isa = PBXBuildFile; fileRef = C92E473A1633127C00B53E34 /* dataArr.plist */; };
@@ -72,7 +70,6 @@
 		670F8C8216332FBF00389004 /* NLTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLTimer.m; sourceTree = "<group>"; };
 		670F8C8516332FCD00389004 /* timerTop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timerTop.png; sourceTree = "<group>"; };
 		670F8C8616332FCD00389004 /* timerUnder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timerUnder.png; sourceTree = "<group>"; };
-		6729A55116275333002DCD9A /* StressIt.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = StressIt.sqlite; sourceTree = "<group>"; };
 		6775756F1631D57E00D2DD0A /* NLDictionaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLDictionaryView.h; sourceTree = "<group>"; };
 		677575701631D57E00D2DD0A /* NLDictionaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLDictionaryView.m; sourceTree = "<group>"; };
 		677575711631D57E00D2DD0A /* NLDictionaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NLDictionaryView.xib; sourceTree = "<group>"; };
@@ -262,7 +259,6 @@
 			children = (
 				6775757E1632E55500D2DD0A /* Forward.png */,
 				6775757C1632E23900D2DD0A /* Back.png */,
-				6729A55116275333002DCD9A /* StressIt.sqlite */,
 				67C0DBA11625E42E00214C52 /* All_Forms.txt */,
 				C98E2A351624B6A600AFC6AD /* StressIt-Info.plist */,
 				C98E2A361624B6A600AFC6AD /* InfoPlist.strings */,
@@ -413,7 +409,6 @@
 				C98E2A701624B83A00AFC6AD /* MainMenuTempBg.jpeg in Resources */,
 				C98E2A751624BAF500AFC6AD /* NLLearningViewController.xib in Resources */,
 				67C0DBA21625E42E00214C52 /* All_Forms.txt in Resources */,
-				67C045A31627578600AE9C86 /* StressIt.sqlite in Resources */,
 				677575731631D57E00D2DD0A /* NLDictionaryView.xib in Resources */,
 				677575751631E89700D2DD0A /* DictionaryBG.jpg in Resources */,
 				6775757D1632E23900D2DD0A /* Back.png in Resources */,
@@ -432,7 +427,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C98E2A5A1624B6A600AFC6AD /* InfoPlist.strings in Resources */,
-				6729A55216275333002DCD9A /* StressIt.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

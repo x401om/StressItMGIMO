@@ -2,13 +2,13 @@
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Dictionary" representedClassName="NLDictionary" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" minValueString="0" syncable="YES"/>
-        <relationship name="blocks" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="WordBlock" inverseName="dictionary" inverseEntity="WordBlock" syncable="YES"/>
+        <relationship name="blocks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="WordBlock" inverseName="dictionary" inverseEntity="WordBlock" syncable="YES"/>
     </entity>
     <entity name="Word" representedClassName="NLWord" syncable="YES">
-        <attribute name="condition" attributeType="Integer 16" minValueString="0" maxValueString="3" defaultValueString="0" syncable="YES"/>
         <attribute name="example" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="secondStressed" optional="YES" attributeType="Integer 16" defaultValueString="-1" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="3" defaultValueString="0" syncable="YES"/>
         <attribute name="stressed" attributeType="Integer 16" minValueString="-1" maxValueString="30" defaultValueString="-1" syncable="YES"/>
         <attribute name="text" attributeType="String" minValueString="1" maxValueString="30" defaultValueString="text" spotlightIndexingEnabled="YES" syncable="YES"/>
         <relationship name="block" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="WordBlock" inverseName="words" inverseEntity="WordBlock" syncable="YES"/>

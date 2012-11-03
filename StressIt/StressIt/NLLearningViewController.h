@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NLLabel.h"
 
-@interface NLLearningViewController : UIViewController {
+@interface NLLearningViewController : UIViewController <NLLabelDelegate> {
   NSManagedObjectContext *contextObject;
 }
 

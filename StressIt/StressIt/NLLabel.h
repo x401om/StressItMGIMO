@@ -10,12 +10,21 @@
 #import "TTTAttributedLabel.h"
 #import "NLWord.h"
 
-@interface NLLabel : UILabel
+@protocol NLLabelDelegate <NSObject>
+
+@optional
+
+- (void)userTouchedOnLetter:(NSNumber *)letter;
+@end
+
+@interface NLLabel : UILabel<NLLabelDelegate>
 
 @property int stresssed;
 @property NSArray *vowelLetters;
+@property id <NLLabelDelegate> delegate;
 
 - (id)initWithText:(NSString *)text andStressed:(NSInteger)stressed;
 - (id)initWithWord:(NLWord*)word;
 
 @end
+

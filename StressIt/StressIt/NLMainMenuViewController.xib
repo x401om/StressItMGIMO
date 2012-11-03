@@ -155,7 +155,6 @@
 						<string key="NSFrame">{{256, 187}, {150, 65}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -470,10 +469,10 @@
 								<int key="contentType">3</int>
 							</object>
 							<reference ref="512206950"/>
-							<reference ref="840500317"/>
 							<reference ref="160654502"/>
 							<reference ref="427116988"/>
 							<reference ref="817867797"/>
+							<reference ref="840500317"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -783,13 +782,37 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">170</int>
+			<int key="maxID">173</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">NLMainMenuViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="dictionaryButtonPressed:">id</string>
+						<string key="learningButtonPressed:">id</string>
+						<string key="learningButtonTouchEnded:">id</string>
+						<string key="learningButtonTouched:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="dictionaryButtonPressed:">
+							<string key="name">dictionaryButtonPressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="learningButtonPressed:">
+							<string key="name">learningButtonPressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="learningButtonTouchEnded:">
+							<string key="name">learningButtonTouchEnded:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="learningButtonTouched:">
+							<string key="name">learningButtonTouched:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">label</string>
 						<string key="NS.object.0">UILabel</string>

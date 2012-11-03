@@ -18,7 +18,7 @@
     if (self) {
         // Initialization code
       time = 0;
-      NSTimer* timr = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timer:) userInfo:nil repeats:YES];//timerWithTimeInterval:0.5 target:self selector:@selector(timer:) userInfo:nil repeats:YES];
+      [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timer:) userInfo:nil repeats:YES];//timerWithTimeInterval:0.5 target:self selector:@selector(timer:) userInfo:nil repeats:YES];
       [self setBackgroundColor:[UIColor clearColor]];
       UIImageView* image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"timerTop"]];
       [image setCenter:CGPointMake(frame.size.width/2, frame.size.width/2)];

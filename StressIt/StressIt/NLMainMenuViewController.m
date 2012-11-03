@@ -9,7 +9,6 @@
 #import "NLMainMenuViewController.h"
 #import "NLLearningViewController.h"
 #import "NLDictionaryView.h"
-#import "NLTimer.h"
 
 
 @interface NLMainMenuViewController ()
@@ -30,9 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-  [[UIApplication sharedApplication]setStatusBarHidden:YES];
- // [self.view addSubview:[[NLTimer alloc] initWithFrame:CGRectMake(0, 0, 246, 246)]];
-
+  [[UIApplication sharedApplication]setStatusBarHidden:YES];  
+  
   [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showActivityIndicator) name:@"ParceStart" object:nil];
   [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideActivityIndicator) name:@"ParceDone" object:nil];
  

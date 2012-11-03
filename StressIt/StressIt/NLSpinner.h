@@ -16,15 +16,22 @@ typedef enum {
 
 @interface NLSpinner : UIView
 
+@property float time, offset;
+@property CGFloat* colors;
+@property NSTimer* timer;
+@property UILabel* centerLabel;
+@property NLSpinnerType type;
+@property float estimatedProgress, estimatedValue;
 
-- (id)initWithFrame:(CGRect)frame type:(NLSpinnerType)type;
-- (id)initWithFrame:(CGRect)frame type:(NLSpinnerType)type colors:(NSArray *)colors;
+
+- (id)initWithFrame:(CGRect)frame type:(NLSpinnerType)type startValue:(int)value;
+- (id)initWithFrame:(CGRect)frame type:(NLSpinnerType)type colors:(NSArray *)colors startValue:(int)value;
 
 - (void)changeProgress:(float)progress withValueAtCenter:(int)value;
 - (void)startSpin;
 - (void)stopSpin;
 
-+ (id)staticSpinnerWithProgress:(float)progress valueAtCenter:(int)value;
-+ (id)staticSpinnerWithProgress:(float)progress valueAtCenter:(int)value colors:(NSArray *)colors;
++ (id)staticSpinnerWithProgress:(float)progress valueAtCenter:(int)value frame:(CGRect)frame;
++ (id)staticSpinnerWithProgress:(float)progress valueAtCenter:(int)value colors:(NSArray *)colors frame:(CGRect)frame;
 
 @end

@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		670F8C8316332FBF00389004 /* NLTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 670F8C8216332FBF00389004 /* NLTimer.m */; };
 		670F8C8716332FCD00389004 /* timerTop.png in Resources */ = {isa = PBXBuildFile; fileRef = 670F8C8516332FCD00389004 /* timerTop.png */; };
 		670F8C8816332FCD00389004 /* timerUnder.png in Resources */ = {isa = PBXBuildFile; fileRef = 670F8C8616332FCD00389004 /* timerUnder.png */; };
-		670F8C8A1633303800389004 /* NLTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 670F8C8216332FBF00389004 /* NLTimer.m */; };
+		67564BE71645A5DF007D2E9A /* lobster_14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67564BE61645A5DF007D2E9A /* lobster_14.ttf */; };
+		67564BE91645A8C0007D2E9A /* Lobster 1.4.otf in Resources */ = {isa = PBXBuildFile; fileRef = 67AF97BB16459247007A5270 /* Lobster 1.4.otf */; };
 		677575721631D57E00D2DD0A /* NLDictionaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 677575701631D57E00D2DD0A /* NLDictionaryView.m */; };
 		677575731631D57E00D2DD0A /* NLDictionaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 677575711631D57E00D2DD0A /* NLDictionaryView.xib */; };
 		677575751631E89700D2DD0A /* DictionaryBG.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 677575741631E89700D2DD0A /* DictionaryBG.jpg */; };
@@ -19,6 +19,8 @@
 		677575821632E78C00D2DD0A /* MainMenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 677575801632E78C00D2DD0A /* MainMenuButton.png */; };
 		677575831632E78C00D2DD0A /* MainMenuButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 677575811632E78C00D2DD0A /* MainMenuButtonHighlighted.png */; };
 		677575851632F1F800D2DD0A /* MainMenuTempBg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 677575841632F1F800D2DD0A /* MainMenuTempBg.jpg */; };
+		67AF97B91645661C007A5270 /* NLTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF97B81645661C007A5270 /* NLTimer.m */; };
+		67AF97BC16459247007A5270 /* Lobster 1.4.otf in Resources */ = {isa = PBXBuildFile; fileRef = 67AF97BB16459247007A5270 /* Lobster 1.4.otf */; };
 		67C0DB8F1625DFDE00214C52 /* NLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C0DB8E1625DFDE00214C52 /* NLParser.m */; };
 		67C0DBA21625E42E00214C52 /* All_Forms.txt in Resources */ = {isa = PBXBuildFile; fileRef = 67C0DBA11625E42E00214C52 /* All_Forms.txt */; };
 		C92E473B1633127C00B53E34 /* dataArr.plist in Resources */ = {isa = PBXBuildFile; fileRef = C92E473A1633127C00B53E34 /* dataArr.plist */; };
@@ -66,10 +68,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		670F8C8116332FBF00389004 /* NLTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLTimer.h; sourceTree = "<group>"; };
-		670F8C8216332FBF00389004 /* NLTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLTimer.m; sourceTree = "<group>"; };
 		670F8C8516332FCD00389004 /* timerTop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timerTop.png; sourceTree = "<group>"; };
 		670F8C8616332FCD00389004 /* timerUnder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timerUnder.png; sourceTree = "<group>"; };
+		67564BE61645A5DF007D2E9A /* lobster_14.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = lobster_14.ttf; sourceTree = "<group>"; };
 		6775756F1631D57E00D2DD0A /* NLDictionaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLDictionaryView.h; sourceTree = "<group>"; };
 		677575701631D57E00D2DD0A /* NLDictionaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLDictionaryView.m; sourceTree = "<group>"; };
 		677575711631D57E00D2DD0A /* NLDictionaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NLDictionaryView.xib; sourceTree = "<group>"; };
@@ -79,6 +80,9 @@
 		677575801632E78C00D2DD0A /* MainMenuButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMenuButton.png; sourceTree = "<group>"; };
 		677575811632E78C00D2DD0A /* MainMenuButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMenuButtonHighlighted.png; sourceTree = "<group>"; };
 		677575841632F1F800D2DD0A /* MainMenuTempBg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MainMenuTempBg.jpg; sourceTree = "<group>"; };
+		67AF97B71645661C007A5270 /* NLTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLTimer.h; sourceTree = "<group>"; };
+		67AF97B81645661C007A5270 /* NLTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLTimer.m; sourceTree = "<group>"; };
+		67AF97BB16459247007A5270 /* Lobster 1.4.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lobster 1.4.otf"; sourceTree = "<group>"; };
 		67C0DB8D1625DFDE00214C52 /* NLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLParser.h; sourceTree = "<group>"; };
 		67C0DB8E1625DFDE00214C52 /* NLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLParser.m; sourceTree = "<group>"; };
 		67C0DBA11625E42E00214C52 /* All_Forms.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = All_Forms.txt; path = ../../All_Forms.txt; sourceTree = "<group>"; };
@@ -184,8 +188,8 @@
 				6775756F1631D57E00D2DD0A /* NLDictionaryView.h */,
 				677575701631D57E00D2DD0A /* NLDictionaryView.m */,
 				677575711631D57E00D2DD0A /* NLDictionaryView.xib */,
-				670F8C8116332FBF00389004 /* NLTimer.h */,
-				670F8C8216332FBF00389004 /* NLTimer.m */,
+				67AF97B71645661C007A5270 /* NLTimer.h */,
+				67AF97B81645661C007A5270 /* NLTimer.m */,
 				C93228DC163C6F0D001536A1 /* NLSpinner.h */,
 				C93228DD163C6F0D001536A1 /* NLSpinner.m */,
 			);
@@ -246,6 +250,7 @@
 				C98E2A3D1624B6A600AFC6AD /* NLAppDelegate.m */,
 				C98E2A6B1624B6F600AFC6AD /* Classes */,
 				C986582A1625A7C90035FB7D /* CoreData */,
+				C986582C1625A84C0035FB7D /* Service */,
 				C98E2A6C1624B7F000AFC6AD /* Content */,
 				C98E2A341624B6A600AFC6AD /* Supporting Files */,
 				67C0DB8D1625DFDE00214C52 /* NLParser.h */,
@@ -260,7 +265,9 @@
 				6775757E1632E55500D2DD0A /* Forward.png */,
 				6775757C1632E23900D2DD0A /* Back.png */,
 				67C0DBA11625E42E00214C52 /* All_Forms.txt */,
+				67564BE61645A5DF007D2E9A /* lobster_14.ttf */,
 				C98E2A351624B6A600AFC6AD /* StressIt-Info.plist */,
+				67AF97BB16459247007A5270 /* Lobster 1.4.otf */,
 				C98E2A361624B6A600AFC6AD /* InfoPlist.strings */,
 				C98E2A391624B6A600AFC6AD /* main.m */,
 				C98E2A3B1624B6A600AFC6AD /* StressIt-Prefix.pch */,
@@ -294,7 +301,6 @@
 			isa = PBXGroup;
 			children = (
 				C986582B1625A7DF0035FB7D /* Interface */,
-				C986582C1625A84C0035FB7D /* Service */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -401,6 +407,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67564BE91645A8C0007D2E9A /* Lobster 1.4.otf in Resources */,
 				C98E2A381624B6A600AFC6AD /* InfoPlist.strings in Resources */,
 				C98E2A401624B6A600AFC6AD /* Default.png in Resources */,
 				C98E2A421624B6A600AFC6AD /* Default@2x.png in Resources */,
@@ -427,6 +434,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C98E2A5A1624B6A600AFC6AD /* InfoPlist.strings in Resources */,
+				67AF97BC16459247007A5270 /* Lobster 1.4.otf in Resources */,
+				67564BE71645A5DF007D2E9A /* lobster_14.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,7 +462,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				670F8C8A1633303800389004 /* NLTimer.m in Sources */,
 				C98E2A3A1624B6A600AFC6AD /* main.m in Sources */,
 				C98E2A3E1624B6A600AFC6AD /* NLAppDelegate.m in Sources */,
 				C98E2A471624B6A600AFC6AD /* StressIt.xcdatamodeld in Sources */,
@@ -477,7 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C98E2A5D1624B6A600AFC6AD /* StressItTests.m in Sources */,
-				670F8C8316332FBF00389004 /* NLTimer.m in Sources */,
+				67AF97B91645661C007A5270 /* NLTimer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

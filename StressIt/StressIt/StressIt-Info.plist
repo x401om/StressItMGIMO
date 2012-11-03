@@ -33,5 +33,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Lobster 1.4.otf</string>
+		<string>lobster_14.ttf</string>
+	</array>
 </dict>
 </plist>

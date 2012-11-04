@@ -53,7 +53,7 @@
   NSFetchRequest *request = [[NSFetchRequest alloc] init];
   request.entity = [NSEntityDescription entityForName:@"Word" inManagedObjectContext:myContext];
   request.predicate = [NSPredicate predicateWithFormat:@"text = %@",text];
-  NSError *error = nil;
+  NSError *error = nil;    
   return [[myContext executeFetchRequest:request error:&error]lastObject];
 }
 
@@ -64,6 +64,45 @@
   request.predicate = [NSPredicate predicateWithFormat:@"state = %@",state];
   NSError *error = nil;
   return [[myContext executeFetchRequest:request error:&error]lastObject];
+}
+
+#pragma mark word for study and tests
++ (NSArray *)newWordsForTodaysTest:(int)amount {
+    NSManagedObjectContext *context = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+    NSFetchRequest *requestToBase = [[NSFetchRequest alloc] init];
+    requestToBase.entity = [NSEntityDescription entityForName:@"Word" inManagedObjectContext:context];
+    requestToBase.fetchLimit = amount;
+    requestToBase.predicate = [NSPredicate predicateWithFormat:@"state = %d OR state = %d", NLWordStateWrong, NLWordStateFavourite];
+    NSError *error;
+    NSArray *wordForTest = [NSArray arrayWithArray:[context executeFetchRequest:requestToBase error:&error]];
+    
+        NSLog(@"%d", wordForTest.count);
+    
+        for (NLWord *str in wordForTest) {
+            NSLog(@"%@", str.text);
+        }
+    
+    return wordForTest;
+}
++ (NSArray *)newWordBlockToStudyTodayInAmount:(int)amount {
+    NSManagedObjectContext *context = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+    NSFetchRequest *requestToBase = [[NSFetchRequest alloc] init];
+    requestToBase.fetchLimit = amount;
+    requestToBase.entity = [NSEntityDescription entityForName:@"Word" inManagedObjectContext:context];
+    requestToBase.predicate = [NSPredicate predicateWithFormat:@"state = %d", NLWordStateNew];
+    NSError *error;
+    NSArray *wordsToStudy = [NSArray arrayWithArray:[context executeFetchRequest:requestToBase error:&error]];
+    for (NLWord *word in wordsToStudy) {
+        word.state = [NSNumber numberWithInt:NLWordStateUsed];
+        [word saveContext];
+    }
+//    NSLog(@"%d", wordsToStudy.count);
+//    
+//    for (NLWord *str in wordsToStudy) {
+//        NSLog(@"%@", str.text);
+//    }
+    
+    return wordsToStudy;
 }
 
 

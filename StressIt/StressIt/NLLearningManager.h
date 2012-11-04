@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NLWord.h"
-
+#import "NLWordBlock.h"
 
 @interface NLLearningManager : NSObject
 

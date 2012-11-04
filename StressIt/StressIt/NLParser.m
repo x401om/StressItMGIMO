@@ -47,6 +47,9 @@
         }
         else {
           NLWord* word1 = [NLWord wordWithText:word andStressed:[stressedArray[0] intValue]];
+#warning new state
+            word1.state = [NSNumber numberWithInt:NLWordStateNew];
+            
           if([stressedArray count]==2)
           {
             word1.secondStressed = stressedArray[1];

@@ -41,7 +41,6 @@
 		C98E2A401624B6A600AFC6AD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C98E2A3F1624B6A600AFC6AD /* Default.png */; };
 		C98E2A421624B6A600AFC6AD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C98E2A411624B6A600AFC6AD /* Default@2x.png */; };
 		C98E2A441624B6A600AFC6AD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C98E2A431624B6A600AFC6AD /* Default-568h@2x.png */; };
-		C98E2A471624B6A600AFC6AD /* StressIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C98E2A451624B6A600AFC6AD /* StressIt.xcdatamodeld */; };
 		C98E2A4F1624B6A600AFC6AD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98E2A4E1624B6A600AFC6AD /* SenTestingKit.framework */; };
 		C98E2A501624B6A600AFC6AD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98E2A2B1624B6A500AFC6AD /* UIKit.framework */; };
 		C98E2A511624B6A600AFC6AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98E2A2D1624B6A500AFC6AD /* Foundation.framework */; };
@@ -55,6 +54,7 @@
 		C98E2A751624BAF500AFC6AD /* NLLearningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C98E2A731624BAF400AFC6AD /* NLLearningViewController.xib */; };
 		C98E2AA11624BC1600AFC6AD /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98E2AA01624BC1600AFC6AD /* CoreText.framework */; };
 		C98E2AA41624BD2600AFC6AD /* NLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C98E2AA31624BD2500AFC6AD /* NLLabel.m */; };
+		C9E2B5AD1646712600C1AE1E /* StressIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C98E2A451624B6A600AFC6AD /* StressIt.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -462,9 +462,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9E2B5AD1646712600C1AE1E /* StressIt.xcdatamodeld in Sources */,
 				C98E2A3A1624B6A600AFC6AD /* main.m in Sources */,
 				C98E2A3E1624B6A600AFC6AD /* NLAppDelegate.m in Sources */,
-				C98E2A471624B6A600AFC6AD /* StressIt.xcdatamodeld in Sources */,
 				C98E2A691624B6EC00AFC6AD /* NLMainMenuViewController.m in Sources */,
 				C98E2A741624BAF500AFC6AD /* NLLearningViewController.m in Sources */,
 				C98E2AA41624BD2600AFC6AD /* NLLabel.m in Sources */,

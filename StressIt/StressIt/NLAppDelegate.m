@@ -10,6 +10,7 @@
 #import "NLMainMenuViewController.h"
 #import "NLParser.h"
 
+#define kShouldParse 0
 
 @implementation NLAppDelegate
 
@@ -37,8 +38,25 @@
 	path = paths[0];
   path = [path stringByAppendingPathComponent:@"StressIt.sqlite"];
   if ([[NSFileManager defaultManager] fileExistsAtPath:path] == NO) {
-    NLParser* parser = [NLParser alloc];
-    [parser performSelectorInBackground:@selector(parse) withObject:nil];
+    if (kShouldParse) {
+      NLParser* parser = [NLParser alloc];
+      [parser performSelectorInBackground:@selector(parse) withObject:nil];
+    }
+    else {
+      NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+      NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"StressIt.sqlite"];
+      
+      NSLog(@"\nSource Path: %@\nDocuments Path: %@", sourcePath, documentsDirectory);
+      
+      NSError *error = nil;
+      
+      if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDirectory error:&error]){
+        NSLog(@"Default file successfully copied over.");
+      } else {
+        NSLog(@"Error description-%@ \n", [error localizedDescription]);
+        NSLog(@"Error reason-%@", [error localizedFailureReason]);
+      }
+    }
   }
     return YES;
 }

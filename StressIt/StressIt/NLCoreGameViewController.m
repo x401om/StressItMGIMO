@@ -74,10 +74,10 @@ static int answers = 0;
 - (void)presentNewWord {
   [label removeFromSuperview];
   label = nil;
-  if (currentWord > currentBlockArray.count) {
+  if (currentWord >= currentBlockArray.count) {
     currentWord = 0;
     ++currentBlock;
-    if (currentBlock > blocks.count) {
+    if (currentBlock >= blocks.count) {
       [self goToMainMenu:nil];
     }
     NLWordBlock *block = blocks[currentBlock];

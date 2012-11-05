@@ -104,6 +104,19 @@
     
     return wordsToStudy;
 }
++ (NSArray *)getFavouriteList {
+    NSManagedObjectContext *context = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+    NSFetchRequest *requestToBase = [[NSFetchRequest alloc] init];
+    requestToBase.entity = [NSEntityDescription entityForName:@"Word" inManagedObjectContext:context];
+    requestToBase.predicate = [NSPredicate predicateWithFormat:@"state = %d", NLWordStateFavourite];
+    NSError *error;
+    NSArray *wordsToStudy = [NSArray arrayWithArray:[context executeFetchRequest:requestToBase error:&error]];
+    for (NLWord *word in wordsToStudy) {
+        word.state = [NSNumber numberWithInt:NLWordStateUsed];
+//        [word saveContext];
+    }
 
+    return wordsToStudy;
+}
 
 @end

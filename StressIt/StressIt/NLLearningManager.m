@@ -20,6 +20,12 @@ static int numberOfWordsPerDay;
 // этом, каждый раз должны корректно пересчитываться сроки, а также ежедневная выдача новых слов.
 + (void)makeDayAmountForTime:(int)days {
     trainingTimePeriod = days;
+    if (!trainingTimePeriod) {
+        numberOfWordsPerDay = kDefaultNumberOfWordsPerDay;
+    }
+    else {
+        //посчитать выдачу слов при непервом запуске программы
+    }
 }
 
 // Метод, возвращяет массив из (NLWordBock *) для сегодняшнего изучения. В нем могут быть только
@@ -44,12 +50,12 @@ static int numberOfWordsPerDay;
 // пройдено не до конца, помещено в работу над ошибками и т.п.
 + (void)userAnsweredWord:(NLWord *)word answer:(BOOL)answer {
     if (!answer) {
-        word.state = [NSNumber numberWithInt:NLWordStateWrong];
-        NSLog(@"right answer");
-    }
-    else {
         word.state = [NSNumber numberWithInt:NLWordStateRight];
         NSLog(@"wrong answer, add to correct list");
+    }
+    else {
+        word.state = [NSNumber numberWithInt:NLWordStateWrong];
+        NSLog(@"right answer");
     }
 }
 

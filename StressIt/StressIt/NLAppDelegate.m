@@ -9,6 +9,7 @@
 #import "NLAppDelegate.h"
 #import "NLMainMenuViewController.h"
 #import "NLParser.h"
+#import "SSZipArchive.h"
 
 #define kShouldParse 0
 
@@ -23,42 +24,67 @@
   return;
 }
 
+- (void)copyToDocumentsFile:(NSString *)filename ofType:(NSString *)type {
+  NSFileManager *fileManager = [NSFileManager defaultManager];
+	NSError *error;
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *txtPath = [documentsDirectory stringByAppendingPathComponent:filename];
+  txtPath = [txtPath stringByAppendingString:@"."];
+  txtPath = [txtPath stringByAppendingString:type];
+	
+	if ([fileManager fileExistsAtPath:txtPath] == NO) {
+		NSString *resourcePath = [[NSBundle mainBundle] pathForResource:filename ofType:type];
+		[fileManager copyItemAtPath:resourcePath toPath:txtPath error:&error];
+	}
+  if (error) {
+    NSLog(@"error :: %@", error);
+  }
+}
+
+- (void)unpackBaseToApplication {
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *path = paths[0];
+  path = [path stringByAppendingPathComponent:@"StressIt.sqlite"];
+  if ([[NSFileManager defaultManager] fileExistsAtPath:path] == NO) {
+    [self copyToDocumentsFile:@"StressIt.sqlite" ofType:@"zip"];
+    [SSZipArchive unzipFileAtPath:[path stringByAppendingPathComponent:@".zip"] toDestination:paths[0]];
+    
+//    if (kShouldParse) {
+//      NLParser* parser = [NLParser alloc];
+//      [parser performSelectorInBackground:@selector(parse) withObject:nil];
+//    }
+//    else {
+//      NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//      NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"StressIt.sqlite"];
+//      
+//      NSLog(@"\nSource Path: %@\nDocuments Path: %@", sourcePath, documentsDirectory);
+//      
+//      NSError *error = nil;
+//      
+//      if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDirectory error:&error]){
+//        NSLog(@"Default file successfully copied over.");
+//      } else {
+//        NSLog(@"Error description-%@ \n", [error localizedDescription]);
+//        NSLog(@"Error reason-%@", [error localizedFailureReason]);
+//      }
+//    }
+  }
+
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+  //[self unpackBaseToApplication];
+  [self copyToDocumentsFile:@"StressIt" ofType:@"sqlite"];
   UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:[[NLMainMenuViewController alloc]init]];
   [navController setNavigationBarHidden:YES];
   self.window.rootViewController = navController;
-    [self.window makeKeyAndVisible];
-  
-  NSString *path;
-  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	path = paths[0];
-  path = [path stringByAppendingPathComponent:@"StressIt.sqlite"];
-  if ([[NSFileManager defaultManager] fileExistsAtPath:path] == NO) {
-    if (kShouldParse) {
-      NLParser* parser = [NLParser alloc];
-      [parser performSelectorInBackground:@selector(parse) withObject:nil];
-    }
-    else {
-      NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-      NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"StressIt.sqlite"];
-      
-      NSLog(@"\nSource Path: %@\nDocuments Path: %@", sourcePath, documentsDirectory);
-      
-      NSError *error = nil;
-      
-      if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDirectory error:&error]){
-        NSLog(@"Default file successfully copied over.");
-      } else {
-        NSLog(@"Error description-%@ \n", [error localizedDescription]);
-        NSLog(@"Error reason-%@", [error localizedFailureReason]);
-      }
-    }
-  }
-    return YES;
+  [self.window makeKeyAndVisible];
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -10,10 +10,14 @@
 
 #define debugging 1
 
-#define kFontName @"STHeitiSC-Medium"
-#define kMaxFontSize 30
-#define kVerticalOffset 100
+#define kFontName @"Cuprum-Regular"
+#define kMaxFontSize 40
+#define kVerticalOffset 120
 #define kLabelHeight 50
+
+// 80 177 205 - blue
+// 66 79 91 - dark blue
+// 169 47 72 - red
 
 @implementation NLLabel
 
@@ -31,22 +35,20 @@
 
 - (id)initWithText:(NSString *)text andStressed:(NSInteger)stressed {
   CGSize windowSize = [[[UIApplication sharedApplication]delegate] window].frame.size;
-  int height = windowSize.width;
   int width = windowSize.height;
-  self = [[NLLabel alloc]initWithFrame:CGRectMake(0, height/2 - kLabelHeight/2, width, kLabelHeight)];
+  self = [[NLLabel alloc]initWithFrame:CGRectMake(0, kVerticalOffset, width, kLabelHeight)];
   self.stresssed = stressed;
 
-  //self.backgroundColor = [UIColor clearColor];
+  self.backgroundColor = [UIColor clearColor];
   
   NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:text];
   [self vowelsInWord:text];
   self.userInteractionEnabled = YES;
-  for (NSNumber *number in self.vowelLetters) {
-    NSRange range;
-    range.location = [number intValue];
-    range.length = 1;
-    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:range];
-  }
+  [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:66.f/255.f green:79.f/255.f blue:91.f/255.f alpha:1] range:NSMakeRange(0, attributedString.length)];
+//  for (NSNumber *number in self.vowelLetters) {
+//
+//    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange([number intValue], 1)];
+//  }
   float fontSize = [self recommendedFontSizeForWord:text];
   
   // label initialization
@@ -73,13 +75,11 @@
 - (int)touchedLetter:(CGPoint)touchLocation {
   NSString *word = self.text;
   float fontSize = self.font.pointSize;
-
   CGSize wordSize = [word sizeWithFont:[UIFont fontWithName:kFontName size:fontSize]];
   CGRect wordRect;
   wordRect.size = wordSize;
   wordRect.origin.y = self.frame.size.height/2 - wordRect.size.height/2;
   wordRect.origin.x = self.frame.origin.x + self.frame.size.width/2 - wordSize.width/2;
-  
   NSMutableArray *letterRects = [NSMutableArray array];
   for (int i = 0; i < word.length; ++i) {
 		NSRange range;
@@ -124,8 +124,8 @@
 - (void)allLettersDefault {
   [UIView animateWithDuration:1 animations:^{
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:self.text];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:66.f/255.f green:79.f/255.f blue:91.f/255.f alpha:1] range:NSMakeRange(0, attributedString.length)];
     self.attributedText = attributedString;
-
   }];
 }
 
@@ -133,7 +133,7 @@
   [UIView animateWithDuration:1 animations:^{
     self.alpha = 0;
   } completion:^(BOOL finished) {
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:self.text];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithAttributedString: self.attributedText];
     NSRange range;
     range.location = index;
     range.length = 1;
@@ -147,24 +147,26 @@
 }
 
 - (void)answeredWithLetter:(int)number {
+  if ([self.delegate conformsToProtocol:@protocol(NLLabelDelegate)]) {
+    [self.delegate performSelector:@selector(userTouchedOnLetter:) withObject:[NSNumber numberWithInt:number]];
+  }
   NSString *word = self.text;
   if (![self isVovel:[self characterAtIndex:number inString:word]]) return;
-  
   [self allLettersDefault];
   UIColor *newColor;
   if (number == self.stresssed)
   {
-    newColor = [UIColor greenColor];
-    //[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"trueAnswer" object:nil]];
-    [[NSNotificationCenter defaultCenter] performSelector:@selector(postNotification:) withObject:[NSNotification notificationWithName:@"trueAnswer" object:nil] afterDelay:1];
-  }
-  else  newColor = [UIColor redColor];
+    newColor = [UIColor colorWithRed:80.f/255.f green:177.f/255.f blue:205.f/255.f alpha:1];
+    if ([self.delegate respondsToSelector:@selector(userAnsweredWithAnswer:)]) {
+      [self.delegate userAnsweredWithAnswer:YES];
+    }
+  } else {
+    newColor = [UIColor colorWithRed:169.f/255.f green:47.f/255.f blue:72.f/255.f alpha:1];
+    if ([self.delegate respondsToSelector:@selector(userAnsweredWithAnswer:)]) {
+      [self.delegate userAnsweredWithAnswer:NO];
+    }
+  } 
   [self setColor:newColor atIndex:number];
-
-  if ([self.delegate conformsToProtocol:@protocol(NLLabelDelegate)]) {
-    [self.delegate performSelector:@selector(userTouchedOnLetter:) withObject:[NSNumber numberWithInt:number]];
-  }
-  
 }
 
 - (BOOL)isVovel: (NSString*) letter {

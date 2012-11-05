@@ -13,8 +13,8 @@
 @protocol NLLabelDelegate <NSObject>
 
 @optional
-
 - (void)userTouchedOnLetter:(NSNumber *)letter;
+- (void)userAnsweredWithAnswer:(BOOL)answer;
 @end
 
 @interface NLLabel : UILabel<NLLabelDelegate>

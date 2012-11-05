@@ -156,7 +156,13 @@
 
 - (void)changeProgress:(float)progress withValueAtCenter:(int)value
 {
-  timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(changeProgressTimer:) userInfo:nil repeats:YES];
+  if (estimatedProgress<progress) {
+      timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(changeProgressTimer:) userInfo:nil repeats:YES];
+  }
+  else
+  {
+      timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(changeDecreasingProgressTimer:) userInfo:nil repeats:YES];
+  }
   estimatedProgress = progress;
   estimatedValue = value;
 }
@@ -174,7 +180,20 @@
     centerLabel.text = [@(abs(((estimatedValue*1.0)/estimatedProgress) * time/(2*M_PI))) stringValue];
   }
   [self setNeedsDisplay];
+}
 
+-(void)changeDecreasingProgressTimer:(NSTimer*)pTimer
+{
+  time-=0.01;
+  if (time<=estimatedProgress*2*M_PI) {
+    time=estimatedProgress*2*M_PI;
+    centerLabel.text = [@(estimatedValue) stringValue];
+    [pTimer invalidate];
+  }
+  else
+  {
+  }
+  [self setNeedsDisplay];
 }
 
 

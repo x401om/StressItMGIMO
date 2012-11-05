@@ -8,6 +8,7 @@
 
 #import "NLDictionaryView.h"
 #import "NLAppDelegate.h"
+#import "NLWordBlock.h"
 #define letterCount 30
 
 @interface NLDictionaryView ()
@@ -17,13 +18,14 @@
 @implementation NLDictionaryView
 @synthesize arrayOfWords,tableViewLeft,tableViewRight;
 @synthesize spin;
+@synthesize fetchResultsController;
 
 -(id)init
 {
   self = [super init];
   if (self) {
     //[self initArrays];
-    spin = [[NLSpinner alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 50,self.view.frame.size.height/2 -20, 100, 100) type:NLSpinnerTypeDefault startValue:0];
+    /*spin = [[NLSpinner alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 50,self.view.frame.size.height/2 -20, 100, 100) type:NLSpinnerTypeDefault startValue:0];
     UIView* back = [[UIView alloc] initWithFrame:CGRectMake(42, 66, 507, 249)];
     back.backgroundColor = [UIColor blackColor];
     back.alpha = 0.5;
@@ -33,7 +35,28 @@
     [spin startSpin];
     tableViewLeft.userInteractionEnabled = NO;
     tableViewRight.userInteractionEnabled = NO;
-    [self performSelectorInBackground:@selector(initArrays) withObject:nil];
+    [self performSelectorInBackground:@selector(initArrays) withObject:nil];*/
+    NSManagedObjectContext *managedObjectContext = [(NLAppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"WordBlock" inManagedObjectContext:managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+    [request setSortDescriptors:@[sortDescriptor]];
+    
+    [request setFetchBatchSize:20];
+    
+    NSFetchedResultsController *theFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                        managedObjectContext:managedObjectContext sectionNameKeyPath:@"firstLetter"
+                                                   cacheName:@"Root"];
+    fetchResultsController = theFetchedResultsController;
+    fetchResultsController.delegate = self;
+    [fetchResultsController performFetch:nil];
+    
   }
   return self;
 }
@@ -41,7 +64,7 @@
 -(void)initArrays
 {
   arrayOfWords = [NSMutableArray array];
-  for (int i=0; i<letterCount; ++i) {
+  //for (int i=0; i<letterCount; ++i) {
     NSManagedObjectContext *moc = [(NLAppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
     NSEntityDescription *entityDescription = [NSEntityDescription
                                             entityForName:@"WordBlock" inManagedObjectContext:moc];
@@ -49,16 +72,30 @@
     [request setEntity:entityDescription];
   
     // Set example predicate and sort orderings...
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:
-                            @"title BEGINSWITH %@",[self getKeyFromNumber:i]];
-    [request setPredicate:predicate];
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:
+      //                      @"title BEGINSWITH %@",[self getKeyFromNumber:i]];
+    //[request setPredicate:predicate];
   
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                      initWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
-    [request setSortDescriptors:@[sortDescriptor]];
-  
+    //NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+    //                                  initWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+    //[request setSortDescriptors:@[sortDescriptor]];
+  [request setFetchLimit:3000];
     NSError *error;
-    [arrayOfWords addObject:[moc executeFetchRequest:request error:&error]];
+    NSArray* allObjects = [moc executeFetchRequest:request error:&error];
+  for (int i = 0; i<letterCount; ++i) {
+    [arrayOfWords addObject:[NSMutableArray array]];
+  }
+  
+  for(NLWordBlock* temp in allObjects)
+  {
+   //NSLog(@"%i %@",(int)[temp.title characterAtIndex:0],temp.title);
+    int pos = [self getNumberFromFirstLetter:temp.title];
+    [[arrayOfWords objectAtIndex:pos] addObject:temp];
+  }
+  for (int i=0; i<letterCount; ++i) {
+    [arrayOfWords replaceObjectAtIndex:i withObject:[[arrayOfWords objectAtIndex:i] sortedArrayUsingSelector:@selector(compare:)]] ;
+  }
+
     if (arrayOfWords == nil)
     {
       // Deal with error...
@@ -66,7 +103,7 @@
     //reloadData];
     [self.tableViewLeft performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];//reloadData];
     [self.tableViewRight performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-  }
+  //}
   tableViewRight.userInteractionEnabled = YES;
   tableViewLeft.userInteractionEnabled = YES;
   [UIView animateWithDuration:0.3 animations:^{
@@ -77,6 +114,10 @@
     [spin removeFromSuperview];
     [[self.view viewWithTag:1212] removeFromSuperview];
   }];
+  
+  
+
+
 }
 
 -(NSString*)getKeyFromNumber:(NSInteger)number
@@ -188,6 +229,34 @@
   }
 }
 
+-(int)getNumberFromFirstLetter:(NSString*)str
+{
+  int result = [str characterAtIndex:0];
+  if (result<=1077) {
+    return result - 1072;
+  }
+  if (result>=1078&&result<=1097) {
+    return result - 1071;
+  }
+  switch (result) {
+    case 1105:
+      return 6;
+      break;
+    case 1101:
+      return 27;
+      break;
+    case 1102:
+      return 28;
+      break;
+    case 1103:
+      return 29;
+      break;
+    default:
+      return 0;
+      break;
+  }
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -219,14 +288,17 @@
 {
 //#warning Potentially incomplete method implementation.
   // Return the number of sections.
-  return [arrayOfWords count];
+  return [[fetchResultsController sections] count];//[arrayOfWords count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 //#warning Incomplete method implementation.
   // Return the number of rows in the section.
-  return [[arrayOfWords objectAtIndex:section] count]/2;
+  //return [[arrayOfWords objectAtIndex:section] count]/2;
+  id  sectionInfo =
+  [[fetchResultsController sections] objectAtIndex:section];
+  return [sectionInfo numberOfObjects]/2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -239,9 +311,13 @@
   
   // Configure the cell...
   
-  if(tableView.tag == 1000) cell.textLabel.text = [[[arrayOfWords objectAtIndex:indexPath.section] objectAtIndex:2*indexPath.row] title];
-  if(tableView.tag == 1001) cell.textLabel.text = [[[arrayOfWords objectAtIndex:indexPath.section] objectAtIndex:2*indexPath.row + 1] title];
-
+  //NLWordBlock *info = [fetchResultsController objectAtIndexPath:indexPath];
+  NSIndexPath* ind;
+  
+  if(tableView.tag == 1000) ind = [NSIndexPath indexPathForRow:(indexPath.row*2) inSection:indexPath.section];//cell.textLabel.text = [[[arrayOfWords objectAtIndex:indexPath.section] objectAtIndex:2*indexPath.row] title];
+  if(tableView.tag == 1001) ind = [NSIndexPath indexPathForRow:(indexPath.row*2 + 1) inSection:indexPath.section];//cell.textLabel.text = [[[arrayOfWords objectAtIndex:indexPath.section] objectAtIndex:2*indexPath.row + 1] title];
+    NLWordBlock *info = [fetchResultsController objectAtIndexPath:ind];
+  cell.textLabel.text = info.title;
   
   return cell;
 }
@@ -266,20 +342,25 @@
 
 -(NSArray*)sectionIndexTitlesForTableView:(UITableView *)tableView {
   if (tableView == tableViewRight) {
-    NSMutableArray* result = [NSMutableArray array];
-    for (int i=0; i<[arrayOfWords count]; ++i) {
-      [result addObject:[self getKeyFromNumber:i]];
+    NSMutableArray* ar = [NSMutableArray arrayWithCapacity:letterCount];
+    for (int i=0; i<letterCount; ++i) {
+      [ar addObject:[self getKeyFromNumber:i]];
     }
-    return result;
+    return ar;//[fetchResultsController sectionIndexTitles];
   }
-  else return NULL;
+  else return nil;//[fetchResultsController sectionIndexTitles];
   
 }
+
+
+
 
 -(IBAction)goToMainMenu:(id)sender
 {
   [self.navigationController popViewControllerAnimated:YES];
 }
+
+
 
 
 @end

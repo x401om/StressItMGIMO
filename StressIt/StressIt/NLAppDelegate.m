@@ -80,6 +80,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
   //[self unpackBaseToApplication];
   [self copyToDocumentsFile:@"StressIt" ofType:@"sqlite"];
+  //[NLParser parse];
   UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:[[NLMainMenuViewController alloc]init]];
   [navController setNavigationBarHidden:YES];
   self.window.rootViewController = navController;

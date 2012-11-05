@@ -35,7 +35,6 @@
   
   [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showActivityIndicator) name:@"ParceStart" object:nil];
   [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideActivityIndicator) name:@"ParceDone" object:nil];
- 
 }
 
 - (void)didReceiveMemoryWarning
@@ -98,5 +97,6 @@
   
   [self.navigationController pushViewController:[[NLSetDaysViewController alloc]init] animated:YES];
 }
+
 
 @end

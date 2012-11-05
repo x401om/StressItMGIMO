@@ -15,6 +15,7 @@
 @dynamic title;
 @dynamic words;
 @dynamic dictionary;
+@dynamic firstLetter;
 
 + (NLWordBlock *)blockWithWords:(NSArray *)words {
   NLWordBlock *newBlock = nil;
@@ -23,6 +24,7 @@
   newBlock.words = [NSSet setWithArray:words];
   NLWord *titleWord = [words objectAtIndex:0];
   newBlock.title = titleWord.text;
+  newBlock.firstLetter = [newBlock.title substringToIndex:1];
   //[newBlock saveContext];
   return newBlock;
 }
@@ -49,7 +51,7 @@
   [allObjects addObject:value];
   self.words = [NSSet setWithArray:allObjects];
   NSLog(@"Added %@", value);
-  [self saveContext];
+  //[self saveContext];
 }
 
 - (void)removeWordsObject:(NLWord *)value {
@@ -58,7 +60,7 @@
   [tempSet removeObject:value];
   self.words = [NSSet setWithArray:[tempSet array]] ;
   NSLog(@"Removed %@", value);
-  [self saveContext];
+  //[self saveContext];
 }
 
 - (NSString *)description {
@@ -93,6 +95,11 @@
   request.predicate = [NSPredicate predicateWithFormat:@"title = %@", title];
   NSError *error = nil;
   return [[myContext executeFetchRequest:request error:&error]lastObject];
+}
+
+- (NSComparisonResult)compare:(NLWordBlock *)aWordBlock
+{
+  return [self.title localizedCaseInsensitiveCompare:aWordBlock.title];
 }
 
 

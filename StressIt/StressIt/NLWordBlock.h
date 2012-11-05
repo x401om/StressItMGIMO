@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSSet *words;
 @property (nonatomic, retain) NSManagedObject *dictionary;
+@property (nonatomic, retain) NSString* firstLetter;
 
 
 + (NLWordBlock *)blockWithWords:(NSArray *)words;
@@ -35,5 +36,7 @@
 - (void)removeWordsObject:(NLWord *)value;
 - (void)addWords:(NSSet *)values;
 - (void)removeWords:(NSSet *)values;
+
+- (NSComparisonResult)compare:(NLWordBlock *)aWordBlock;
 
 @end

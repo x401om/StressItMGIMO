@@ -17,6 +17,7 @@
 @dynamic dictionary;
 @dynamic firstLetter;
 
+
 + (NLWordBlock *)blockWithWords:(NSArray *)words {
   NLWordBlock *newBlock = nil;
   NSManagedObjectContext *context = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;

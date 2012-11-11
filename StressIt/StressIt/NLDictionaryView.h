@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "NLSpinner.h"
 
-@interface NLDictionaryView : UIViewController<UITableViewDelegate,NSFetchedResultsControllerDelegate>
+@interface NLDictionaryView : UIViewController<UITableViewDelegate,NSFetchedResultsControllerDelegate,UISearchDisplayDelegate,UISearchBarDelegate>
 
 @property (nonatomic, retain) NSMutableArray* arrayOfWords;
 @property (nonatomic, retain) IBOutlet UITableView* tableViewLeft;
 @property (nonatomic, retain) IBOutlet UITableView* tableViewRight;
+@property (nonatomic, retain) IBOutlet UISearchDisplayController* searchDisplayController;
+@property NSArray* filteredObjects;
 @property NLSpinner* spin;
 @property NSFetchedResultsController* fetchResultsController;
 

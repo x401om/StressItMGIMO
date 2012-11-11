@@ -19,6 +19,8 @@
 @synthesize arrayOfWords,tableViewLeft,tableViewRight;
 @synthesize spin;
 @synthesize fetchResultsController;
+@synthesize searchDisplayController;
+@synthesize filteredObjects;
 
 -(id)init
 {
@@ -26,14 +28,14 @@
   if (self) {
     //[self initArrays];
     spin = [[NLSpinner alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 50,self.view.frame.size.height/2 -20, 100, 100) type:NLSpinnerTypeDefault startValue:0];
-    UIView* back = [[UIView alloc] initWithFrame:CGRectMake(42, 66, 507, 249)];
+    UIView* back = [[UIView alloc] initWithFrame:CGRectMake(tableViewLeft.frame.origin.x, tableViewLeft.frame.origin.y, tableViewLeft.frame.size.width + tableViewRight.frame.size.width, tableViewLeft.frame.size.height)];
     back.backgroundColor = [UIColor blackColor];
     back.alpha = 0.5;
     back.tag = 1212;
     [self.view addSubview:back];
     [self.view addSubview:spin];
     [spin startSpin];
-    [self performSelectorInBackground:@selector(initArrays) withObject:nil];    
+    [self performSelectorInBackground:@selector(initArrays) withObject:nil];
   }
   return self;
 }
@@ -60,6 +62,7 @@
   fetchResultsController = theFetchedResultsController;
   fetchResultsController.delegate = self;
   [fetchResultsController performFetch:nil];
+  filteredObjects = nil;
   [tableViewLeft performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
   [tableViewRight performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
   [UIView animateWithDuration:0.3 animations:^{
@@ -70,10 +73,6 @@
     [spin removeFromSuperview];
     [[self.view viewWithTag:1212] removeFromSuperview];
   }];
-  
-  
-
-
 }
 
 -(NSString*)getKeyFromNumber:(NSInteger)number
@@ -222,6 +221,13 @@
     return self;
 }
 
+
+
+-(IBAction)goToMainMenu:(id)sender
+{
+  [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -242,6 +248,9 @@
 {
 //#warning Potentially incomplete method implementation.
   // Return the number of sections.
+  if (tableView == [searchDisplayController searchResultsTableView]) {
+    return 1;
+  }
   return [[fetchResultsController sections] count];//[arrayOfWords count];
 }
 
@@ -250,6 +259,9 @@
 //#warning Incomplete method implementation.
   // Return the number of rows in the section.
   //return [[arrayOfWords objectAtIndex:section] count]/2;
+  if (tableView == [searchDisplayController searchResultsTableView]) {
+    return [filteredObjects count];
+  }
   id  sectionInfo =
   [[fetchResultsController sections] objectAtIndex:section];
   return [sectionInfo numberOfObjects]/2;
@@ -264,6 +276,12 @@
   }
   
   // Configure the cell...
+  if (tableView == [searchDisplayController searchResultsTableView]) {
+    
+    cell.textLabel.text = [[filteredObjects objectAtIndex:indexPath.row] title];
+    return cell;
+  }
+  
   NSIndexPath* ind;
   
   if(tableView == tableViewLeft) ind = [NSIndexPath indexPathForRow:(indexPath.row*2) inSection:indexPath.section];
@@ -289,7 +307,9 @@
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
   if(tableView == tableViewLeft) return [self getKeyFromNumber:section];
-  else return @" ";
+  if(tableView == tableViewRight) return @" ";
+  if (tableView == [searchDisplayController searchResultsTableView]) return @"Найденные результаты";
+  return nil;
 }
 
 -(NSArray*)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -304,15 +324,41 @@
   
 }
 
-
-
-
--(IBAction)goToMainMenu:(id)sender
+#pragma mark - UISearchDisplayController delegate methods
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
 {
-  [self.navigationController popViewControllerAnimated:YES];
+  [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(filterContentForSearchText:) object:nil];
+  [self performSelectorInBackground:@selector(filterContentForSearchText:) withObject:searchString];
+  //[self filterContentForSearchText:searchString];
+  
+  return YES;
 }
 
+- (void)filterContentForSearchText:(NSString*)searchText
+{
+  NSPredicate *resultPredicate = [NSPredicate
+                                  predicateWithFormat:@"SELF.title contains[cd] %@",
+                                  searchText];
+  
+  filteredObjects = [[fetchResultsController fetchedObjects] filteredArrayUsingPredicate:resultPredicate];
+  [[searchDisplayController searchResultsTableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}
 
+- (void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView
+{
+
+}
+
+-(void)searchDisplayController:(UISearchDisplayController *)controller didShowSearchResultsTableView:(UITableView *)tableView {
+  tableView.frame = CGRectMake(tableViewLeft.frame.origin.x, tableViewLeft.frame.origin.y, tableViewLeft.frame.size.width + tableViewRight.frame.size.width, tableViewLeft.frame.size.height);
+}
+-(void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+  //[UIView animateWithDuration:0.5 animations:^{
+    [searchDisplayController.searchBar setFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+  //}];
+}
 
 
 @end

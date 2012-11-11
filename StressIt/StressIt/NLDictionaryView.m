@@ -25,7 +25,7 @@
   self = [super init];
   if (self) {
     //[self initArrays];
-    /*spin = [[NLSpinner alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 50,self.view.frame.size.height/2 -20, 100, 100) type:NLSpinnerTypeDefault startValue:0];
+    spin = [[NLSpinner alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 50,self.view.frame.size.height/2 -20, 100, 100) type:NLSpinnerTypeDefault startValue:0];
     UIView* back = [[UIView alloc] initWithFrame:CGRectMake(42, 66, 507, 249)];
     back.backgroundColor = [UIColor blackColor];
     back.alpha = 0.5;
@@ -33,79 +33,35 @@
     [self.view addSubview:back];
     [self.view addSubview:spin];
     [spin startSpin];
-    tableViewLeft.userInteractionEnabled = NO;
-    tableViewRight.userInteractionEnabled = NO;
-    [self performSelectorInBackground:@selector(initArrays) withObject:nil];*/
-    NSManagedObjectContext *managedObjectContext = [(NLAppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
-    
-    NSEntityDescription *entityDescription = [NSEntityDescription
-                                              entityForName:@"WordBlock" inManagedObjectContext:managedObjectContext];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDescription];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                        initWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
-    [request setSortDescriptors:@[sortDescriptor]];
-    
-    [request setFetchBatchSize:20];
-    
-    NSFetchedResultsController *theFetchedResultsController =
-    [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                        managedObjectContext:managedObjectContext sectionNameKeyPath:@"firstLetter"
-                                                   cacheName:@"Root"];
-    fetchResultsController = theFetchedResultsController;
-    fetchResultsController.delegate = self;
-    [fetchResultsController performFetch:nil];
-    
+    [self performSelectorInBackground:@selector(initArrays) withObject:nil];    
   }
   return self;
 }
 
 -(void)initArrays
 {
-  arrayOfWords = [NSMutableArray array];
-  //for (int i=0; i<letterCount; ++i) {
-    NSManagedObjectContext *moc = [(NLAppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
-    NSEntityDescription *entityDescription = [NSEntityDescription
-                                            entityForName:@"WordBlock" inManagedObjectContext:moc];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDescription];
+  NSManagedObjectContext *managedObjectContext = [(NLAppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
   
-    // Set example predicate and sort orderings...
-    //NSPredicate *predicate = [NSPredicate predicateWithFormat:
-      //                      @"title BEGINSWITH %@",[self getKeyFromNumber:i]];
-    //[request setPredicate:predicate];
+  NSEntityDescription *entityDescription = [NSEntityDescription
+                                            entityForName:@"WordBlock" inManagedObjectContext:managedObjectContext];
+  NSFetchRequest *request = [[NSFetchRequest alloc] init];
+  [request setEntity:entityDescription];
   
-    //NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-    //                                  initWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
-    //[request setSortDescriptors:@[sortDescriptor]];
-  [request setFetchLimit:3000];
-    NSError *error;
-    NSArray* allObjects = [moc executeFetchRequest:request error:&error];
-  for (int i = 0; i<letterCount; ++i) {
-    [arrayOfWords addObject:[NSMutableArray array]];
-  }
+  NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                      initWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+  [request setSortDescriptors:@[sortDescriptor]];
   
-  for(NLWordBlock* temp in allObjects)
-  {
-   //NSLog(@"%i %@",(int)[temp.title characterAtIndex:0],temp.title);
-    int pos = [self getNumberFromFirstLetter:temp.title];
-    [[arrayOfWords objectAtIndex:pos] addObject:temp];
-  }
-  for (int i=0; i<letterCount; ++i) {
-    [arrayOfWords replaceObjectAtIndex:i withObject:[[arrayOfWords objectAtIndex:i] sortedArrayUsingSelector:@selector(compare:)]] ;
-  }
-
-    if (arrayOfWords == nil)
-    {
-      // Deal with error...
-    }
-    //reloadData];
-    [self.tableViewLeft performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];//reloadData];
-    [self.tableViewRight performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-  //}
-  tableViewRight.userInteractionEnabled = YES;
-  tableViewLeft.userInteractionEnabled = YES;
+  [request setFetchBatchSize:20];
+  
+  NSFetchedResultsController *theFetchedResultsController =
+  [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                      managedObjectContext:managedObjectContext sectionNameKeyPath:@"firstLetter"
+                                                 cacheName:@"Root"];
+  fetchResultsController = theFetchedResultsController;
+  fetchResultsController.delegate = self;
+  [fetchResultsController performFetch:nil];
+  [tableViewLeft performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+  [tableViewRight performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
   [UIView animateWithDuration:0.3 animations:^{
     [spin setAlpha:0];
     [[self.view viewWithTag:1212] setAlpha:0];
@@ -270,8 +226,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-      tableViewLeft.tag = 1000;
-  tableViewRight.tag = 1001;
   [tableViewLeft setShowsVerticalScrollIndicator:NO];
 }
 
@@ -310,12 +264,10 @@
   }
   
   // Configure the cell...
-  
-  //NLWordBlock *info = [fetchResultsController objectAtIndexPath:indexPath];
   NSIndexPath* ind;
   
-  if(tableView.tag == 1000) ind = [NSIndexPath indexPathForRow:(indexPath.row*2) inSection:indexPath.section];//cell.textLabel.text = [[[arrayOfWords objectAtIndex:indexPath.section] objectAtIndex:2*indexPath.row] title];
-  if(tableView.tag == 1001) ind = [NSIndexPath indexPathForRow:(indexPath.row*2 + 1) inSection:indexPath.section];//cell.textLabel.text = [[[arrayOfWords objectAtIndex:indexPath.section] objectAtIndex:2*indexPath.row + 1] title];
+  if(tableView == tableViewLeft) ind = [NSIndexPath indexPathForRow:(indexPath.row*2) inSection:indexPath.section];
+  if(tableView == tableViewRight) ind = [NSIndexPath indexPathForRow:(indexPath.row*2 + 1) inSection:indexPath.section];
     NLWordBlock *info = [fetchResultsController objectAtIndexPath:ind];
   cell.textLabel.text = info.title;
   
@@ -325,12 +277,12 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
   
-  if (scrollView.tag==1000) {
-    [(UIScrollView*)[[scrollView superview] viewWithTag:1001] setContentOffset:scrollView.contentOffset];
+  if (scrollView == tableViewLeft) {
+    [tableViewRight setContentOffset:scrollView.contentOffset];
 
   }
-  if (scrollView.tag==1001) {
-    [(UIScrollView*)[[scrollView superview] viewWithTag:1000] setContentOffset:scrollView.contentOffset];
+  if (scrollView == tableViewRight) {
+    [tableViewLeft setContentOffset:scrollView.contentOffset];
   }
 }
 
@@ -346,9 +298,9 @@
     for (int i=0; i<letterCount; ++i) {
       [ar addObject:[self getKeyFromNumber:i]];
     }
-    return ar;//[fetchResultsController sectionIndexTitles];
+    return ar;
   }
-  else return nil;//[fetchResultsController sectionIndexTitles];
+  else return nil;
   
 }
 

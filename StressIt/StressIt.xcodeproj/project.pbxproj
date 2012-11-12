@@ -37,12 +37,7 @@
 		C939433A164700A50043668B /* NLWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9394338164700A40043668B /* NLWelcomeViewController.xib */; };
 		C939433F164708BA0043668B /* NLCoreGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C939433D164708BA0043668B /* NLCoreGameViewController.m */; };
 		C9394340164708BA0043668B /* NLCoreGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C939433E164708BA0043668B /* NLCoreGameViewController.xib */; };
-		C9394344164721B50043668B /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = C9394343164721B50043668B /* SSZipArchive.m */; };
 		C9394349164722280043668B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C9394348164722280043668B /* libz.dylib */; };
-		C9394354164722C40043668B /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = C939434C164722C40043668B /* ioapi.c */; };
-		C9394355164722C40043668B /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = C939434E164722C40043668B /* mztools.c */; };
-		C9394356164722C40043668B /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = C9394350164722C40043668B /* unzip.c */; };
-		C9394357164722C40043668B /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = C9394352164722C40043668B /* zip.c */; };
 		C939436E1647B96C0043668B /* backgroung.png in Resources */ = {isa = PBXBuildFile; fileRef = C93943641647B96C0043668B /* backgroung.png */; };
 		C939436F1647B96C0043668B /* dictionaryButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C93943651647B96C0043668B /* dictionaryButton.png */; };
 		C93943701647B96C0043668B /* darkGrayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C93943661647B96C0043668B /* darkGrayButton.png */; };
@@ -54,6 +49,11 @@
 		C93943771647B96C0043668B /* backToMenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C939436D1647B96C0043668B /* backToMenuButton.png */; };
 		C939437F1647C77E0043668B /* NLResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C939437D1647C77C0043668B /* NLResultsViewController.m */; };
 		C93943801647C77E0043668B /* NLResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C939437E1647C77D0043668B /* NLResultsViewController.xib */; };
+		C95CD3E4165109B30015B2C5 /* NLCD_Task.m in Sources */ = {isa = PBXBuildFile; fileRef = C95CD3E3165109B30015B2C5 /* NLCD_Task.m */; };
+		C95CD3E7165109B30015B2C5 /* NLCD_Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C95CD3E6165109B30015B2C5 /* NLCD_Dictionary.m */; };
+		C95CD3EA165109B30015B2C5 /* NLCD_Word.m in Sources */ = {isa = PBXBuildFile; fileRef = C95CD3E9165109B30015B2C5 /* NLCD_Word.m */; };
+		C95CD3ED165109B30015B2C5 /* NLCD_Block.m in Sources */ = {isa = PBXBuildFile; fileRef = C95CD3EC165109B30015B2C5 /* NLCD_Block.m */; };
+		C95CD3F0165109B40015B2C5 /* NLCD_Paragraph.m in Sources */ = {isa = PBXBuildFile; fileRef = C95CD3EF165109B40015B2C5 /* NLCD_Paragraph.m */; };
 		C986581D1625A6F60035FB7D /* NLWord.m in Sources */ = {isa = PBXBuildFile; fileRef = C986581C1625A6F60035FB7D /* NLWord.m */; };
 		C98658231625A7740035FB7D /* NLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C98658221625A7740035FB7D /* NLDictionary.m */; };
 		C98658291625A7990035FB7D /* NLWordBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = C98658281625A7990035FB7D /* NLWordBlock.m */; };
@@ -131,18 +131,7 @@
 		C939433C164708BA0043668B /* NLCoreGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLCoreGameViewController.h; sourceTree = "<group>"; };
 		C939433D164708BA0043668B /* NLCoreGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLCoreGameViewController.m; sourceTree = "<group>"; };
 		C939433E164708BA0043668B /* NLCoreGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NLCoreGameViewController.xib; sourceTree = "<group>"; };
-		C9394342164721B50043668B /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
-		C9394343164721B50043668B /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 		C9394348164722280043668B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		C939434B164722C40043668B /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
-		C939434C164722C40043668B /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
-		C939434D164722C40043668B /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		C939434E164722C40043668B /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
-		C939434F164722C40043668B /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
-		C9394350164722C40043668B /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
-		C9394351164722C40043668B /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		C9394352164722C40043668B /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		C9394353164722C40043668B /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		C93943641647B96C0043668B /* backgroung.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroung.png; sourceTree = "<group>"; };
 		C93943651647B96C0043668B /* dictionaryButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dictionaryButton.png; sourceTree = "<group>"; };
 		C93943661647B96C0043668B /* darkGrayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = darkGrayButton.png; sourceTree = "<group>"; };
@@ -155,6 +144,16 @@
 		C939437C1647C77B0043668B /* NLResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLResultsViewController.h; sourceTree = "<group>"; };
 		C939437D1647C77C0043668B /* NLResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLResultsViewController.m; sourceTree = "<group>"; };
 		C939437E1647C77D0043668B /* NLResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NLResultsViewController.xib; sourceTree = "<group>"; };
+		C95CD3E2165109B30015B2C5 /* NLCD_Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLCD_Task.h; sourceTree = "<group>"; };
+		C95CD3E3165109B30015B2C5 /* NLCD_Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLCD_Task.m; sourceTree = "<group>"; };
+		C95CD3E5165109B30015B2C5 /* NLCD_Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLCD_Dictionary.h; sourceTree = "<group>"; };
+		C95CD3E6165109B30015B2C5 /* NLCD_Dictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLCD_Dictionary.m; sourceTree = "<group>"; };
+		C95CD3E8165109B30015B2C5 /* NLCD_Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLCD_Word.h; sourceTree = "<group>"; };
+		C95CD3E9165109B30015B2C5 /* NLCD_Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLCD_Word.m; sourceTree = "<group>"; };
+		C95CD3EB165109B30015B2C5 /* NLCD_Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLCD_Block.h; sourceTree = "<group>"; };
+		C95CD3EC165109B30015B2C5 /* NLCD_Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLCD_Block.m; sourceTree = "<group>"; };
+		C95CD3EE165109B40015B2C5 /* NLCD_Paragraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLCD_Paragraph.h; sourceTree = "<group>"; };
+		C95CD3EF165109B40015B2C5 /* NLCD_Paragraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLCD_Paragraph.m; sourceTree = "<group>"; };
 		C986581B1625A6F60035FB7D /* NLWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLWord.h; sourceTree = "<group>"; };
 		C986581C1625A6F60035FB7D /* NLWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLWord.m; sourceTree = "<group>"; };
 		C98658211625A7740035FB7D /* NLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLDictionary.h; sourceTree = "<group>"; };
@@ -238,32 +237,6 @@
 			name = Learning;
 			sourceTree = "<group>";
 		};
-		C9394345164721BE0043668B /* SSZipArchive */ = {
-			isa = PBXGroup;
-			children = (
-				C939434A164722C40043668B /* minizip */,
-				C9394342164721B50043668B /* SSZipArchive.h */,
-				C9394343164721B50043668B /* SSZipArchive.m */,
-			);
-			name = SSZipArchive;
-			sourceTree = "<group>";
-		};
-		C939434A164722C40043668B /* minizip */ = {
-			isa = PBXGroup;
-			children = (
-				C939434B164722C40043668B /* crypt.h */,
-				C939434C164722C40043668B /* ioapi.c */,
-				C939434D164722C40043668B /* ioapi.h */,
-				C939434E164722C40043668B /* mztools.c */,
-				C939434F164722C40043668B /* mztools.h */,
-				C9394350164722C40043668B /* unzip.c */,
-				C9394351164722C40043668B /* unzip.h */,
-				C9394352164722C40043668B /* zip.c */,
-				C9394353164722C40043668B /* zip.h */,
-			);
-			path = minizip;
-			sourceTree = "<group>";
-		};
 		C93943631647B96C0043668B /* Textures */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,17 +253,74 @@
 			path = Textures;
 			sourceTree = "<group>";
 		};
-		C986582A1625A7C90035FB7D /* CoreData */ = {
+		C95CD3F1165109BE0015B2C5 /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
-				C92E473A1633127C00B53E34 /* dataArr.plist */,
-				C98E2A451624B6A600AFC6AD /* StressIt.xcdatamodeld */,
 				C986581B1625A6F60035FB7D /* NLWord.h */,
 				C986581C1625A6F60035FB7D /* NLWord.m */,
 				C98658271625A7990035FB7D /* NLWordBlock.h */,
 				C98658281625A7990035FB7D /* NLWordBlock.m */,
 				C98658211625A7740035FB7D /* NLDictionary.h */,
 				C98658221625A7740035FB7D /* NLDictionary.m */,
+			);
+			name = Deprecated;
+			sourceTree = "<group>";
+		};
+		C95CD3F2165109F80015B2C5 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				C95CD3EE165109B40015B2C5 /* NLCD_Paragraph.h */,
+				C95CD3EF165109B40015B2C5 /* NLCD_Paragraph.m */,
+				C95CD3E2165109B30015B2C5 /* NLCD_Task.h */,
+				C95CD3E3165109B30015B2C5 /* NLCD_Task.m */,
+			);
+			name = Tasks;
+			sourceTree = "<group>";
+		};
+		C95CD3F316510A770015B2C5 /* Words */ = {
+			isa = PBXGroup;
+			children = (
+				C95CD3EB165109B30015B2C5 /* NLCD_Block.h */,
+				C95CD3EC165109B30015B2C5 /* NLCD_Block.m */,
+				C95CD3E8165109B30015B2C5 /* NLCD_Word.h */,
+				C95CD3E9165109B30015B2C5 /* NLCD_Word.m */,
+				C95CD3E5165109B30015B2C5 /* NLCD_Dictionary.h */,
+				C95CD3E6165109B30015B2C5 /* NLCD_Dictionary.m */,
+			);
+			name = Words;
+			sourceTree = "<group>";
+		};
+		C95CD3F416510AC00015B2C5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				67564BE61645A5DF007D2E9A /* lobster_14.ttf */,
+				67E4F9061647FB5900AC0C5B /* Cuprum-Regular.ttf */,
+				67E4F9031647FAEE00AC0C5B /* Cuprum.otf */,
+				67AF97BB16459247007A5270 /* Lobster 1.4.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		C95CD3F516510AD10015B2C5 /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				6775757E1632E55500D2DD0A /* Forward.png */,
+				6775757C1632E23900D2DD0A /* Back.png */,
+				C98E2A3F1624B6A600AFC6AD /* Default.png */,
+				C98E2A411624B6A600AFC6AD /* Default@2x.png */,
+				C98E2A431624B6A600AFC6AD /* Default-568h@2x.png */,
+			);
+			name = Pictures;
+			sourceTree = "<group>";
+		};
+		C986582A1625A7C90035FB7D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C92E473A1633127C00B53E34 /* dataArr.plist */,
+				C98E2A451624B6A600AFC6AD /* StressIt.xcdatamodeld */,
+				C95CD3F1165109BE0015B2C5 /* Deprecated */,
+				C95CD3F316510A770015B2C5 /* Words */,
+				C95CD3F2165109F80015B2C5 /* Tasks */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -318,7 +348,6 @@
 			children = (
 				67C0DB8D1625DFDE00214C52 /* NLParser.h */,
 				67C0DB8E1625DFDE00214C52 /* NLParser.m */,
-				C9394345164721BE0043668B /* SSZipArchive */,
 				C92E4740163317EE00B53E34 /* Generator.h */,
 				C92E4741163317EE00B53E34 /* Generator.m */,
 				C932F87F1626203600D9A34B /* TTTAttributedLabel.h */,
@@ -382,20 +411,13 @@
 			isa = PBXGroup;
 			children = (
 				C908C5CC164C5FBC0061656C /* StressIt.sqlite */,
-				67E4F9061647FB5900AC0C5B /* Cuprum-Regular.ttf */,
-				67E4F9031647FAEE00AC0C5B /* Cuprum.otf */,
-				6775757E1632E55500D2DD0A /* Forward.png */,
-				6775757C1632E23900D2DD0A /* Back.png */,
+				C95CD3F416510AC00015B2C5 /* Fonts */,
+				C95CD3F516510AD10015B2C5 /* Pictures */,
 				67C0DBA11625E42E00214C52 /* All_Forms.txt */,
-				67564BE61645A5DF007D2E9A /* lobster_14.ttf */,
 				C98E2A351624B6A600AFC6AD /* StressIt-Info.plist */,
-				67AF97BB16459247007A5270 /* Lobster 1.4.otf */,
 				C98E2A361624B6A600AFC6AD /* InfoPlist.strings */,
 				C98E2A391624B6A600AFC6AD /* main.m */,
 				C98E2A3B1624B6A600AFC6AD /* StressIt-Prefix.pch */,
-				C98E2A3F1624B6A600AFC6AD /* Default.png */,
-				C98E2A411624B6A600AFC6AD /* Default@2x.png */,
-				C98E2A431624B6A600AFC6AD /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -617,12 +639,12 @@
 				C93943341646EE310043668B /* NLSetDaysViewController.m in Sources */,
 				C9394339164700A50043668B /* NLWelcomeViewController.m in Sources */,
 				C939433F164708BA0043668B /* NLCoreGameViewController.m in Sources */,
-				C9394344164721B50043668B /* SSZipArchive.m in Sources */,
-				C9394354164722C40043668B /* ioapi.c in Sources */,
-				C9394355164722C40043668B /* mztools.c in Sources */,
-				C9394356164722C40043668B /* unzip.c in Sources */,
-				C9394357164722C40043668B /* zip.c in Sources */,
 				C939437F1647C77E0043668B /* NLResultsViewController.m in Sources */,
+				C95CD3E4165109B30015B2C5 /* NLCD_Task.m in Sources */,
+				C95CD3E7165109B30015B2C5 /* NLCD_Dictionary.m in Sources */,
+				C95CD3EA165109B30015B2C5 /* NLCD_Word.m in Sources */,
+				C95CD3ED165109B30015B2C5 /* NLCD_Block.m in Sources */,
+				C95CD3F0165109B40015B2C5 /* NLCD_Paragraph.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

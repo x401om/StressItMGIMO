@@ -28,6 +28,7 @@
   newWord.state = [NSNumber numberWithInt:0];
   return newWord;
 }
+
 + (NLCD_Word *)findWordWithText:(NSString *)text {
   NSManagedObjectContext *myContext = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
   NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -46,6 +47,12 @@
       abort();
     }
   }
+}
+
+- (NSString *)description {
+  int stressedPosition = [self.stressed intValue] + 1;
+  NSString *output = [NSString stringWithFormat:@"%@\u0301%@", [self.text substringToIndex:stressedPosition], [self.text substringFromIndex:stressedPosition]];
+  return output;
 }
 
 

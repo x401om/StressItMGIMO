@@ -12,7 +12,7 @@
 
 + (void) parse;
 - (void) parse;
-
++ (void)addTasks;
 + (void)fillFavourites;
 
 @end

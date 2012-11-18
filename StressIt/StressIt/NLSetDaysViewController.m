@@ -70,7 +70,6 @@
 - (IBAction)nextButtonPressed:(id)sender {
   [[NSUserDefaults standardUserDefaults]setInteger:n_wordPerDay forKey:@"DaysAmount"];
   [[NSUserDefaults standardUserDefaults]synchronize];
-  [NLLearningManager makeDayAmountForTime:n_wordPerDay];
   [self.navigationController pushViewController:[[NLWelcomeViewController alloc]init] animated:YES];
 }
 @end

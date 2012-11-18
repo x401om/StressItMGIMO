@@ -20,7 +20,7 @@
   NLCD_Block *newBlock = nil;
   NSManagedObjectContext *context = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
   newBlock = [NSEntityDescription insertNewObjectForEntityForName:@"Block" inManagedObjectContext:context];
-  newBlock.words = [NSSet setWithArray:words];
+  newBlock.words = [[NSOrderedSet alloc]initWithArray:words];
   NLCD_Word *titleWord = [words objectAtIndex:0];
   newBlock.title = titleWord.text;
   newBlock.firstLetter = [newBlock.title substringToIndex:1];

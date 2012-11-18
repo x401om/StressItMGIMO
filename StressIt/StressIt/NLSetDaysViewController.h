@@ -19,15 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *wordsPerDay;
 @property (weak, nonatomic) IBOutlet UILabel *rank;
 
-// uchangable elements
-//@property (strong, nonatomic) IBOutlet UILabel *titleLbl;
-//@property (strong, nonatomic) IBOutlet UILabel *chooseTimeLbl;
-//@property (strong, nonatomic) IBOutlet UILabel *allWordsLbl;
-//@property (strong, nonatomic) IBOutlet UILabel *wordsPerDaysLbl;
-//@property (strong, nonatomic) IBOutlet UILabel *difficultyLbl;
-//@property (strong, nonatomic) IBOutlet UIButton *nextBtn;
-
-
 
 - (IBAction)nextButtonPressed:(UIButton *)sender;
 

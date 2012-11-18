@@ -8,10 +8,9 @@
 
 #import "NLCoreGameViewController.h"
 #import "NLLabel.h"
-#import "NLDictionary.h"
 #import "NLAppDelegate.h"
-#import "NLWord.h"
-#import "NLWordBlock.h"
+#import "NLCD_Word.h"
+#import "NLCD_Block.h"
 #import "NLParser.h"
 #import "Generator.h"
 #import "NLLearningManager.h"
@@ -58,15 +57,14 @@ static int answers = 0;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  for (NLWordBlock *b in blocks) {
+  for (NLCD_Block *b in blocks) {
     allQuestions += b.words.count;
   }
   progressRound = [[NLSpinner alloc]initWithFrame:progressRound.frame type:NLSpinnerTypeProgress startValue:0];
   [self.view addSubview:progressRound];
   rightAnswers.text = [NSString stringWithFormat:@"%d / %d", answers, allQuestions];
-  NLWordBlock *block = blocks[currentBlock];
-  NSSet *allWordsInBlock = block.words;
-  currentBlockArray = [allWordsInBlock allObjects];
+  NLCD_Block *block = blocks[currentBlock];
+  currentBlockArray = [block.words array];
   [self presentNewWord];
   
 }
@@ -80,11 +78,10 @@ static int answers = 0;
     if (currentBlock >= blocks.count) {
       [self goToMainMenu:nil];
     }
-    NLWordBlock *block = blocks[currentBlock];
-    NSSet *allWordsInBlock = block.words;
-    currentBlockArray = [allWordsInBlock allObjects];
+    NLCD_Block *block = blocks[currentBlock];
+    currentBlockArray = [block.words array];
   }
-  NLWord *newWord = currentBlockArray[currentWord];
+  NLCD_Word *newWord = currentBlockArray[currentWord];
   currentWord++;
   label = [[NLLabel alloc]initWithWord:newWord];
   label.delegate = self;
@@ -124,10 +121,8 @@ static int answers = 0;
     border = 20;
   }
   rightAnswers.text = [NSString stringWithFormat:@"%d / %d", allAnswers, allQuestions];
-  if (answer) {
-    ++allTrueAnswers;
-    [progressRound changeProgress:(float)allTrueAnswers/allAnswers withValueAtCenter:allTrueAnswers];
-  }
+  if (answer)  ++allTrueAnswers;
+  [progressRound changeProgress:(float)allTrueAnswers/allAnswers withValueAtCenter:allTrueAnswers];
   if (allAnswers == border) {
     [self.navigationController pushViewController:[[NLResultsViewController alloc]initWithRight:allTrueAnswers andMistakes:allAnswers- allTrueAnswers ] animated:YES];
      }

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "NLLabel.h"
 #import "NLSpinner.h"
-#import "NLWord.h"
 
 @interface NLCoreGameViewController : UIViewController <NLLabelDelegate> {
   NSManagedObjectContext *contextObject;

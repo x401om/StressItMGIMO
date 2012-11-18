@@ -7,9 +7,9 @@
 //
 
 #import "NLParser.h"
-#import "NLWord.h"
-#import "NLWordBlock.h"
-#import "NLDictionary.h"
+#import "NLCD_Word.h"
+#import "NLCD_Block.h"
+#import "NLCD_Dictionary.h"
 #import "NLAppDelegate.h"
 
 @implementation NLParser
@@ -46,9 +46,9 @@
           ++bad;
         }
         else {
-          NLWord* word1 = [NLWord wordWithText:word andStressed:[stressedArray[0] intValue]];
+          NLCD_Word* word1 = [NLCD_Word wordWithText:word andStressed:[stressedArray[0] intValue]];
 #warning new state
-           word1.state = [NSNumber numberWithInt:NLWordStateNew];
+           //word1.state = [NSNumber numberWithInt:NLWordStateNew];
             
           if([stressedArray count]==2)
           {
@@ -58,10 +58,10 @@
           
         }
       }
-      NLWordBlock* block;
+      NLCD_Block* block;
       if([arrayForBlock count]!=0)
       {
-        block = [NLWordBlock blockWithWords:arrayForBlock];
+        block = [NLCD_Block blockWithWords:arrayForBlock];
         ++count;
         
       }
@@ -94,14 +94,40 @@
   NSArray *data = [NSArray arrayWithContentsOfFile:resourcePath];
   NSMutableArray *blocksArray = [NSMutableArray array];
   for (NSString *currentWord in data) {
-    NLWordBlock *newBlock = [NLWordBlock findBlockWithTitle:currentWord];
+    NLCD_Block *newBlock = [NLCD_Block findBlockWithTitle:currentWord];
     if (newBlock.title) {
       //NSLog(@"found %@", newBlock.title);
       [blocksArray addObject:newBlock];
     }
   }
-  NLDictionary *newDictionary = [NLDictionary dictionaryWithBlocks:blocksArray andType:DictionaryTypeLearning];
+  [NLCD_Dictionary dictionaryWithBlocks:blocksArray andType:DictionaryTypeLearning];
   return;
+}
+
++ (void)addTasks {
+  NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"Tasks" ofType:@"plist"];
+  NSArray *data = [NSArray arrayWithContentsOfFile:resourcePath];
+  for (NSDictionary *currentParagraph in data) {
+    NSString *parTitle = currentParagraph[@"Title"];
+    NSString *parDeclar = currentParagraph[@"Declaration"];
+    NSArray *tasks = currentParagraph[@"Tasks"];
+    for (NSDictionary *currentTask in tasks) {
+      NSString *tTitle = currentTask[@"Title"];
+      NSString *tRule = currentTask[@"Rule"];
+      NSArray *tWords = currentTask[@"Words"];
+      for (NSString *str in tWords) {
+        NSRange range = [str rangeOfString:@"—"];
+        if (range.location == NSNotFound) continue;
+        NSArray *arr = [str componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"— (){}"]];
+        NSString *example = arr[4];
+        NSString *word = arr[6];
+        NSString *mistake = arr[8];
+        
+      }
+      NSArray *tExceptions = currentTask[@"Exceptions"];
+    
+    }
+  }
 }
 
 

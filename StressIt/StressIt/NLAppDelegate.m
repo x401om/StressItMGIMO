@@ -9,7 +9,6 @@
 #import "NLAppDelegate.h"
 #import "NLMainMenuViewController.h"
 #import "NLParser.h"
-#import "SSZipArchive.h"
 
 #define kShouldParse 0
 
@@ -52,6 +51,7 @@
   } else {
     [self copyToDocumentsFile:@"StressIt" ofType:@"sqlite"];
   }
+  [NLParser addTasks];
   UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:[[NLMainMenuViewController alloc]init]];
   [navController setNavigationBarHidden:YES];
   self.window.rootViewController = navController;

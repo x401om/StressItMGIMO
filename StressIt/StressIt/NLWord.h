@@ -9,7 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 typedef enum _WordState {
-    NLWordStateFavourite, NLWordStateRight, NLWordStateWrong, NLWordStateNew, NLWordStateUsed
+  NLWordStateFavourite,
+  NLWordStateRight,
+  NLWordStateWrong,
+  NLWordStateNew,
+  NLWordStateUsed
 } NLWordState;
 
 @interface NLWord : NSManagedObject

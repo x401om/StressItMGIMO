@@ -9,7 +9,7 @@
 #import "NLWelcomeViewController.h"
 #import "NLLearningManager.h"
 #import "NLCoreGameViewController.h"
-#import "NLDictionary.h"
+#import "NLCD_Dictionary.h"
 #import "Generator.h"
 
 #define kCuprumFontName @"Cuprum-Regular"
@@ -39,10 +39,10 @@
   [super viewDidLoad];
   numberOfDay.text = @"1";
   //todaysWords = [NLLearningManager newWordsForToday];
-  NLDictionary *dict = [NLDictionary findDictionaryWithType:DictionaryTypeLearning];
+  NLCD_Dictionary *dict = [NLCD_Dictionary findDictionaryWithType:DictionaryTypeLearning];
   NSMutableArray *blocksToday = [NSMutableArray array];
 
-  NSArray *blocks = [dict.blocks allObjects];
+  NSArray *blocks = [dict.blocks array];
   for (int i = 0; i < kCountOfBlocks; ++i) {
     int a = [Generator generateNewNumberWithStart:0 Finish:blocks.count];
     [blocksToday addObject:blocks[a]];

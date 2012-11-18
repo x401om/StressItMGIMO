@@ -8,7 +8,7 @@
 
 #import "NLDictionaryView.h"
 #import "NLAppDelegate.h"
-#import "NLWordBlock.h"
+#import "NLCD_Block.h"
 #define letterCount 30
 
 @interface NLDictionaryView ()
@@ -45,7 +45,7 @@
   NSManagedObjectContext *managedObjectContext = [(NLAppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
   
   NSEntityDescription *entityDescription = [NSEntityDescription
-                                            entityForName:@"WordBlock" inManagedObjectContext:managedObjectContext];
+                                            entityForName:@"Block" inManagedObjectContext:managedObjectContext];
   NSFetchRequest *request = [[NSFetchRequest alloc] init];
   [request setEntity:entityDescription];
   
@@ -286,7 +286,7 @@
   
   if(tableView == tableViewLeft) ind = [NSIndexPath indexPathForRow:(indexPath.row*2) inSection:indexPath.section];
   if(tableView == tableViewRight) ind = [NSIndexPath indexPathForRow:(indexPath.row*2 + 1) inSection:indexPath.section];
-    NLWordBlock *info = [fetchResultsController objectAtIndexPath:ind];
+    NLCD_Block *info = [fetchResultsController objectAtIndexPath:ind];
   cell.textLabel.text = info.title;
   
   return cell;

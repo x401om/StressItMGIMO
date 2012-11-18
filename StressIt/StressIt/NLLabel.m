@@ -203,7 +203,7 @@
     
 }
 
-- (id)initWithWord:(NLWord *)word
+- (id)initWithWord:(NLCD_Word *)word
 {
   self = [self initWithText:[word text] andStressed:[[word stressed] integerValue]];
   return self;

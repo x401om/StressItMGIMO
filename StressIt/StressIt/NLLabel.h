@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TTTAttributedLabel.h"
-#import "NLWord.h"
+#import "NLCD_Word.h"
 
 @protocol NLLabelDelegate <NSObject>
 
@@ -24,7 +24,7 @@
 @property id <NLLabelDelegate> delegate;
 
 - (id)initWithText:(NSString *)text andStressed:(NSInteger)stressed;
-- (id)initWithWord:(NLWord*)word;
+- (id)initWithWord:(NLCD_Word*)word;
 
 @end
 

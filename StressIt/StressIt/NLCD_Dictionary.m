@@ -21,7 +21,7 @@
   NLCD_Dictionary *newDictionary = nil;
   newDictionary = [NSEntityDescription insertNewObjectForEntityForName:@"Dictionary" inManagedObjectContext:context];
   newDictionary.name = type == 0 ? kDefaultName : kLearningName;
-  newDictionary.blocks = [NSSet setWithArray:blockSet];
+  newDictionary.blocks = [[NSOrderedSet alloc]initWithArray:blockSet];
   [NLCD_Dictionary saveContext];
   return newDictionary;
 }
@@ -33,6 +33,8 @@
   NSString *name = type == 0 ? kDefaultName : kLearningName;
   request.predicate = [NSPredicate predicateWithFormat:@"name = %@",name];
   NSError *error = nil;
+  NLCD_Dictionary *d = [[myContext executeFetchRequest:request error:&error]lastObject];
+  NLCD_Block *b = [d.blocks lastObject];
   return [[myContext executeFetchRequest:request error:&error]lastObject];
 }
 

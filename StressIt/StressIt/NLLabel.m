@@ -12,7 +12,7 @@
 
 #define kFontName @"Cuprum-Regular"
 #define kMaxFontSize 50
-#define kVerticalOffset 120
+#define kVerticalOffset 180
 #define kLabelHeight 50
 
 // 80 177 205 - blue

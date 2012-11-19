@@ -117,6 +117,7 @@
     myParagraph.declaration = currentParagraph[@"Declaration"];
     // task handling
     NSArray *tasks = currentParagraph[@"Tasks"];
+    NSMutableArray *myTasks = [NSMutableArray array];
     for (NSDictionary *currentTask in tasks) {
       NLCD_Task *myTask = [NLCD_Task newTask];
       myTask.title = currentTask[@"Title"];
@@ -151,7 +152,6 @@
         [words addObject:newWord];
       }
       myTask.words = [[NSOrderedSet alloc]initWithArray:words];
-      
       // handling exceptions
       NSArray *tExceptions = currentTask[@"Exceptions"];
       [words removeAllObjects];
@@ -182,7 +182,9 @@
         [words addObject:newWord];
       }
       myTask.exceptions = [[NSOrderedSet alloc]initWithArray:words];
+      [myTasks addObject:myTask];
     }
+  myParagraph.tasks = [NSSet setWithArray:myTasks];
   }
   NSLog(@"saving");
   [(NLAppDelegate *)[[UIApplication sharedApplication]delegate] saveContext];

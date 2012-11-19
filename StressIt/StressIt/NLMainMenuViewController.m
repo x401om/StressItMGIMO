@@ -44,8 +44,7 @@
 }
 
 - (IBAction)learningButtonPressed:(id)sender {
-  UIViewController *vc = [[NLWelcomeViewController alloc]init]; ;
-  [self.navigationController pushViewController:vc animated:YES];
+  [self.navigationController pushViewController:[[NLWelcomeViewController alloc]init] animated:YES];
   [self.label setHighlighted:NO];
 }
 

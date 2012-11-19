@@ -15,18 +15,16 @@
 #import "Generator.h"
 #import "NLLearningManager.h"
 #import "NLResultsViewController.h"
+#import "NLCD_Task.h"
+#import "NLCD_Paragraph.h"
 
-static int allAnswers = 0;
-static int allTrueAnswers = 0;
-static int allQuestions = 0;
+#define kCuprumFontName @"Cuprum-Regular"
 
-static int currentWord = 0;
-static int currentBlock = 0;
-static int answers = 0;
+
 
 @implementation NLCoreGameViewController
 
-@synthesize label, exampleLabel, rightAnswers, progressRound;
+@synthesize label, exampleLabel, rightAnswers, progressRound, ruleLabel, firstWordButton, secondWordButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -39,15 +37,8 @@ static int answers = 0;
 - (id)initWithWords:(NSArray *)words {
   self = [super init];
   if (self) {
-    allAnswers = 0;
-    allTrueAnswers = 0;
-    allQuestions = 0;
-    
-    currentWord = 0;
-    currentBlock = 0;
-    answers = 0;
 
-    blocks = words;
+
     contextObject = ((NLAppDelegate *)[[UIApplication sharedApplication]delegate]).managedObjectContext;
    // [[UIApplication sharedApplication]setStatusBarHidden:YES];
   }
@@ -56,47 +47,102 @@ static int answers = 0;
 
 - (id)initWithType:(NLGameType)type andParagraph:(NLCD_Paragraph *)paragraph {
   currentParagraph = paragraph;
-  
+  gameType = type;
   return self;
 }
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  for (NLCD_Block *b in blocks) {
-    allQuestions += b.words.count;
-  }
+   trueButton = 0;
+  
+   allAnswers = 0;
+   allTrueAnswers = 0;
+   allQuestions = 0;
+  
+   currentWordNum = 0;
+   currentTaskNum = 0;
+   answers = 0;
+  
+   wordsOpened = NO;
+  
   progressRound = [[NLSpinner alloc]initWithFrame:progressRound.frame type:NLSpinnerTypeProgress startValue:0];
   [self.view addSubview:progressRound];
   rightAnswers.text = [NSString stringWithFormat:@"%d / %d", answers, allQuestions];
-  NLCD_Block *block = blocks[currentBlock];
-  currentBlockArray = [block.words array];
-  [self presentNewWord];
+  ruleLabel.font = [UIFont fontWithName:kCuprumFontName size:ruleLabel.font.pointSize];
+  exampleLabel.font = [UIFont fontWithName:kCuprumFontName size:exampleLabel.font.pointSize];
+  firstWordButton.titleLabel.font = [UIFont fontWithName:kCuprumFontName size:firstWordButton.titleLabel.font.pointSize];
+  secondWordButton.titleLabel.font = [UIFont fontWithName:kCuprumFontName size:secondWordButton.titleLabel.font.pointSize];
+
+
   
+//  NLCD_Block *block = blocks[currentBlock];
+//  currentBlockArray = [block.words array];
+//  [self presentNewWord];
+  if (gameType == NLGameTypeTwo) {
+    tasks = [currentParagraph.tasks allObjects];
+    [self presentNewTask];
+  }
+}
+
+- (void)presentNewTask {
+  if (currentTaskNum >= 1) {
+    [self.navigationController pushViewController:[[NLResultsViewController alloc]initWithRight:allTrueAnswers andMistakes:(allQuestions - allTrueAnswers) ] animated:YES];
+  }
+  currentTask = tasks[currentTaskNum];
+  ++currentTaskNum;
+  ruleLabel.text = currentTask.rule;
+  words = [currentTask.words array];
+  wordsOpened = YES;
+  [self presentNewWord];
 }
 
 - (void)presentNewWord {
-  [label removeFromSuperview];
-  label = nil;
-  if (currentWord >= currentBlockArray.count) {
-    currentWord = 0;
-    ++currentBlock;
-    if (currentBlock >= blocks.count) {
-      [self goToMainMenu:nil];
+  ++ allQuestions;
+  if (currentWordNum >= words.count) {
+    if (!wordsOpened) {
+      [self presentNewTask];
+      return;
     }
-    NLCD_Block *block = blocks[currentBlock];
-    currentBlockArray = [block.words array];
+    words = [currentTask.exceptions array];
+    wordsOpened = NO;
+    currentWordNum = 0;
+    [self presentNewWord];
+    return;
   }
-  NLCD_Word *newWord = currentBlockArray[currentWord];
-  currentWord++;
-  label = [[NLLabel alloc]initWithWord:newWord];
-  label.delegate = self;
-  if (newWord.example) exampleLabel.text = newWord.example;
-  else exampleLabel.text = nil;
+  currentWord = words[currentWordNum];
+  exampleLabel.text = currentWord.example;
+  ++currentWordNum;
+  NLCD_Word *wrongWord = [currentWord.fails anyObject];
+  trueButton = [Generator generateNewNumberWithStart:0 Finish:1];
+  if (trueButton == 0) {
+    [firstWordButton setTitle:currentWord.text forState:UIControlStateNormal];
+    [secondWordButton setTitle:wrongWord.text forState:UIControlStateNormal];
+  } else {
+    [secondWordButton setTitle:currentWord.text forState:UIControlStateNormal];
+    [firstWordButton setTitle:wrongWord.text forState:UIControlStateNormal];
+  }
   
-  [self.view addSubview:label];
 }
 
 
+- (IBAction)firstWordChoosed:(id)sender {
+  if (trueButton == 0) {
+    [self showMainLabel];
+  }
+}
+- (IBAction)secondWordChoosed:(id)sender {
+  if (trueButton == 1) {
+    [self showMainLabel];
+  }
+}
+
+- (void)showMainLabel {
+  label = [[NLLabel alloc]initWithWord:currentWord];
+  label.delegate = self;
+  firstWordButton.alpha = 0;
+  secondWordButton.alpha = 0;
+  [self.view addSubview:label];
+}
 
 #pragma mark Buttons Methods
 
@@ -121,17 +167,21 @@ static int answers = 0;
 
 - (void)userAnsweredWithAnswer:(BOOL)answer {
   ++allAnswers;
-  int border = [[[NSUserDefaults standardUserDefaults]objectForKey:@"DaysAmount"]integerValue];
-  if (border > 20) {
-    border = 20;
-  }
+
   rightAnswers.text = [NSString stringWithFormat:@"%d / %d", allAnswers, allQuestions];
-  if (answer)  ++allTrueAnswers;
+  if (answer) {
+    ++allTrueAnswers;
+    [self performSelector:@selector(moveNext) withObject:nil afterDelay:1];
+  } 
   [progressRound changeProgress:(float)allTrueAnswers/allAnswers withValueAtCenter:allTrueAnswers];
-  if (allAnswers == border) {
-    [self.navigationController pushViewController:[[NLResultsViewController alloc]initWithRight:allTrueAnswers andMistakes:allAnswers- allTrueAnswers ] animated:YES];
-     }
-  [self performSelector:@selector(presentNewWord) withObject:nil afterDelay:1.0];
+}
+
+- (void)moveNext {
+  firstWordButton.alpha = 1;
+  secondWordButton.alpha = 1;
+  [label removeFromSuperview];
+  label = nil;
+  [self presentNewWord];
 }
 
 @end

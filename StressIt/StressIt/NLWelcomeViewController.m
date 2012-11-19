@@ -44,10 +44,11 @@
     }
   }
   NLCD_Paragraph *currentPar = [NLCD_Paragraph paragraphWithNumber:1];
+  NSArray *tasks = [currentPar.tasks allObjects];
   numberOfParagraph.text = @"1";
   paragraphTitle.text = currentPar.title;
   paragraphDeclaration.text = currentPar.declaration;
-  game = [[NLCoreGameViewController alloc]init];
+  game = [[NLCoreGameViewController alloc]initWithType:NLGameTypeTwo andParagraph:currentPar];
 }
 
 - (void)didReceiveMemoryWarning

@@ -27,7 +27,7 @@
 		67E4F9081647FBB500AC0C5B /* Cuprum-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67E4F9061647FB5900AC0C5B /* Cuprum-Regular.ttf */; };
 		67E4F9091647FBB500AC0C5B /* Cuprum.otf in Resources */ = {isa = PBXBuildFile; fileRef = 67E4F9031647FAEE00AC0C5B /* Cuprum.otf */; };
 		C90D99B6165A1DAA00E9DDF9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C90D99B5165A1DAA00E9DDF9 /* Icon.png */; };
-		C90D99B9165A1DC300E9DDF9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C90D99B8165A1DC300E9DDF9 /* Default@2x.png */; };
+		C90D99B9165A1DC300E9DDF9 /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C90D99B8165A1DC300E9DDF9 /* Default-Landscape@2x.png */; };
 		C92E4742163317EE00B53E34 /* Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E4741163317EE00B53E34 /* Generator.m */; };
 		C93228DE163C6F0D001536A1 /* NLSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = C93228DD163C6F0D001536A1 /* NLSpinner.m */; };
 		C93228E2163C78FD001536A1 /* NLLearningManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C93228E1163C78FD001536A1 /* NLLearningManager.m */; };
@@ -117,7 +117,7 @@
 		67E4F9031647FAEE00AC0C5B /* Cuprum.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cuprum.otf; sourceTree = "<group>"; };
 		67E4F9061647FB5900AC0C5B /* Cuprum-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cuprum-Regular.ttf"; sourceTree = "<group>"; };
 		C90D99B5165A1DAA00E9DDF9 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		C90D99B8165A1DC300E9DDF9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		C90D99B8165A1DC300E9DDF9 /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
 		C92E473A1633127C00B53E34 /* dataArr.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dataArr.plist; sourceTree = "<group>"; };
 		C92E4740163317EE00B53E34 /* Generator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Generator.h; sourceTree = "<group>"; };
 		C92E4741163317EE00B53E34 /* Generator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Generator.m; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		C98658221625A7740035FB7D /* NLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLDictionary.m; sourceTree = "<group>"; };
 		C98658271625A7990035FB7D /* NLWordBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLWordBlock.h; sourceTree = "<group>"; };
 		C98658281625A7990035FB7D /* NLWordBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLWordBlock.m; sourceTree = "<group>"; };
-		C98E2A271624B6A500AFC6AD /* StressIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StressIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C98E2A271624B6A500AFC6AD /* Stress It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stress It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98E2A2B1624B6A500AFC6AD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C98E2A2D1624B6A500AFC6AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C98E2A2F1624B6A500AFC6AD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -371,7 +371,7 @@
 		C98E2A1C1624B6A500AFC6AD = {
 			isa = PBXGroup;
 			children = (
-				C90D99B8165A1DC300E9DDF9 /* Default@2x.png */,
+				C90D99B8165A1DC300E9DDF9 /* Default-Landscape@2x.png */,
 				C90D99B5165A1DAA00E9DDF9 /* Icon.png */,
 				C98E2A331624B6A600AFC6AD /* StressIt */,
 				C98E2A551624B6A600AFC6AD /* StressItTests */,
@@ -383,7 +383,7 @@
 		C98E2A281624B6A500AFC6AD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C98E2A271624B6A500AFC6AD /* StressIt.app */,
+				C98E2A271624B6A500AFC6AD /* Stress It.app */,
 				C98E2A4D1624B6A600AFC6AD /* StressItTests.octest */,
 			);
 			name = Products;
@@ -507,7 +507,7 @@
 			);
 			name = StressIt;
 			productName = StressIt;
-			productReference = C98E2A271624B6A500AFC6AD /* StressIt.app */;
+			productReference = C98E2A271624B6A500AFC6AD /* Stress It.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C98E2A4C1624B6A600AFC6AD /* StressItTests */ = {
@@ -596,7 +596,7 @@
 				C93943801647C77E0043668B /* NLResultsViewController.xib in Resources */,
 				C97BAE6F1659688D0052FA38 /* Tasks.plist in Resources */,
 				C90D99B6165A1DAA00E9DDF9 /* Icon.png in Resources */,
-				C90D99B9165A1DC300E9DDF9 /* Default@2x.png in Resources */,
+				C90D99B9165A1DC300E9DDF9 /* Default-Landscape@2x.png in Resources */,
 				C9CC24C7165A9BCA00188A2F /* StressIt.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -757,7 +757,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StressIt/StressIt-Prefix.pch";
 				INFOPLIST_FILE = "StressIt/StressIt-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Stress It";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -768,7 +768,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StressIt/StressIt-Prefix.pch";
 				INFOPLIST_FILE = "StressIt/StressIt-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Stress It";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

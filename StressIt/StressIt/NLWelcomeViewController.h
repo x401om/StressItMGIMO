@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class NLCoreGameViewController;
+
 @interface NLWelcomeViewController : UIViewController {
-  NSArray *todaysWords;
+  NLCoreGameViewController *game;
 }
-@property (strong, nonatomic) IBOutlet UILabel *numberOfDay;
-@property (strong, nonatomic) IBOutlet UILabel *countOfTodaysWords;
-@property (strong, nonatomic) IBOutlet UILabel *countOfMistakeWork;
-@property (strong, nonatomic) IBOutlet UILabel *countOfTestWords;
+@property (strong, nonatomic) IBOutlet UILabel *numberOfPart;
+@property (strong, nonatomic) IBOutlet UILabel *numberOfParagraph;
+@property (strong, nonatomic) IBOutlet UILabel *paragraphTitle;
+@property (strong, nonatomic) IBOutlet UILabel *paragraphDeclaration;
+
 
 - (IBAction)nextButtonPressed:(id)sender;
 

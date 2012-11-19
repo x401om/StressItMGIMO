@@ -19,7 +19,7 @@
 @property (nonatomic, retain) NSOrderedSet *words;
 @property (nonatomic, retain) NSOrderedSet *exceptions;
 
-- (NLCD_Task *)newTaskWithParameters:(NSDictionary *)parameters;
++ (NLCD_Task *)newTask;
 
 @end
 

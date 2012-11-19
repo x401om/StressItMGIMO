@@ -54,6 +54,11 @@ static int answers = 0;
   return self;
 }
 
+- (id)initWithType:(NLGameType)type andParagraph:(NLCD_Paragraph *)paragraph {
+  currentParagraph = paragraph;
+  
+  return self;
+}
 
 - (void)viewDidLoad {
   [super viewDidLoad];

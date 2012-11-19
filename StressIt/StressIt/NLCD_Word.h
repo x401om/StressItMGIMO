@@ -18,9 +18,11 @@
 @property (nonatomic, retain) NSNumber * state;
 @property (nonatomic, retain) NSNumber * stressed;
 @property (nonatomic, retain) NSString * text;
+@property (nonatomic, retain) NSSet *fails;
 
 + (NLCD_Word *)wordWithText:(NSString *)text andStressed:(int)stressedVowel;
 + (NLCD_Word *)findWordWithText:(NSString *)text;
++ (NLCD_Word *)findWordWithText:(NSString *)text andStressed:(int)stressed;
 + (void)saveContext;
 
 @end

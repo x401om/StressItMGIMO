@@ -29,12 +29,13 @@
         <attribute name="state" optional="YES" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="stressed" attributeType="Integer 16" minValueString="-1" maxValueString="30" defaultValueString="-1" syncable="YES"/>
         <attribute name="text" attributeType="String" minValueString="1" maxValueString="30" defaultValueString="defaultText" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <relationship name="fails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Dictionary" positionX="189" positionY="-135" width="128" height="73"/>
-        <element name="Word" positionX="45" positionY="248" width="216" height="133"/>
         <element name="Block" positionX="277" positionY="41" width="128" height="88"/>
-        <element name="Task" positionX="-144" positionY="107" width="128" height="118"/>
+        <element name="Dictionary" positionX="189" positionY="-135" width="128" height="73"/>
         <element name="Paragraph" positionX="-92" positionY="-81" width="128" height="103"/>
+        <element name="Task" positionX="-144" positionY="107" width="128" height="118"/>
+        <element name="Word" positionX="45" positionY="248" width="216" height="148"/>
     </elements>
 </model>

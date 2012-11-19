@@ -44,14 +44,7 @@
 }
 
 - (IBAction)learningButtonPressed:(id)sender {
-  UIViewController *vc;
-  if ([[NSUserDefaults standardUserDefaults]objectForKey:@"FirstLaunching"]) {
-    vc = [[NLWelcomeViewController alloc]init];
-  } else {
-    vc = [[NLSetDaysViewController alloc]init];
-    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"FirstLaunching"];
-    [[NSUserDefaults standardUserDefaults]synchronize];
-  }
+  UIViewController *vc = [[NLWelcomeViewController alloc]init]; ;
   [self.navigationController pushViewController:vc animated:YES];
   [self.label setHighlighted:NO];
 }
@@ -95,7 +88,7 @@
 
 - (IBAction)settingsPressed:(id)sender {
   
-  [self.navigationController pushViewController:[[NLSetDaysViewController alloc]init] animated:YES];
+  //[self.navigationController pushViewController:[[NLSetDaysViewController alloc]init] animated:YES];
 }
 
 

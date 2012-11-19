@@ -26,6 +26,8 @@
 		67E4F9071647FB5900AC0C5B /* Cuprum-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67E4F9061647FB5900AC0C5B /* Cuprum-Regular.ttf */; };
 		67E4F9081647FBB500AC0C5B /* Cuprum-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67E4F9061647FB5900AC0C5B /* Cuprum-Regular.ttf */; };
 		67E4F9091647FBB500AC0C5B /* Cuprum.otf in Resources */ = {isa = PBXBuildFile; fileRef = 67E4F9031647FAEE00AC0C5B /* Cuprum.otf */; };
+		C90D99B6165A1DAA00E9DDF9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C90D99B5165A1DAA00E9DDF9 /* Icon.png */; };
+		C90D99B9165A1DC300E9DDF9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C90D99B8165A1DC300E9DDF9 /* Default@2x.png */; };
 		C92E4742163317EE00B53E34 /* Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E4741163317EE00B53E34 /* Generator.m */; };
 		C93228DE163C6F0D001536A1 /* NLSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = C93228DD163C6F0D001536A1 /* NLSpinner.m */; };
 		C93228E2163C78FD001536A1 /* NLLearningManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C93228E1163C78FD001536A1 /* NLLearningManager.m */; };
@@ -67,7 +69,6 @@
 		C98E2A3A1624B6A600AFC6AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C98E2A391624B6A600AFC6AD /* main.m */; };
 		C98E2A3E1624B6A600AFC6AD /* NLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C98E2A3D1624B6A600AFC6AD /* NLAppDelegate.m */; };
 		C98E2A401624B6A600AFC6AD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C98E2A3F1624B6A600AFC6AD /* Default.png */; };
-		C98E2A421624B6A600AFC6AD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C98E2A411624B6A600AFC6AD /* Default@2x.png */; };
 		C98E2A441624B6A600AFC6AD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C98E2A431624B6A600AFC6AD /* Default-568h@2x.png */; };
 		C98E2A4F1624B6A600AFC6AD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98E2A4E1624B6A600AFC6AD /* SenTestingKit.framework */; };
 		C98E2A501624B6A600AFC6AD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98E2A2B1624B6A500AFC6AD /* UIKit.framework */; };
@@ -115,6 +116,8 @@
 		67C0DBA11625E42E00214C52 /* All_Forms.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = All_Forms.txt; path = ../../All_Forms.txt; sourceTree = "<group>"; };
 		67E4F9031647FAEE00AC0C5B /* Cuprum.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cuprum.otf; sourceTree = "<group>"; };
 		67E4F9061647FB5900AC0C5B /* Cuprum-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cuprum-Regular.ttf"; sourceTree = "<group>"; };
+		C90D99B5165A1DAA00E9DDF9 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		C90D99B8165A1DC300E9DDF9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		C92E473A1633127C00B53E34 /* dataArr.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dataArr.plist; sourceTree = "<group>"; };
 		C92E4740163317EE00B53E34 /* Generator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Generator.h; sourceTree = "<group>"; };
 		C92E4741163317EE00B53E34 /* Generator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Generator.m; sourceTree = "<group>"; };
@@ -323,6 +326,8 @@
 			children = (
 				C92E473A1633127C00B53E34 /* dataArr.plist */,
 				C98E2A451624B6A600AFC6AD /* StressIt.xcdatamodeld */,
+				67C0DB8D1625DFDE00214C52 /* NLParser.h */,
+				67C0DB8E1625DFDE00214C52 /* NLParser.m */,
 				C95CD3F1165109BE0015B2C5 /* Deprecated */,
 				C95CD3F316510A770015B2C5 /* Words */,
 				C95CD3F2165109F80015B2C5 /* Tasks */,
@@ -351,8 +356,6 @@
 		C986582C1625A84C0035FB7D /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				67C0DB8D1625DFDE00214C52 /* NLParser.h */,
-				67C0DB8E1625DFDE00214C52 /* NLParser.m */,
 				C92E4740163317EE00B53E34 /* Generator.h */,
 				C92E4741163317EE00B53E34 /* Generator.m */,
 				C932F87F1626203600D9A34B /* TTTAttributedLabel.h */,
@@ -368,6 +371,8 @@
 		C98E2A1C1624B6A500AFC6AD = {
 			isa = PBXGroup;
 			children = (
+				C90D99B8165A1DC300E9DDF9 /* Default@2x.png */,
+				C90D99B5165A1DAA00E9DDF9 /* Icon.png */,
 				C98E2A331624B6A600AFC6AD /* StressIt */,
 				C98E2A551624B6A600AFC6AD /* StressItTests */,
 				C98E2A2A1624B6A500AFC6AD /* Frameworks */,
@@ -564,7 +569,6 @@
 				67564BE91645A8C0007D2E9A /* Lobster 1.4.otf in Resources */,
 				C98E2A381624B6A600AFC6AD /* InfoPlist.strings in Resources */,
 				C98E2A401624B6A600AFC6AD /* Default.png in Resources */,
-				C98E2A421624B6A600AFC6AD /* Default@2x.png in Resources */,
 				C98E2A441624B6A600AFC6AD /* Default-568h@2x.png in Resources */,
 				C98E2A6A1624B6EC00AFC6AD /* NLMainMenuViewController.xib in Resources */,
 				C98E2A701624B83A00AFC6AD /* MainMenuTempBg.jpeg in Resources */,
@@ -592,6 +596,8 @@
 				C93943801647C77E0043668B /* NLResultsViewController.xib in Resources */,
 				C97BAE6F1659688D0052FA38 /* Tasks.plist in Resources */,
 				C9EC459D16597361006A81C4 /* StressIt.sqlite in Resources */,
+				C90D99B6165A1DAA00E9DDF9 /* Icon.png in Resources */,
+				C90D99B9165A1DC300E9DDF9 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

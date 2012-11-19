@@ -10,6 +10,8 @@
 #import "NLCD_Word.h"
 #import "NLCD_Block.h"
 #import "NLCD_Dictionary.h"
+#import "NLCD_Paragraph.h"
+#import "NLCD_Task.h"
 #import "NLAppDelegate.h"
 
 @implementation NLParser
@@ -75,14 +77,13 @@
 
     [(NLAppDelegate*)[[UIApplication sharedApplication] delegate] saveContext];
     [[(NLAppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext] reset];
-    [NLParser fillFavourites];
+    //[NLParser fillFavourites];
     NSLog(@"%f",-[tempDate timeIntervalSinceNow]);
     NSLog(@"%d",bad);
   }
   [[NSNotificationCenter defaultCenter] postNotificationName:@"ParceDone" object:nil];
 
 }
-
 
 - (void) parse {
   [[NSNotificationCenter defaultCenter] postNotificationName:@"ParceStart" object:nil];
@@ -107,27 +108,85 @@
 + (void)addTasks {
   NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"Tasks" ofType:@"plist"];
   NSArray *data = [NSArray arrayWithContentsOfFile:resourcePath];
+  int num = 0;
   for (NSDictionary *currentParagraph in data) {
-    NSString *parTitle = currentParagraph[@"Title"];
-    NSString *parDeclar = currentParagraph[@"Declaration"];
+    ++num;
+    NLCD_Paragraph *myParagraph = [NLCD_Paragraph newParagraph];
+    myParagraph.number = [NSNumber numberWithInt:num];
+    myParagraph.title = currentParagraph[@"Title"];
+    myParagraph.declaration = currentParagraph[@"Declaration"];
+    // task handling
     NSArray *tasks = currentParagraph[@"Tasks"];
     for (NSDictionary *currentTask in tasks) {
-      NSString *tTitle = currentTask[@"Title"];
-      NSString *tRule = currentTask[@"Rule"];
+      NLCD_Task *myTask = [NLCD_Task newTask];
+      myTask.title = currentTask[@"Title"];
+      myTask.rule = currentTask[@"Rule"];
+      // words handling
       NSArray *tWords = currentTask[@"Words"];
+      NSMutableArray *words = [NSMutableArray array];
       for (NSString *str in tWords) {
         NSRange range = [str rangeOfString:@"—"];
         if (range.location == NSNotFound) continue;
         NSArray *arr = [str componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"— (){}"]];
         NSString *example = arr[4];
         NSString *word = arr[6];
+        NSArray *cuttedWord = [word componentsSeparatedByString:@"\u0301"];
+        word = cuttedWord[0];
+        int stressed = word.length-1;
+        if (cuttedWord.count > 1) {
+          word = [word stringByAppendingString:cuttedWord[1]];
+        }
+        NLCD_Word * newWord = [NLCD_Word wordWithText:word andStressed:stressed];
+        NSLog(newWord.description);
+        newWord.example = example;
         NSString *mistake = arr[8];
-        
+        cuttedWord = [mistake componentsSeparatedByString:@"\u0301"];
+        mistake = cuttedWord[0];
+        stressed = mistake.length-1;
+        if (cuttedWord.count > 1) {
+          mistake = [mistake stringByAppendingString:cuttedWord[1]];
+        }
+        NLCD_Word *newMistake = [NLCD_Word wordWithText:mistake andStressed:stressed];
+        newWord.fails = [NSSet setWithObject:newMistake];
+        [words addObject:newWord];
       }
+      myTask.words = [[NSOrderedSet alloc]initWithArray:words];
+      
+      // handling exceptions
       NSArray *tExceptions = currentTask[@"Exceptions"];
-    
+      [words removeAllObjects];
+      for (NSString *str in tExceptions) {
+        NSRange range = [str rangeOfString:@"—"];
+        if (range.location == NSNotFound) continue;
+        NSArray *arr = [str componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"— (){}"]];
+        NSString *example = arr[4];
+        NSString *word = arr[6];
+        NSArray *cuttedWord = [word componentsSeparatedByString:@"\u0301"];
+        word = cuttedWord[0];
+        int stressed = word.length-1;
+        if (cuttedWord.count > 1) {
+          word = [word stringByAppendingString:cuttedWord[1]];
+        }
+        NLCD_Word * newWord = [NLCD_Word wordWithText:word andStressed:stressed];
+        NSLog(newWord.description);
+        newWord.example = example;
+        NSString *mistake = arr[8];
+        cuttedWord = [mistake componentsSeparatedByString:@"\u0301"];
+        mistake = cuttedWord[0];
+        stressed = mistake.length-1;
+        if (cuttedWord.count > 1) {
+          mistake = [mistake stringByAppendingString:cuttedWord[1]];
+        }
+        NLCD_Word *newMistake = [NLCD_Word wordWithText:mistake andStressed:stressed];
+        newWord.fails = [NSSet setWithObject:newMistake];
+        [words addObject:newWord];
+      }
+      myTask.exceptions = [[NSOrderedSet alloc]initWithArray:words];
     }
   }
+  NSLog(@"saving");
+  [(NLAppDelegate *)[[UIApplication sharedApplication]delegate] saveContext];
+  NSLog(@"saving completed");
 }
 
 

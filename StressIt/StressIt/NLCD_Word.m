@@ -17,6 +17,7 @@
 @dynamic state;
 @dynamic stressed;
 @dynamic text;
+@dynamic fails;
 
 + (NLCD_Word *)wordWithText:(NSString *)text andStressed:(int)stressedVowel {
   NSManagedObjectContext *context = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
@@ -34,6 +35,15 @@
   NSFetchRequest *request = [[NSFetchRequest alloc] init];
   request.entity = [NSEntityDescription entityForName:@"Word" inManagedObjectContext:myContext];
   request.predicate = [NSPredicate predicateWithFormat:@"text = %@",text];
+  NSError *error = nil;
+  return [[myContext executeFetchRequest:request error:&error]lastObject];
+}
+
++ (NLCD_Word *)findWordWithText:(NSString *)text andStressed:(int)stressed {
+  NSManagedObjectContext *myContext = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+  NSFetchRequest *request = [[NSFetchRequest alloc] init];
+  request.entity = [NSEntityDescription entityForName:@"Word" inManagedObjectContext:myContext];
+  request.predicate = [NSPredicate predicateWithFormat:@"text = %@ && stressed = %d",text, stressed];
   NSError *error = nil;
   return [[myContext executeFetchRequest:request error:&error]lastObject];
 }

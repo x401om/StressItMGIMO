@@ -51,7 +51,7 @@
   } else {
     [self copyToDocumentsFile:@"StressIt" ofType:@"sqlite"];
   }
-  [NLParser addTasks];
+  //[NLParser addTasks];
   UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:[[NLMainMenuViewController alloc]init]];
   [navController setNavigationBarHidden:YES];
   self.window.rootViewController = navController;

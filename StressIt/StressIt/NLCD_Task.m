@@ -18,14 +18,18 @@
 @dynamic words;
 @dynamic exceptions;
 
-- (NLCD_Task *)newTaskWithParameters:(NSDictionary *)parameters {
++ (NLCD_Task *)newTask {
   NSManagedObjectContext *context = ((NLAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
   NLCD_Task *newTask = nil;
   newTask = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:context];
-  //newTask.name = type == 0 ? kDefaultName : kLearningName;
- // newTask.blocks = [NSSet setWithArray:blockSet];
-  //[NLCD_Dictionary saveContext];
   return newTask;
+}
+
+- (NSString *)description {
+  int n = [self.point intValue];
+  NSString *d = self.rule;
+  NSString *str = [NSString stringWithFormat:@"#%d %@", n, d];
+  return str;
 }
 
 @end

@@ -21,6 +21,9 @@
 
 @interface NLCD_Paragraph (CoreDataGeneratedAccessors)
 
++ (NLCD_Paragraph *)newParagraph;
++ (NLCD_Paragraph *)paragraphWithNumber:(int)number;
+
 - (void)addTasksObject:(NLCD_Task *)value;
 - (void)removeTasksObject:(NLCD_Task *)value;
 - (void)addTasks:(NSSet *)values;

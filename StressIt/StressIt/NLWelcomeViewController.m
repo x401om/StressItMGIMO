@@ -11,6 +11,7 @@
 #import "NLCoreGameViewController.h"
 #import "NLCD_Dictionary.h"
 #import "Generator.h"
+#import "NLCD_Paragraph.h"
 
 #define kCuprumFontName @"Cuprum-Regular"
 
@@ -21,7 +22,7 @@
 
 @implementation NLWelcomeViewController
 
-@synthesize numberOfDay, countOfTodaysWords, countOfMistakeWork, countOfTestWords;
+@synthesize numberOfPart,numberOfParagraph, paragraphTitle, paragraphDeclaration;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,20 +38,16 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  numberOfDay.text = @"1";
-  //todaysWords = [NLLearningManager newWordsForToday];
-  NLCD_Dictionary *dict = [NLCD_Dictionary findDictionaryWithType:DictionaryTypeLearning];
-  NSMutableArray *blocksToday = [NSMutableArray array];
-
-  NSArray *blocks = [dict.blocks array];
-  for (int i = 0; i < kCountOfBlocks; ++i) {
-    int a = [Generator generateNewNumberWithStart:0 Finish:blocks.count];
-    [blocksToday addObject:blocks[a]];
+  for (UILabel *viewToChange in self.view.subviews) {
+    if (viewToChange.tag == 1) {
+      viewToChange.font = [UIFont fontWithName:kCuprumFontName size:viewToChange.font.pointSize];
+    }
   }
-  blocks = nil;
-  todaysWords = blocksToday;
-  countOfTodaysWords.text = [NSString stringWithFormat:@"%d", todaysWords.count];
-  countOfMistakeWork.text = @"0";
+  NLCD_Paragraph *currentPar = [NLCD_Paragraph paragraphWithNumber:1];
+  numberOfParagraph.text = @"1";
+  paragraphTitle.text = currentPar.title;
+  paragraphDeclaration.text = currentPar.declaration;
+  game = [[NLCoreGameViewController alloc]init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,7 +57,7 @@
 }
 
 - (IBAction)nextButtonPressed:(id)sender {
-  [self.navigationController pushViewController:[[NLCoreGameViewController alloc]initWithWords:todaysWords] animated:YES];
+  [self.navigationController pushViewController:game animated:YES];
 }
 - (IBAction)backButtonPressed:(id)sender {
   [self.navigationController popToRootViewControllerAnimated:YES];

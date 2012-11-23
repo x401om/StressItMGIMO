@@ -8,7 +8,8 @@
 
 #import "NLLabel.h"
 
-#define debugging 1
+#define kDebug 1
+#define kFullDebug 1
 
 #define kFontName @"Cuprum-Regular"
 #define kMaxFontSize 50
@@ -25,6 +26,23 @@
 @synthesize vowelLetters = _vowelLetters;
 @synthesize delegate = _delegate;
 
+- (void)changeWordWithWord:(NLCD_Word *)word {
+  if (kDebug) NSLog(@"NLLabel_output: new word %@", word);
+  [UIView animateWithDuration:0.5 animations:^{
+    self.alpha = 0;
+  }];
+  self.stresssed = [word.stressed intValue];
+  NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:word.text];
+  [self vowelsInWord:word.text];
+  [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:66.f/255.f green:79.f/255.f blue:91.f/255.f alpha:1] range:NSMakeRange(0, attributedString.length)];
+  float fontSize = [self recommendedFontSizeForWord:word.text];
+  self.font = [UIFont fontWithName:kFontName size:fontSize];
+  self.attributedText = attributedString;
+  [UIView animateWithDuration:0.5 animations:^{
+    self.alpha = 1;
+  }];
+}
+
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -40,26 +58,18 @@
   self.stresssed = stressed;
 
   self.backgroundColor = [UIColor clearColor];
+  self.textAlignment = NSTextAlignmentCenter;
   
   NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:text];
   [self vowelsInWord:text];
   self.userInteractionEnabled = YES;
   [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:66.f/255.f green:79.f/255.f blue:91.f/255.f alpha:1] range:NSMakeRange(0, attributedString.length)];
-//  for (NSNumber *number in self.vowelLetters) {
-//
-//    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange([number intValue], 1)];
-//  }
   float fontSize = [self recommendedFontSizeForWord:text];
-  
-  // label initialization
-  
-  [self setFont:[UIFont fontWithName:kFontName size:fontSize]];
-  [self setTextAlignment:NSTextAlignmentCenter];
+  self.font = [UIFont fontWithName:kFontName size:fontSize];
   self.attributedText = attributedString;
   
   return self;
 }
-
 
 - (NSString *)characterAtIndex:(int)index inString:(NSString *)string {
   NSRange range;
@@ -80,21 +90,22 @@
   wordRect.size = wordSize;
   wordRect.origin.y = self.frame.size.height/2 - wordRect.size.height/2;
   wordRect.origin.x = self.frame.origin.x + self.frame.size.width/2 - wordSize.width/2;
+  if (kDebug && kFullDebug) NSLog(@"NLLabel_output: word rect %@", [NSValue valueWithCGRect:wordRect]);
   NSMutableArray *letterRects = [NSMutableArray array];
   for (int i = 0; i < word.length; ++i) {
 		NSRange range;
 		range.location = i;
 		range.length = 1;
     NSString *currentChar = [word substringWithRange:range];
-		CGSize currentize = [currentChar sizeWithFont:[UIFont fontWithName:kFontName size:fontSize]];
+		CGSize currentSize = [currentChar sizeWithFont:[UIFont fontWithName:kFontName size:fontSize]];
     range.location = 0;
     range.length = i+1;
     CGSize bigSize = [[word substringWithRange:range] sizeWithFont:[UIFont fontWithName:kFontName size:fontSize]];
     CGRect rect;
-    rect.size = currentize;
+    rect.size = currentSize;
     rect.origin.y = wordRect.origin.y;
     rect.origin.x = wordRect.origin.x + bigSize.width - rect.size.width;
-    
+    if (kDebug && kFullDebug) NSLog(@"NLLabel_output: current char %@; rect %@", currentChar, [NSValue valueWithCGRect:rect]);
     [letterRects addObject:[NSValue valueWithCGRect:rect]];
 	}
   
@@ -105,7 +116,7 @@
       return i;
     }
   }
-  NSLog(@"Shit...");
+  if (kDebug) NSLog(@"NLLabel_output: touched not in word");
   return -1;
 }
 
@@ -196,7 +207,7 @@
   UITouch *touch = [touches anyObject];
   if (touch.view != self) return;
   CGPoint location = [touch locationInView:self];
-  if (debugging) NSLog(@"%@", [NSValue valueWithCGPoint:location]);
+  if (kDebug) NSLog(@"NLLabel_output: touched on %@", [NSValue valueWithCGPoint:location]);
   
   int letter = [self touchedLetter:location];
   [self answeredWithLetter:letter];
@@ -205,7 +216,7 @@
 
 - (id)initWithWord:(NLCD_Word *)word
 {
-  self = [self initWithText:[word text] andStressed:[[word stressed] integerValue]];
+  self = [self initWithText:word.text andStressed:[word.stressed intValue]];
   return self;
 }
 

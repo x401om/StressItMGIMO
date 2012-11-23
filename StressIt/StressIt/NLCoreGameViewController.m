@@ -53,6 +53,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  //label = [[NLLabel alloc]initWithWord:nil];
    trueButton = 0;
   
    allAnswers = 0;
@@ -137,7 +138,11 @@
 }
 
 - (void)showMainLabel {
-  label = [[NLLabel alloc]initWithWord:currentWord];
+  if (label) {
+    [label changeWordWithWord:currentWord];
+  } else {
+    label = [[NLLabel alloc]initWithWord:currentWord];
+  }
   label.delegate = self;
   firstWordButton.alpha = 0;
   secondWordButton.alpha = 0;

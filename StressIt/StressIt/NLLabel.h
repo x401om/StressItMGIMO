@@ -25,6 +25,7 @@
 
 - (id)initWithText:(NSString *)text andStressed:(NSInteger)stressed;
 - (id)initWithWord:(NLCD_Word*)word;
+- (void)changeWordWithWord:(NLCD_Word *)word;
 
 @end
 

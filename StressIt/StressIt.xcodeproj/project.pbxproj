@@ -26,6 +26,9 @@
 		67E4F9071647FB5900AC0C5B /* Cuprum-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67E4F9061647FB5900AC0C5B /* Cuprum-Regular.ttf */; };
 		67E4F9081647FBB500AC0C5B /* Cuprum-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67E4F9061647FB5900AC0C5B /* Cuprum-Regular.ttf */; };
 		67E4F9091647FBB500AC0C5B /* Cuprum.otf in Resources */ = {isa = PBXBuildFile; fileRef = 67E4F9031647FAEE00AC0C5B /* Cuprum.otf */; };
+		73853FD7165ABE930006A530 /* NLGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73853FD5165ABE930006A530 /* NLGameViewController.m */; };
+		73853FD8165ABE930006A530 /* NLGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73853FD6165ABE930006A530 /* NLGameViewController.xib */; };
+		73853FDA165AC01E0006A530 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73853FD9165AC01E0006A530 /* GameKit.framework */; };
 		C90D99B6165A1DAA00E9DDF9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C90D99B5165A1DAA00E9DDF9 /* Icon.png */; };
 		C90D99B9165A1DC300E9DDF9 /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C90D99B8165A1DC300E9DDF9 /* Default-Landscape@2x.png */; };
 		C92E4742163317EE00B53E34 /* Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E4741163317EE00B53E34 /* Generator.m */; };
@@ -116,6 +119,10 @@
 		67C0DBA11625E42E00214C52 /* All_Forms.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = All_Forms.txt; path = ../../All_Forms.txt; sourceTree = "<group>"; };
 		67E4F9031647FAEE00AC0C5B /* Cuprum.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cuprum.otf; sourceTree = "<group>"; };
 		67E4F9061647FB5900AC0C5B /* Cuprum-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cuprum-Regular.ttf"; sourceTree = "<group>"; };
+		73853FD4165ABE930006A530 /* NLGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLGameViewController.h; sourceTree = "<group>"; };
+		73853FD5165ABE930006A530 /* NLGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLGameViewController.m; sourceTree = "<group>"; };
+		73853FD6165ABE930006A530 /* NLGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NLGameViewController.xib; sourceTree = "<group>"; };
+		73853FD9165AC01E0006A530 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		C90D99B5165A1DAA00E9DDF9 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		C90D99B8165A1DC300E9DDF9 /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
 		C92E473A1633127C00B53E34 /* dataArr.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dataArr.plist; sourceTree = "<group>"; };
@@ -202,6 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73853FDA165AC01E0006A530 /* GameKit.framework in Frameworks */,
 				C9394349164722280043668B /* libz.dylib in Frameworks */,
 				C98E2AA11624BC1600AFC6AD /* CoreText.framework in Frameworks */,
 				C98E2A2C1624B6A500AFC6AD /* UIKit.framework in Frameworks */,
@@ -225,6 +233,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		73853FCD165ABE140006A530 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				73853FD4165ABE930006A530 /* NLGameViewController.h */,
+				73853FD5165ABE930006A530 /* NLGameViewController.m */,
+				73853FD6165ABE930006A530 /* NLGameViewController.xib */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
 		C939433B164700B00043668B /* Learning */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +356,7 @@
 		C986582B1625A7DF0035FB7D /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				73853FCD165ABE140006A530 /* Game */,
 				C98E2A661624B6EB00AFC6AD /* NLMainMenuViewController.h */,
 				C98E2A671624B6EB00AFC6AD /* NLMainMenuViewController.m */,
 				C98E2A681624B6EB00AFC6AD /* NLMainMenuViewController.xib */,
@@ -371,6 +390,7 @@
 		C98E2A1C1624B6A500AFC6AD = {
 			isa = PBXGroup;
 			children = (
+				73853FD9165AC01E0006A530 /* GameKit.framework */,
 				C90D99B8165A1DC300E9DDF9 /* Default-Landscape@2x.png */,
 				C90D99B5165A1DAA00E9DDF9 /* Icon.png */,
 				C98E2A331624B6A600AFC6AD /* StressIt */,
@@ -598,6 +618,7 @@
 				C90D99B6165A1DAA00E9DDF9 /* Icon.png in Resources */,
 				C90D99B9165A1DC300E9DDF9 /* Default-Landscape@2x.png in Resources */,
 				C9CC24C7165A9BCA00188A2F /* StressIt.sqlite in Resources */,
+				73853FD8165ABE930006A530 /* NLGameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +680,7 @@
 				C95CD3EA165109B30015B2C5 /* NLCD_Word.m in Sources */,
 				C95CD3ED165109B30015B2C5 /* NLCD_Block.m in Sources */,
 				C95CD3F0165109B40015B2C5 /* NLCD_Paragraph.m in Sources */,
+				73853FD7165ABE930006A530 /* NLGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,7 +745,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -744,7 +766,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -757,6 +779,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StressIt/StressIt-Prefix.pch";
 				INFOPLIST_FILE = "StressIt/StressIt-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "Stress It";
 				WRAPPER_EXTENSION = app;
 			};
@@ -768,6 +791,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StressIt/StressIt-Prefix.pch";
 				INFOPLIST_FILE = "StressIt/StressIt-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "Stress It";
 				WRAPPER_EXTENSION = app;
 			};

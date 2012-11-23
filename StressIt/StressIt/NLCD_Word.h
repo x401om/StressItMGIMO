@@ -25,4 +25,6 @@
 + (NLCD_Word *)findWordWithText:(NSString *)text andStressed:(int)stressed;
 + (void)saveContext;
 
++ (NSArray *)getRandomWordsInAmount:(int)amount;
+
 @end

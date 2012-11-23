@@ -11,7 +11,7 @@
 #import "NLDictionaryView.h"
 #import "NLSetDaysViewController.h"
 #import "NLWelcomeViewController.h"
-
+#import "NLGameViewController.h"
 
 @interface NLMainMenuViewController ()
 
@@ -90,5 +90,13 @@
   //[self.navigationController pushViewController:[[NLSetDaysViewController alloc]init] animated:YES];
 }
 
+- (IBAction)gameButtonPressed {
+    NLGameViewController *vc = [[NLGameViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    return toInterfaceOrientation = UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight;
+}
 
 @end

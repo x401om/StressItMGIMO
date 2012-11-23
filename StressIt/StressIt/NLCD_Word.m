@@ -7,7 +7,10 @@
 //
 
 #import "NLCD_Word.h"
+#import "NLCD_Block.h"
 #import "NLAppDelegate.h"
+#import "Generator.h"
+#import "NLCD_Dictionary.h"
 
 @implementation NLCD_Word
 
@@ -63,6 +66,21 @@
   int stressedPosition = [self.stressed intValue] + 1;
   NSString *output = [NSString stringWithFormat:@"%@\u0301%@", [self.text substringToIndex:stressedPosition], [self.text substringFromIndex:stressedPosition]];
   return output;
+}
+
++ (NSArray *)getRandomWordsInAmount:(int)amount {
+    NLCD_Dictionary *dict = [NLCD_Dictionary findDictionaryWithType:DictionaryTypeLearning];
+    
+    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:amount];
+    
+    NSUInteger blocksCount = dict.blocks.count;
+    for (int i = 0; i < amount; ++i) {
+        NSUInteger randIndex = [Generator generateNewNumberWithStart:0 Finish:blocksCount-1];
+        NLCD_Block *block = [dict.blocks objectAtIndex:randIndex];
+        [array addObject:[block.words objectAtIndex:0]];
+    }
+    
+    return array;
 }
 
 

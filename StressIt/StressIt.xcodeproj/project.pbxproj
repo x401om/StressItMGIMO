@@ -84,7 +84,6 @@
 		C98E2A701624B83A00AFC6AD /* MainMenuTempBg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C98E2A6F1624B83A00AFC6AD /* MainMenuTempBg.jpeg */; };
 		C98E2AA11624BC1600AFC6AD /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98E2AA01624BC1600AFC6AD /* CoreText.framework */; };
 		C98E2AA41624BD2600AFC6AD /* NLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C98E2AA31624BD2500AFC6AD /* NLLabel.m */; };
-		C9CC24C7165A9BCA00188A2F /* StressIt.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C9CC24C6165A9BCA00188A2F /* StressIt.sqlite */; };
 		C9E2B5AD1646712600C1AE1E /* StressIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C98E2A451624B6A600AFC6AD /* StressIt.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -201,7 +200,6 @@
 		C98E2AA01624BC1600AFC6AD /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		C98E2AA21624BD2500AFC6AD /* NLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLLabel.h; sourceTree = "<group>"; };
 		C98E2AA31624BD2500AFC6AD /* NLLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLLabel.m; sourceTree = "<group>"; };
-		C9CC24C6165A9BCA00188A2F /* StressIt.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = StressIt.sqlite; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -440,7 +438,6 @@
 		C98E2A341624B6A600AFC6AD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C9CC24C6165A9BCA00188A2F /* StressIt.sqlite */,
 				C95CD3F416510AC00015B2C5 /* Fonts */,
 				C95CD3F516510AD10015B2C5 /* Pictures */,
 				67C0DBA11625E42E00214C52 /* All_Forms.txt */,
@@ -617,7 +614,6 @@
 				C97BAE6F1659688D0052FA38 /* Tasks.plist in Resources */,
 				C90D99B6165A1DAA00E9DDF9 /* Icon.png in Resources */,
 				C90D99B9165A1DC300E9DDF9 /* Default-Landscape@2x.png in Resources */,
-				C9CC24C7165A9BCA00188A2F /* StressIt.sqlite in Resources */,
 				73853FD8165ABE930006A530 /* NLGameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,15 +7,15 @@
 //
 
 #import "NLGameViewController.h"
+#import "Generator.h"
 
-#define kDefaultRandomNumberOfWordsToPlay 10
+#define kDefaultRandomNumberOfWordsToPlay 100
 
 @interface NLGameViewController ()
 
 @end
 
 @implementation NLGameViewController
-@synthesize label = _label;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,18 +26,16 @@
     return self;
 }
 
-- (NLLabel *)label {
-    if (_label) {
-        _label = nil;
-    }
-    NLCD_Word *randomWord = [self.wordsForGame lastObject];
-    _label = [[NLLabel alloc] initWithWord:randomWord];
-    _label.delegate = self;
-    _label.center = self.view.center;
-
-    return _label;
+- (int)randomIndex {
+    return [Generator generateNewNumberWithStart:0 Finish:kDefaultRandomNumberOfWordsToPlay-1];
 }
 
+- (void)setUpLabel {
+    self.word = [[NLLabel alloc] initWithWord:[self.wordsForGame objectAtIndex:[self randomIndex]]];
+    
+    self.word.center = self.view.center;
+    [self.view addSubview:self.word];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -45,15 +43,8 @@
     self.playerScores = 0;
     self.myScores.text = self.apponentScore.text = [NSString stringWithFormat:@"%d", self.playerScores];
     
-    [self.view addSubview:self.label];
-    
-//    NSLog(@"%g %g %g %g", label.frame.origin.x, label.frame.origin.y, label.frame.size.height, label.frame.size.width);
-//    self.word.text = ((NLCD_Word *)[self.wordsForGame lastObject]).text;
-    
-//    GKPeerPickerController *picker = [[GKPeerPickerController alloc]init];
-//    picker.connectionTypesMask = GKPeerPickerConnectionTypeNearby;
-//    picker.delegate = self;
-//    [picker show];
+    [self setUpLabel];
+//    [self setUpConnection];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -64,6 +55,13 @@
 }
 
 #pragma mark connection
+
+- (void)setUpConnection {
+    GKPeerPickerController *picker = [[GKPeerPickerController alloc]init];
+    picker.connectionTypesMask = GKPeerPickerConnectionTypeNearby;
+    picker.delegate = self;
+    [picker show];
+}
 
 - (GKSession *)peerPickerController:(GKPeerPickerController *)picker sessionForConnectionType:(GKPeerPickerConnectionType)type {
     GKSession *session = [[GKSession alloc] initWithSessionID:@"Stress It" displayName:nil sessionMode:GKSessionModePeer];
@@ -115,18 +113,22 @@
         NSLog(@"letter %@ touched", letter);
 }
 
+- (void)changeWordAndScore {
+    [self.word changeWordWithWord:[self.wordsForGame objectAtIndex:[self randomIndex]]];
+    [UIView animateWithDuration:3 animations:^{
+        self.myScores.text = [NSString stringWithFormat:@"%d", self.playerScores];
+    }];
+}
+
 - (void)userAnsweredWithAnswer:(BOOL)answer {
     if (answer) {
         ++self.playerScores;
-        [UIView animateWithDuration:3 animations:^{
-            self.myScores.text = [NSString stringWithFormat:@"%d", self.playerScores];
-        }];
+        [self changeWordAndScore];
         NSLog(@"right answer");
     }
     else {
         NSLog(@"wrong answer");
     }
-
     if (self.session) {
         int arr[2];
         arr[0] = answer;
@@ -141,15 +143,18 @@
     }
 }
 
+#pragma mark unload
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 - (void)viewDidUnload {
     [self setMyScores:nil];
     [self setApponentScore:nil];
+    [self setWord:nil];
     [super viewDidUnload];
 }
+
 @end

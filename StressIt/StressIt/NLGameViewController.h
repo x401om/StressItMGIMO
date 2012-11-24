@@ -15,7 +15,7 @@
 @interface NLGameViewController : UIViewController <GKSessionDelegate, GKPeerPickerControllerDelegate, NLLabelDelegate>
 
 @property GKSession *session;
-@property (nonatomic) NLLabel *label;
+@property (strong, nonatomic) NLLabel *word;
 @property NSArray *wordsForGame;
 @property int playerScores;
 @property (weak, nonatomic) IBOutlet UILabel *myScores;
